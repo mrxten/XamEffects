@@ -11,7 +11,8 @@ You have to install this nuget package to PCL project and each platform project.
 
 ### Minimum requirements
 iOS 8+, Android 4.3 (API 18) 
-Performance of older versions is not guaranteed
+
+Performance of older versions is not guaranteed.
 
 ### Init library
 
