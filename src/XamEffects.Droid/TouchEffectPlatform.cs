@@ -1,4 +1,7 @@
-﻿using Android.Content.Res;
+﻿using System;
+using System.Threading.Tasks;
+using Android.Animation;
+using Android.Content.Res;
 using Android.Graphics.Drawables;
 using Android.OS;
 using Android.Views;
@@ -24,6 +27,7 @@ namespace XamEffects.Droid
         private Drawable _orgDrawable;
         private FrameLayout _rippleOverlay;
         private ContainerOnLayoutChangeListener _rippleListener;
+        private bool _deleteLayer = false;
 
         protected override void OnAttached()
         {
@@ -54,18 +58,22 @@ namespace XamEffects.Droid
 
         private void OnTouch(object sender, View.TouchEventArgs args)
         {
-            if (args.Event.Action == MotionEventActions.Down)
+            switch (args.Event.Action)
             {
-                Container.AddView(_layer);
-                _layer.Top = 0;
-                _layer.Left = 0;
-                _layer.Right = _view.Width;
-                _layer.Bottom = _view.Height;
-                _layer.BringToFront();
-            }
-            if (args.Event.Action == MotionEventActions.Up || args.Event.Action == MotionEventActions.Cancel)
-            {
-                Container.RemoveView(_layer);
+                case MotionEventActions.Down:
+                    Container.RemoveView(_layer);
+                    Container.AddView(_layer);
+                    _layer.Top = 0;
+                    _layer.Left = 0;
+                    _layer.Right = _view.Width;
+                    _layer.Bottom = _view.Height;
+                    _layer.BringToFront();
+                    TapAnimation(250, 0, 65, false);
+                    break;
+                case MotionEventActions.Up:
+                case MotionEventActions.Cancel:
+                    TapAnimation(250, 65, 0);
+                    break;
             }
         }
 
@@ -91,7 +99,6 @@ namespace XamEffects.Droid
                 return;
             }
             _color = color.ToAndroid();
-            _color.A = 65;
 
             if (EnableRipple)
             {
@@ -196,6 +203,32 @@ namespace XamEffects.Droid
                 {
                     pressedColor,
                 });
+        }
+
+        private void TapAnimation(long duration, byte startAlpha = 1, byte endAlpha = 0, bool remove = true)
+        {
+            _deleteLayer = remove;
+            var start = _color;
+            var end = _color;
+            start.A = startAlpha;
+            end.A = endAlpha;
+            var animation = ObjectAnimator.OfObject(_layer, "BackgroundColor", new ArgbEvaluator(), start.ToArgb(), end.ToArgb());
+            animation.SetDuration(duration);
+            animation.RepeatCount = 0;
+            animation.RepeatMode = ValueAnimatorRepeatMode.Restart;
+            animation.Start();
+            animation.AnimationEnd += AnimationOnAnimationEnd;
+        }
+
+        private void AnimationOnAnimationEnd(object sender, EventArgs eventArgs)
+        {
+            var anim = ((ObjectAnimator) sender);
+            anim.AnimationEnd -= AnimationOnAnimationEnd;
+            anim.Dispose();
+            if (_deleteLayer)
+            {
+                Container.RemoveView(_layer);
+            }
         }
 
         internal class ContainerOnLayoutChangeListener : Java.Lang.Object, View.IOnLayoutChangeListener
