@@ -32,7 +32,7 @@ public override bool FinishedLaunching(UIApplication app, NSDictionary options)
 
 ## TouchEffect
 
-This Effect add touch effect to views.
+Add touch effect to views.
 
 For Android API >21 using Ripple effect, for Android API <21 and iOS using animated color selection.
 
