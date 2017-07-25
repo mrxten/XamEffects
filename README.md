@@ -3,8 +3,7 @@
 
 Xamarin Forms effects for Android and iOS only.
 
-## Nuget Installation
-
+## Install
 ```bash
 Install-Package XamEffects
 ```
@@ -73,7 +72,7 @@ For Android API >21 used Ripple effect, for API <21 and iOS use animated color s
 * On
     * Effect On/Off (true is On)
 * Color
-    * Background color when touched. If it doesn't setting, nothing will occur.
+    * Background/Ripple color when touched. If it doesn't setting, nothing will occur.
     
 ### Example 
 
