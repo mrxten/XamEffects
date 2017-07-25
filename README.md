@@ -34,7 +34,7 @@ public override bool FinishedLaunching(UIApplication app, NSDictionary options)
 
 This Effect add touch effect to views.
 
-For Android API >21 used Ripple effect, for API <21 and iOS use animated color selection.
+For Android API >21 using Ripple effect, for Android API <21 and iOS using animated color selection.
 
 ### Supported Views (in case Xamarin.Forms 2.3.4)
 
