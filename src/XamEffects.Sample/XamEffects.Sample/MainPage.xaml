@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:XamEffects.Sample"
+             xmlns:xe="clr-namespace:XamEffects;assembly=XamEffects"
+             x:Class="XamEffects.Sample.MainPage">
+
+	<Frame HorizontalOptions="Center"
+           VerticalOptions="Center"
+           HeightRequest="100"
+           WidthRequest="200"
+           BackgroundColor="LightGray"
+           IsClippedToBounds="True"
+           Padding="0">
+        <Grid xe:TouchEffect.On="True"
+              xe:TouchEffect.Color="Red">
+            <Label Text="Test touch effect"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"></Label>
+        </Grid>
+    </Frame>
+    
+</ContentPage>
