@@ -5,19 +5,16 @@
              xmlns:xe="clr-namespace:XamEffects;assembly=XamEffects"
              x:Class="XamEffects.Sample.MainPage">
 
-	<Frame HorizontalOptions="Center"
-           VerticalOptions="Center"
-           HeightRequest="100"
-           WidthRequest="200"
-           BackgroundColor="LightGray"
-           IsClippedToBounds="True"
-           Padding="0">
-        <Grid xe:TouchEffect.On="True"
-              xe:TouchEffect.Color="Red">
-            <Label Text="Test touch effect"
-                   HorizontalOptions="Center"
-                   VerticalOptions="Center"></Label>
-        </Grid>
-    </Frame>
+    <Grid HorizontalOptions="Center"
+          VerticalOptions="Center"
+          HeightRequest="100"
+          WidthRequest="200"
+          BackgroundColor="LightGray" 
+          xe:TouchEffect.On="True"
+          xe:TouchEffect.Color="Red">
+        <Label Text="Test touch effect"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"/>
+    </Grid>
     
 </ContentPage>
