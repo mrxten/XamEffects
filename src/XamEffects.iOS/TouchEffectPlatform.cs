@@ -77,7 +77,7 @@ namespace XamEffects.iOS
             {
                 return;
             }
-            _alpha = color.A < 1.0 ? 1 : 0.3;
+            _alpha = color.A < 1.0 ? 1 : 0.25;
 
             _layer = new UIView {BackgroundColor = color.ToUIColor()};
         }
