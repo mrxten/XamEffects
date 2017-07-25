@@ -1,2 +1,3 @@
-# XF.SelectionEffect
-Selection effect for Xamarin.Forms controls.
+# XamEffects
+Xamarin Forms effects.
+
