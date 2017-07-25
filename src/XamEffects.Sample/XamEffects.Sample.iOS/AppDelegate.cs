@@ -29,6 +29,6 @@ namespace XamEffects.Sample.iOS
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);
-        }
+        } 
     }
 }

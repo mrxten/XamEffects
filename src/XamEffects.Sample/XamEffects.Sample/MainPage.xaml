@@ -7,7 +7,7 @@
 
     <Grid HorizontalOptions="Center"
           VerticalOptions="Center"
-          HeightRequest="100"
+          HeightRequest="100" 
           WidthRequest="200"
           BackgroundColor="LightGray" 
           xe:TouchEffect.On="True"
