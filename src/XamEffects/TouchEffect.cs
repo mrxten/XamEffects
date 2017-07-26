@@ -19,6 +19,11 @@ namespace XamEffects
             view.SetValue(OnProperty, value);
         }
 
+        public static bool GetOn(BindableObject view)
+        {
+            return (bool)view.GetValue(OnProperty);
+        }
+
         public static readonly BindableProperty ColorProperty =
             BindableProperty.CreateAttached(
                 "Color",
