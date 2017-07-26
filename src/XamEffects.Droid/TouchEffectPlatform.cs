@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Android.Animation;
 using Android.Content.Res;
@@ -28,10 +29,12 @@ namespace XamEffects.Droid
         private FrameLayout _rippleOverlay;
         private ContainerOnLayoutChangeListener _rippleListener;
         private bool _deleteLayer = false;
+        private IList<IGestureRecognizer> _gestures;
 
         protected override void OnAttached()
         {
             _view = Control ?? Container;
+            _gestures = (Element as Xamarin.Forms.View)?.GestureRecognizers;
 
             if (_view is Android.Widget.ListView)
             {
@@ -58,6 +61,8 @@ namespace XamEffects.Droid
 
         private void OnTouch(object sender, View.TouchEventArgs args)
         {
+            args.Handled = false;
+
             switch (args.Event.Action)
             {
                 case MotionEventActions.Down:

@@ -50,19 +50,19 @@ namespace XamEffects
 
             if ((bool)newValue)
             {
-                view.Effects.Add(new AddEffectRoutingEffect());
+                view.Effects.Add(new TouchRoutingEffect());
             }
             else
             {
-                var toRemove = view.Effects.FirstOrDefault(e => e is AddEffectRoutingEffect);
+                var toRemove = view.Effects.FirstOrDefault(e => e is TouchRoutingEffect);
                 if (toRemove != null)
                     view.Effects.Remove(toRemove);
             }
         }
+    }
 
-        private class AddEffectRoutingEffect : RoutingEffect
-        {
-            public AddEffectRoutingEffect() : base("XamEffects." + nameof(TouchEffect)) { }
-        }
+    public class TouchRoutingEffect : RoutingEffect
+    {
+        public TouchRoutingEffect() : base("XamEffects." + nameof(TouchEffect)) { }
     }
 }
