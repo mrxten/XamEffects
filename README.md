@@ -7,14 +7,6 @@ Install-Package XamEffects
 ```
 You have to install this nuget package to PCL project and each platform project.
 
-### Minimum requirements
-iOS 8+, Android 4.3 (API 18) 
-
-Performance of older versions is not guaranteed.
-
-### Init library
-
-##### iOS
 To use by iOS, you need to call Init method in AppDelegate.cs
 
 ```csharp
@@ -28,6 +20,11 @@ public override bool FinishedLaunching(UIApplication app, NSDictionary options)
     return base.FinishedLaunching(app, options);
 }
 ```
+
+### Minimum requirements
+iOS 8+, Android 4.3 (API 18) 
+
+Performance of older versions is not guaranteed.
 
 ## TouchEffect
 
