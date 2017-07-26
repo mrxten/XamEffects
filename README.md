@@ -39,7 +39,7 @@ For Android API >21 using Ripple effect, for Android API <21 and iOS using anima
 
 iOS|Android API >21|Android API <21
 ------------|------------|------------
-<img src="images/ios.gif" height="450"/>|<img src="images/android.gif" height="450"/>|<img src="images/old_android.gif" height="450"/>
+<img src="images/ios.gif" height="450" width="685"/>|<img src="images/android.gif" height="450" width="711"/>|<img src="images/old_android.gif" height="450" width="687"/>
 
 
 ### Supported Views (in case Xamarin.Forms 2.3.4)
