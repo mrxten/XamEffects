@@ -1,7 +1,7 @@
 # XamEffects for Xamarin.Forms
 [![NuGet](https://img.shields.io/nuget/v/xameffects.svg?maxAge=259200&style=flat)](http://www.nuget.org/packages/XamEffects/)
 
-Xamarin Forms effects for Android and iOS only.
+Xamarin.Forms UI effects.
 
 ## Install
 ```bash
