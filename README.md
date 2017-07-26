@@ -1,7 +1,7 @@
 # XamEffects - UI effects for Xamarin.Forms
 [![NuGet](https://img.shields.io/nuget/v/xameffects.svg?maxAge=259200&style=flat)](http://www.nuget.org/packages/XamEffects/)
 
-## Install
+### Install
 ```bash
 Install-Package XamEffects
 ```
@@ -37,7 +37,7 @@ For Android API >=21 using Ripple effect, for Android API <21 and iOS using anim
 
 iOS|Android API >=21|Android API <21
 ------------|------------|------------
-<img src="images/ios.gif" height="450" width="685"/>|<img src="images/android.gif" height="450" width="711"/>|<img src="images/old_android.gif" height="450" width="687"/>
+<img src="images/touch/ios.gif" height="450" width="685"/>|<img src="images/touch/android.gif" height="450" width="711"/>|<img src="images/touch/old_android.gif" height="450" width="687"/>
 
 
 ### Supported Views (in case Xamarin.Forms 2.3.4)
