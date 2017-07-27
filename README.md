@@ -1,6 +1,12 @@
 # XamEffects - UI effects for Xamarin.Forms
 [![NuGet](https://img.shields.io/nuget/v/xameffects.svg?maxAge=259200&style=flat)](http://www.nuget.org/packages/XamEffects/)
 
+## Features
+* [TouchEffects](#toucheffect)
+    * Add touch effect to views.
+* [Commands](#commands)
+    * Add commands to view.
+
 ### Install
 ```bash
 Install-Package XamEffects
@@ -95,7 +101,7 @@ iOS|Android API >=21|Android API <21
 </ContentPage>
 ```
 
-**Important:** if you need some gestures, use not GestureRecognizer, but <a href="#commands">Commands</a> because Effects doesn't work correctly with standard gestures in Xamarin.Forms.
+**Important:** if you need some gestures, use not GestureRecognizer, but [Commands](#commands) because Effects doesn't work correctly with standard gestures in Xamarin.Forms.
 
 ## Commands
 
