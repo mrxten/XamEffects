@@ -101,7 +101,7 @@ iOS|Android API >=21|Android API <21
 </ContentPage>
 ```
 
-**Important:** if you need some gestures, use not GestureRecognizer, but [Commands](#commands) because Effects doesn't work correctly with standard gestures in Xamarin.Forms.
+**Important:** if you need some gestures, use not GestureRecognizer, but [Commands](#commands) because effects doesn't work correctly with standard gestures in Xamarin.Forms.
 
 ## Commands
 
