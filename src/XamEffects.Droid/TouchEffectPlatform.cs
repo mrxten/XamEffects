@@ -73,11 +73,11 @@ namespace XamEffects.Droid
                     _layer.Right = _view.Width;
                     _layer.Bottom = _view.Height;
                     _layer.BringToFront();
-                    TapAnimation(250, 0, 65, false);
+                    TapAnimation(250, 0, 80, false);
                     break;
                 case MotionEventActions.Up:
                 case MotionEventActions.Cancel:
-                    TapAnimation(250, 65, 0);
+                    TapAnimation(250, 80);
                     break;
             }
         }
