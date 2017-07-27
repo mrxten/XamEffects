@@ -36,6 +36,7 @@
     <DocumentationFile>bin\Release\XamEffects.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Commands.cs" />
     <Compile Include="TouchEffect.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

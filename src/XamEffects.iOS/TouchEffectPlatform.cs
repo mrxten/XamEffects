@@ -1,10 +1,12 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using CoreGraphics;
 using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 using XamEffects;
 using XamEffects.iOS;
+using XamEffects.iOS.GestureCollectors;
 
 [assembly: ResolutionGroupName("XamEffects")]
 [assembly: ExportEffect(typeof(TouchEffectPlatform), nameof(TouchEffect))]
@@ -12,8 +14,6 @@ namespace XamEffects.iOS
 {
     public class TouchEffectPlatform : PlatformEffect
     {
-        private UITapGestureRecognizer _tapGesture;
-        private UILongPressGestureRecognizer _longTapGesture;
         private UIView _view;
         private UIView _layer;
         private double _alpha;
@@ -23,36 +23,14 @@ namespace XamEffects.iOS
             _view = Control ?? Container;
             UpdateEffectColor();
 
-            _tapGesture = new UITapGestureRecognizer(async (obj) => {
-                await TapAnimation(0.3, _alpha, 0);
-            });
-
-            _longTapGesture = new UILongPressGestureRecognizer(async (obj) => {
-                switch (obj.State)
-                {
-                    case UIGestureRecognizerState.Began:
-                        await TapAnimation(0.5, 0, _alpha, false);
-                        break;
-                    case UIGestureRecognizerState.Ended:
-                    case UIGestureRecognizerState.Cancelled:
-                    case UIGestureRecognizerState.Failed:
-                        await TapAnimation(0.5, _alpha);
-                        break;
-                }
-            });
-
-            _view.AddGestureRecognizer(_longTapGesture);
-            _view.AddGestureRecognizer(_tapGesture);
+            TapGestureCollector.Add(_view, TapAction);
+            LongTapGestureCollector.Add(_view, LongTapAction);
         }
 
         protected override void OnDetached()
         {
-            _view.RemoveGestureRecognizer(_tapGesture);
-            _tapGesture.Dispose();
-
-            _view.RemoveGestureRecognizer(_longTapGesture);
-            _longTapGesture.Dispose();
-
+            TapGestureCollector.Delete(_view, TapAction);
+            LongTapGestureCollector.Delete(_view, LongTapAction);
             _layer?.Dispose();
             _layer = null;
         }
@@ -67,6 +45,26 @@ namespace XamEffects.iOS
             }
         }
 
+        private async void LongTapAction(UIGestureRecognizerState state)
+        {
+            switch (state)
+            {
+                case UIGestureRecognizerState.Began:
+                    await TapAnimation(0.5, 0, _alpha, false);
+                    break;
+                case UIGestureRecognizerState.Ended:
+                case UIGestureRecognizerState.Cancelled:
+                case UIGestureRecognizerState.Failed:
+                    await TapAnimation(0.5, _alpha);
+                    break;
+            }
+        }
+
+        private async void TapAction()
+        {
+            await TapAnimation(0.3, _alpha, 0);
+        }
+
         private void UpdateEffectColor()
         {
             _layer?.Dispose();
@@ -77,7 +75,7 @@ namespace XamEffects.iOS
             {
                 return;
             }
-            _alpha = color.A < 1.0 ? 1 : 0.25;
+            _alpha = color.A < 1.0 ? 1 : 0.3;
 
             _layer = new UIView {BackgroundColor = color.ToUIColor()};
         }

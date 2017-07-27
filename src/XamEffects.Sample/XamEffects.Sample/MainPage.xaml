@@ -9,12 +9,13 @@
           VerticalOptions="Center"
           HeightRequest="100" 
           WidthRequest="200"
-          BackgroundColor="LightGray" 
-          xe:TouchEffect.On="True"
-          xe:TouchEffect.Color="Red">
+          BackgroundColor="LightGray"
+          xe:TouchEffect.Color="Red"
+          xe:Commands.Tap="{Binding TapCommand}"
+          xe:Commands.LongTap="{Binding LongTapCommand}">
         <Label Text="Test touch effect"
-               HorizontalOptions="Center"
-               VerticalOptions="Center"/>
+            HorizontalOptions="Center"
+            VerticalOptions="Center"/>
     </Grid>
     
 </ContentPage>

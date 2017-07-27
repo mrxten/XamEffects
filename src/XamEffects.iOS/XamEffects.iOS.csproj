@@ -59,9 +59,12 @@
     <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommandsPlatform.cs" />
+    <Compile Include="GestureCollectors\LongTapGestureCollector.cs" />
     <Compile Include="TouchEffectPlatform.cs" />
     <Compile Include="Initialize.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="GestureCollectors\TapGestureCollector.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\XamEffects\XamEffects.csproj">
