@@ -1,7 +1,7 @@
 # XamEffects - UI effects for Xamarin.Forms
 [![NuGet](https://img.shields.io/nuget/v/xameffects.svg?maxAge=259200&style=flat)](http://www.nuget.org/packages/XamEffects/)
 
-## Features
+### Features
 * [TouchEffects](#toucheffect)
     * Add touch effect to views.
 * [Commands](#commands)
