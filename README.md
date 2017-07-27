@@ -71,10 +71,8 @@ iOS|Android API >=21|Android API <21
 
 ### Parameters
 
-* On
-    * Effect On/Off (true is On)
 * Color
-    * Background/Ripple color when touched. If it doesn't setting, nothing will occur.
+    * Background/Ripple color when touched. For deactivated effect set Color.Default value.
     
 ### Example 
 
@@ -89,9 +87,47 @@ iOS|Android API >=21|Android API <21
           HeightRequest="100"
           WidthRequest="200"
           BackgroundColor="LightGray" 
-          xe:TouchEffect.On="True"
           xe:TouchEffect.Color="Red">
         <Label Text="Test touch effect"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"/>
+    </Grid>
+</ContentPage>
+```
+
+**Important:** if you need some gestures, use not GestureRecognizer, but <a href="#commands">Commands</a> because Effects doesn't work correctly with standard gestures in Xamarin.Forms.
+
+## Commands
+
+Add commands to view.
+
+### Parameters
+
+* Tap
+    * Tap Command
+* TapParameter
+    * Tap Command Parameter
+* LongTap
+    * Long Tap Command
+* LongTapParameter
+    * Long Tap Command Parameter
+    
+### Example 
+
+```xml
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:XamEffects.Sample"
+             xmlns:xe="clr-namespace:XamEffects;assembly=XamEffects"
+             x:Class="XamEffects.Sample.MainPage">
+    <Grid HorizontalOptions="Center"
+          VerticalOptions="Center"
+          HeightRequest="100"
+          WidthRequest="200"
+          BackgroundColor="LightGray" 
+          xe:Commands.Tap="{Binding TapCommand}"
+          xe:Commands.LongTap="{Binding LongTapCommand}">
+        <Label Text="Test commands"
                HorizontalOptions="Center"
                VerticalOptions="Center"/>
     </Grid>
