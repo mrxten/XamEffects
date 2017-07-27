@@ -24,7 +24,7 @@ public override bool FinishedLaunching(UIApplication app, NSDictionary options)
 ### Minimum requirements
 iOS 8+, Android 4.3 (API 18) 
 
-Performance of older versions is not guaranteed.
+Operability of older versions is not guaranteed.
 
 ## TouchEffect
 
