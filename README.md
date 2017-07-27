@@ -5,7 +5,7 @@
 * [TouchEffects](#toucheffect)
     * Add touch effect to views.
 * [Commands](#commands)
-    * Add commands to view.
+    * Add command to views.
 
 ### Install
 ```bash
@@ -105,7 +105,7 @@ iOS|Android API >=21|Android API <21
 
 ## Commands
 
-Add commands to view.
+Add command to views.
 
 ### Parameters
 
