@@ -10,31 +10,13 @@ namespace XamEffects
 {
     public static class Commands
     {
-        public static readonly BindableProperty OnProperty =
-            BindableProperty.CreateAttached(
-                "On",
-                typeof(bool),
-                typeof(Commands),
-                false,
-                propertyChanged: OnOffChanged
-            );
-
-        public static void SetOn(BindableObject view, bool value)
-        {
-            view.SetValue(OnProperty, value);
-        }
-
-        public static bool GetOn(BindableObject view)
-        {
-            return (bool)view.GetValue(OnProperty);
-        }
-
         public static readonly BindableProperty TapProperty =
             BindableProperty.CreateAttached(
                 "Tap",
                 typeof(ICommand),
                 typeof(Commands),
-                default(ICommand)
+                default(ICommand),
+                propertyChanged: PropertyChanged
             );
 
         public static void SetTap(BindableObject view, ICommand value)
@@ -52,7 +34,8 @@ namespace XamEffects
                 "TapParameter",
                 typeof(object),
                 typeof(Commands),
-                default(object)
+                default(object),
+                propertyChanged: PropertyChanged
             );
 
         public static void SetTapParameter(BindableObject view, object value)
@@ -101,13 +84,13 @@ namespace XamEffects
             return view.GetValue(LongTapParameterProperty);
         }
 
-        private static void OnOffChanged(BindableObject bindable, object oldValue, object newValue)
+        private static void PropertyChanged(BindableObject bindable, object oldValue, object newValue)
         {
             var view = bindable as View;
             if (view == null)
                 return;
 
-            if ((bool)newValue)
+            if (GetTap(bindable) != null || GetLongTap(bindable) != null)
             {
                 view.Effects.Add(new CommandsRoutingEffect());
             }

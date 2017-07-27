@@ -5,31 +5,13 @@ namespace XamEffects
 {
     public static class TouchEffect
     {
-        public static readonly BindableProperty OnProperty =
-            BindableProperty.CreateAttached(
-                "On",
-                typeof(bool),
-                typeof(TouchEffect),
-                false,
-                propertyChanged: OnOffChanged
-            );
-
-        public static void SetOn(BindableObject view, bool value)
-        {
-            view.SetValue(OnProperty, value);
-        }
-
-        public static bool GetOn(BindableObject view)
-        {
-            return (bool)view.GetValue(OnProperty);
-        }
-
         public static readonly BindableProperty ColorProperty =
             BindableProperty.CreateAttached(
                 "Color",
                 typeof(Color),
                 typeof(TouchEffect),
-                Color.Default
+                Color.Default,
+                propertyChanged: PropertyChanged
             );
 
         public static void SetColor(BindableObject view, Color value)
@@ -42,13 +24,13 @@ namespace XamEffects
             return (Color)view.GetValue(ColorProperty);
         }
 
-        private static void OnOffChanged(BindableObject bindable, object oldValue, object newValue)
+        private static void PropertyChanged(BindableObject bindable, object oldValue, object newValue)
         {
             var view = bindable as View;
             if (view == null)
                 return;
 
-            if ((bool)newValue)
+            if (GetColor(bindable) != Color.Default)
             {
                 view.Effects.Add(new TouchRoutingEffect());
             }
