@@ -103,6 +103,10 @@ iOS|Android API >=21|Android API <21
 
 **Important:** if you need some gestures, use not GestureRecognizer, but [Commands](#commands) because effects doesn't work correctly with standard gestures in Xamarin.Forms.
 
+### Release notes:
+   Needed package: 1.1.0+
+   For 1.1.0 need to use also turn on/off switcher. 
+
 ## Commands
 
 Add command to views.
@@ -140,6 +144,9 @@ Add command to views.
 </ContentPage>
 ```
 
+### Release notes:
+   Needed package: 1.3.0+ (now Prerelease)
+   
 ## License
 
 MIT Licensed.
