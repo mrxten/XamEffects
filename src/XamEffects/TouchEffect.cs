@@ -30,15 +30,16 @@ namespace XamEffects
             if (view == null)
                 return;
 
+            var eff = view.Effects.FirstOrDefault(e => e is TouchRoutingEffect);
             if (GetColor(bindable) != Color.Default)
             {
-                view.Effects.Add(new TouchRoutingEffect());
+                if (eff == null)
+                    view.Effects.Add(new TouchRoutingEffect());
             }
             else
             {
-                var toRemove = view.Effects.FirstOrDefault(e => e is TouchRoutingEffect);
-                if (toRemove != null)
-                    view.Effects.Remove(toRemove);
+                if (eff != null)
+                    view.Effects.Remove(eff);
             }
         }
     }

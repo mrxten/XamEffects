@@ -18,6 +18,8 @@ namespace XamEffects.iOS
         {
             _view = Control ?? Container;
 
+            _view.UserInteractionEnabled = true;
+
             TapGestureCollector.Add(_view, TapAction);
             LongTapGestureCollector.Add(_view, LongTapAction);
         }

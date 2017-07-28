@@ -21,10 +21,13 @@ namespace XamEffects.iOS
         protected override void OnAttached()
         {
             _view = Control ?? Container;
-            UpdateEffectColor();
+
+            _view.UserInteractionEnabled = true;
 
             TapGestureCollector.Add(_view, TapAction);
             LongTapGestureCollector.Add(_view, LongTapAction);
+
+            UpdateEffectColor();
         }
 
         protected override void OnDetached()
@@ -93,7 +96,7 @@ namespace XamEffects.iOS
                 });
                 if (remove)
                 {
-                    _layer.RemoveFromSuperview();
+                    _layer?.RemoveFromSuperview();
                 }
             }
         }

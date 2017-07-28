@@ -4,18 +4,16 @@
              xmlns:local="clr-namespace:XamEffects.Sample"
              xmlns:xe="clr-namespace:XamEffects;assembly=XamEffects"
              x:Class="XamEffects.Sample.MainPage">
-
     <Grid HorizontalOptions="Center"
-          VerticalOptions="Center"
-          HeightRequest="100" 
-          WidthRequest="200"
-          BackgroundColor="LightGray"
-          xe:TouchEffect.Color="Red"
-          xe:Commands.Tap="{Binding TapCommand}"
-          xe:Commands.LongTap="{Binding LongTapCommand}">
+            VerticalOptions="Center"
+            HeightRequest="100" 
+            WidthRequest="200"
+            BackgroundColor="LightGray"
+            xe:TouchEffect.Color="Red"
+            xe:Commands.Tap="{Binding TapCommand}"
+            xe:Commands.LongTap="{Binding LongTapCommand}">
         <Label Text="Test touch effect"
-            HorizontalOptions="Center"
-            VerticalOptions="Center"/>
+                HorizontalOptions="Center"
+                VerticalOptions="Center"/>
     </Grid>
-    
 </ContentPage>

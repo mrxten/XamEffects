@@ -29,19 +29,19 @@ namespace XamEffects.Droid
         private FrameLayout _rippleOverlay;
         private ContainerOnLayoutChangeListener _rippleListener;
         private bool _deleteLayer = false;
-        private IList<IGestureRecognizer> _gestures;
 
         protected override void OnAttached()
         {
             _view = Control ?? Container;
-            _gestures = (Element as Xamarin.Forms.View)?.GestureRecognizers;
 
-            if (_view is Android.Widget.ListView)
+            if (Control is Android.Widget.ListView)
             {
                 //Except ListView because of Raising Exception OnClick
                 return;
             }
-            
+
+            _view.Click += OnClick;
+
             if (EnableRipple)
                 AddRipple();
             else
@@ -49,14 +49,19 @@ namespace XamEffects.Droid
 
             UpdateEffectColor();
         }
-
+        
         protected override void OnDetached()
         {
             if(EnableRipple)
                 RemoveRipple();
 
+            _view.Click -= OnClick;
             _view.Touch -= OnTouch;
             _view = null;
+        }
+
+        private void OnClick(object sender, EventArgs eventArgs)
+        {
         }
 
         private void OnTouch(object sender, View.TouchEventArgs args)
@@ -122,6 +127,13 @@ namespace XamEffects.Droid
 
         private void AddRipple()
         {
+            var color = TouchEffect.GetColor(Element);
+            if (color == Color.Default)
+            {
+                return;
+            }
+            _color = color.ToAndroid();
+
             if (Element is Layout)
             {
                 _rippleOverlay = new FrameLayout(Container.Context)

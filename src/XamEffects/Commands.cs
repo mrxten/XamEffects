@@ -53,7 +53,8 @@ namespace XamEffects
                 "LongTap",
                 typeof(ICommand),
                 typeof(Commands),
-                default(ICommand)
+                default(ICommand),
+                propertyChanged: PropertyChanged
             );
 
         public static void SetLongTap(BindableObject view, ICommand value)
@@ -90,15 +91,17 @@ namespace XamEffects
             if (view == null)
                 return;
 
+            var eff = view.Effects.FirstOrDefault(e => e is CommandsRoutingEffect);
+
             if (GetTap(bindable) != null || GetLongTap(bindable) != null)
             {
-                view.Effects.Add(new CommandsRoutingEffect());
+                if (eff == null)
+                    view.Effects.Add(new CommandsRoutingEffect());
             }
             else
             {
-                var toRemove = view.Effects.FirstOrDefault(e => e is CommandsRoutingEffect);
-                if (toRemove != null)
-                    view.Effects.Remove(toRemove);
+                if (eff != null)
+                    view.Effects.Remove(eff);
             }
         }
     }
