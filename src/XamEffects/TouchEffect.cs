@@ -30,6 +30,7 @@ namespace XamEffects
             if (view == null)
                 return;
 
+
             var eff = view.Effects.FirstOrDefault(e => e is TouchRoutingEffect);
             if (GetColor(bindable) != Color.Default)
             {
@@ -38,7 +39,7 @@ namespace XamEffects
             }
             else
             {
-                if (eff != null)
+                if (eff != null && view.BindingContext != null)
                     view.Effects.Remove(eff);
             }
         }

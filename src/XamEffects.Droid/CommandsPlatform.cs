@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 
@@ -51,9 +52,12 @@ namespace XamEffects.Droid
 
         protected override void OnDetached()
         {
-            _view.Click -= ViewOnClick;
-            _view.LongClick -= ViewOnLongClick;
-            _view = null;
+            var renderer = Container as IVisualElementRenderer;
+            if (renderer?.Element != null) // Check disposed
+            {    
+                _view.Click -= ViewOnClick;
+                _view.LongClick -= ViewOnLongClick;
+            }
         }
     }
 }

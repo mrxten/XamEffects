@@ -52,12 +52,15 @@ namespace XamEffects.Droid
         
         protected override void OnDetached()
         {
-            if(EnableRipple)
-                RemoveRipple();
+            var renderer = Container as IVisualElementRenderer;
+            if (renderer?.Element != null) // Check disposed
+            {
+                _view.Click -= OnClick;
+                _view.Touch -= OnTouch;
 
-            _view.Click -= OnClick;
-            _view.Touch -= OnTouch;
-            _view = null;
+                if (EnableRipple)
+                    RemoveRipple();
+            }
         }
 
         private void OnClick(object sender, EventArgs eventArgs)
@@ -242,7 +245,9 @@ namespace XamEffects.Droid
             var anim = ((ObjectAnimator) sender);
             anim.AnimationEnd -= AnimationOnAnimationEnd;
             anim.Dispose();
-            if (_deleteLayer)
+            if (!_deleteLayer) return;
+            var renderer = Container as IVisualElementRenderer;
+            if (renderer?.Element != null) // Check disposed
             {
                 Container.RemoveView(_layer);
             }

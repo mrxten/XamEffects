@@ -88,6 +88,7 @@ namespace XamEffects
         private static void PropertyChanged(BindableObject bindable, object oldValue, object newValue)
         {
             var view = bindable as View;
+
             if (view == null)
                 return;
 
@@ -100,7 +101,7 @@ namespace XamEffects
             }
             else
             {
-                if (eff != null)
+                if (eff != null && view.BindingContext != null)
                     view.Effects.Remove(eff);
             }
         }

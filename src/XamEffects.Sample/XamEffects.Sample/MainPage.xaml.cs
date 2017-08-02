@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,12 +15,14 @@ namespace XamEffects.Sample
 
         public ICommand LongTapCommand { get; }
 
+        public bool On { get; set; } = true;
+
         public MainPage()
         {
-            TapCommand = new Command((() =>
+            TapCommand = new Command(() =>
             {
                 DisplayAlert("Alert", "Item tapped", "Ok");
-            }));
+            });
 
             LongTapCommand = new Command((() =>
             {
