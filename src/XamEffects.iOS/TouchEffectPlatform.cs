@@ -100,5 +100,10 @@ namespace XamEffects.iOS
                 }
             }
         }
+
+        public static void Init()
+        {
+
+        }
     }
 }

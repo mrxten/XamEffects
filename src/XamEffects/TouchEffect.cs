@@ -5,6 +5,11 @@ namespace XamEffects
 {
     public static class TouchEffect
     {
+        public static void Init()
+        {
+            // for linker
+        }
+
         public static readonly BindableProperty ColorProperty =
             BindableProperty.CreateAttached(
                 "Color",

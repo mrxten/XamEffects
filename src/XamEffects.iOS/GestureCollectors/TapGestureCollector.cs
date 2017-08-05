@@ -63,5 +63,10 @@ namespace XamEffects.iOS.GestureCollectors
 
             public List<Action> Actions { get; set; }
         }
+
+        public static void Init()
+        {
+
+        }
     }
 }

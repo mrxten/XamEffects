@@ -10,6 +10,11 @@ namespace XamEffects
 {
     public static class Commands
     {
+        public static void Init()
+        {
+            // for linker
+        }
+
         public static readonly BindableProperty TapProperty =
             BindableProperty.CreateAttached(
                 "Tap",
