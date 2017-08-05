@@ -27,7 +27,7 @@ public override bool FinishedLaunching(UIApplication app, NSDictionary options)
 }
 ```
 
-Also, for Linker you can call these methods in Xamarin.Forms App.cs 
+Also, for Linker you can call this method in Xamarin.Forms App.cs 
 ```csharp
 public App()
 {
