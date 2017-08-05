@@ -27,6 +27,14 @@ public override bool FinishedLaunching(UIApplication app, NSDictionary options)
 }
 ```
 
+Also, for Linker you can call this method in Xamarin.Forms App.cs 
+```csharp
+public App()
+{
+    XamEffects.Effects.Init();
+    ...
+```
+
 ### Minimum requirements
 iOS 8+, Android 4.3 (API 18) 
 
