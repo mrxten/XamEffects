@@ -86,7 +86,7 @@ iOS|Android API >=21|Android API <21
 ### Parameters
 
 * Color
-    * Background/Ripple color when touched. For deactivated effect set Color.Default value.
+    * Background/Ripple color when touched. For deactivate effect set Color.Default value.
     
 ### Example 
 
