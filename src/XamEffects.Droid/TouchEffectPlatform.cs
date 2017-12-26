@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Android.Animation;
 using Android.Content.Res;
+using Android.Graphics;
 using Android.Graphics.Drawables;
 using Android.OS;
 using Android.Views;
@@ -11,6 +13,8 @@ using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using XamEffects;
 using XamEffects.Droid;
+using XamEffects.Droid.Collectors;
+using Color = Xamarin.Forms.Color;
 using View = Android.Views.View;
 
 [assembly: ResolutionGroupName("XamEffects")]
@@ -19,16 +23,17 @@ namespace XamEffects.Droid
 {
     public class TouchEffectPlatform : PlatformEffect
     {
-        public bool EnableRipple => Build.VERSION.SdkInt >= BuildVersionCodes.Lollipop;
+        public bool EnableRipple => Build.VERSION.SdkInt <= BuildVersionCodes.Lollipop;
 
+        public bool IsFastRenderers = global::Xamarin.Forms.Forms.Flags.Any(x => x == "FastRenderers_Experimental");
+
+        private DateTime _tapTime;
         private View _view;
-        private FrameLayout _layer;
         private Android.Graphics.Color _color;
         private RippleDrawable _ripple;
-        private Drawable _orgDrawable;
-        private FrameLayout _rippleOverlay;
-        private ContainerOnLayoutChangeListener _rippleListener;
-        private bool _deleteLayer = false;
+        private FrameLayout _viewOverlay;
+        private Rect _rect;
+        private bool _touchEndInside;
 
         protected override void OnAttached()
         {
@@ -40,12 +45,12 @@ namespace XamEffects.Droid
                 return;
             }
 
-            _view.Click += OnClick;
+            _viewOverlay = ViewOverlayCollector.Add(Container, this);
 
             if (EnableRipple)
                 AddRipple();
             else
-                _view.Touch += OnTouch;
+                _viewOverlay.Touch += OnTouch;
 
             UpdateEffectColor();
         }
@@ -55,36 +60,38 @@ namespace XamEffects.Droid
             var renderer = Container as IVisualElementRenderer;
             if (renderer?.Element != null) // Check disposed
             {
-                _view.Click -= OnClick;
-                _view.Touch -= OnTouch;
+                _viewOverlay.Touch -= OnTouch;
+
+                ViewOverlayCollector.Delete(Container, this);
 
                 if (EnableRipple)
                     RemoveRipple();
             }
         }
 
-        private void OnClick(object sender, EventArgs eventArgs)
-        {
-        }
-
         private void OnTouch(object sender, View.TouchEventArgs args)
         {
-            args.Handled = false;
-
             switch (args.Event.Action)
             {
                 case MotionEventActions.Down:
-                    Container.RemoveView(_layer);
-                    Container.AddView(_layer);
-                    _layer.Top = 0;
-                    _layer.Left = 0;
-                    _layer.Right = _view.Width;
-                    _layer.Bottom = _view.Height;
-                    _layer.BringToFront();
-                    TapAnimation(250, 0, 80, false);
+                    _tapTime = DateTime.Now;
+                    _rect = new Rect(_viewOverlay.Left, _viewOverlay.Top, _viewOverlay.Right, _viewOverlay.Bottom);
+                    TapAnimation(250, 0, 80);
+                    break;
+                case MotionEventActions.Move:
+                    _touchEndInside = _rect.Contains(_viewOverlay.Left + (int) args.Event.GetX(),
+                        _viewOverlay.Top + (int) args.Event.GetY());
                     break;
                 case MotionEventActions.Up:
+                    if (_touchEndInside)
+                        if ((DateTime.Now - _tapTime).Milliseconds > 1500)
+                            _viewOverlay.PerformLongClick();
+                        else
+                            _viewOverlay.CallOnClick();
+                    
+                    goto case MotionEventActions.Cancel;
                 case MotionEventActions.Cancel:
+                    args.Handled = false;
                     TapAnimation(250, 80);
                     break;
             }
@@ -102,29 +109,17 @@ namespace XamEffects.Droid
 
         private void UpdateEffectColor()
         {
-            _view.Touch -= OnTouch;
-            _layer?.Dispose();
-            _layer = null;
-
             var color = TouchEffect.GetColor(Element);
             if (color == Color.Default)
             {
                 return;
             }
             _color = color.ToAndroid();
+            _color.A = 80;
 
             if (EnableRipple)
             {
                 _ripple.SetColor(GetPressedColorSelector(_color));
-            }
-            else
-            {
-                _layer = new FrameLayout(Container.Context)
-                {
-                    LayoutParameters = new ViewGroup.LayoutParams(-1, -1)
-                };
-                _layer.SetBackgroundColor(_color);
-                _view.Touch += OnTouch;
             }
         }
 
@@ -136,51 +131,15 @@ namespace XamEffects.Droid
                 return;
             }
             _color = color.ToAndroid();
+            _color.A = 80;
 
-            if (Element is Layout)
-            {
-                _rippleOverlay = new FrameLayout(Container.Context)
-                {
-                    LayoutParameters = new ViewGroup.LayoutParams(-1, -1)
-                };
-
-                _rippleListener = new ContainerOnLayoutChangeListener(_rippleOverlay);
-                _view.AddOnLayoutChangeListener(_rippleListener);
-
-                ((ViewGroup)_view).AddView(_rippleOverlay);
-
-                _rippleOverlay.BringToFront();
-                _rippleOverlay.Foreground = CreateRipple(Color.Accent.ToAndroid());
-            }
-            else
-            {
-                _orgDrawable = _view.Background;
-                _view.Background = CreateRipple(Color.Accent.ToAndroid());
-            }
-
+            _viewOverlay.Foreground = CreateRipple(Color.Accent.ToAndroid());
             _ripple.SetColor(GetPressedColorSelector(_color));
         }
 
         private void RemoveRipple()
         {
-            if (Element is Layout)
-            {
-                var viewgrp = (ViewGroup)_view;
-                viewgrp?.RemoveOnLayoutChangeListener(_rippleListener);
-                viewgrp?.RemoveView(_rippleOverlay);
-
-                _rippleListener?.Dispose();
-                _rippleListener = null;
-
-                _rippleOverlay?.Dispose();
-                _rippleOverlay = null;
-            }
-            else
-            {
-                _view.Background = _orgDrawable;
-                _orgDrawable?.Dispose();
-                _orgDrawable = null;
-            }
+            _viewOverlay.Foreground = null;
             _ripple?.Dispose();
             _ripple = null;
         }
@@ -225,14 +184,13 @@ namespace XamEffects.Droid
                 });
         }
 
-        private void TapAnimation(long duration, byte startAlpha = 1, byte endAlpha = 0, bool remove = true)
+        private void TapAnimation(long duration, byte startAlpha = 255, byte endAlpha = 0)
         {
-            _deleteLayer = remove;
             var start = _color;
             var end = _color;
             start.A = startAlpha;
             end.A = endAlpha;
-            var animation = ObjectAnimator.OfObject(_layer, "BackgroundColor", new ArgbEvaluator(), start.ToArgb(), end.ToArgb());
+            var animation = ObjectAnimator.OfObject(_viewOverlay, "BackgroundColor", new ArgbEvaluator(), start.ToArgb(), end.ToArgb());
             animation.SetDuration(duration);
             animation.RepeatCount = 0;
             animation.RepeatMode = ValueAnimatorRepeatMode.Restart;
@@ -245,28 +203,6 @@ namespace XamEffects.Droid
             var anim = ((ObjectAnimator) sender);
             anim.AnimationEnd -= AnimationOnAnimationEnd;
             anim.Dispose();
-            if (!_deleteLayer) return;
-            var renderer = Container as IVisualElementRenderer;
-            if (renderer?.Element != null) // Check disposed
-            {
-                Container.RemoveView(_layer);
-            }
-        }
-
-        internal class ContainerOnLayoutChangeListener : Java.Lang.Object, View.IOnLayoutChangeListener
-        {
-            private readonly FrameLayout _layout;
-
-            public ContainerOnLayoutChangeListener(FrameLayout layout)
-            {
-                _layout = layout;
-            }
-
-            public void OnLayoutChange(View v, int left, int top, int right, int bottom, int oldLeft, int oldTop, int oldRight, int oldBottom)
-            {
-                _layout.Right = v.Width;
-                _layout.Bottom = v.Height;
-            }
         }
     }
 }

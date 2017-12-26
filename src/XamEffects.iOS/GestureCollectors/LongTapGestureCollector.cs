@@ -4,7 +4,7 @@ using UIKit;
 
 namespace XamEffects.iOS.GestureCollectors
 {
-    public static class LongTapGestureCollector
+    internal static class LongTapGestureCollector
     {
         private static Dictionary<UIView, GestureActionsContainer> Collection { get; } = new Dictionary<UIView, GestureActionsContainer>();
 

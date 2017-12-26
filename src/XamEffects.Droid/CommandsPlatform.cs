@@ -14,6 +14,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using XamEffects;
 using XamEffects.Droid;
+using XamEffects.Droid.Collectors;
 using View = Android.Views.View;
 
 [assembly: ExportEffect(typeof(CommandsPlatform), nameof(Commands))]
@@ -23,12 +24,14 @@ namespace XamEffects.Droid
     {
         private Android.Views.View _view;
 
+        private FrameLayout _clickOverlay;
+
         protected override void OnAttached()
         {
             _view = Control ?? Container;
-
-            _view.Click += ViewOnClick;
-            _view.LongClick += ViewOnLongClick;
+            _clickOverlay = ViewOverlayCollector.Add(Container, this);
+            _clickOverlay.Click += ViewOnClick;
+            _clickOverlay.LongClick += ViewOnLongClick;
         }
 
         private void ViewOnClick(object sender, EventArgs eventArgs)
@@ -54,9 +57,11 @@ namespace XamEffects.Droid
         {
             var renderer = Container as IVisualElementRenderer;
             if (renderer?.Element != null) // Check disposed
-            {    
-                _view.Click -= ViewOnClick;
-                _view.LongClick -= ViewOnLongClick;
+            {
+                _clickOverlay.Click -= ViewOnClick;
+                _clickOverlay.LongClick -= ViewOnLongClick;
+
+                ViewOverlayCollector.Delete(Container, this);
             }
         }
     }

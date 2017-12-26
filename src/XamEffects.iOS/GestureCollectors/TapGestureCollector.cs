@@ -4,7 +4,7 @@ using UIKit;
 
 namespace XamEffects.iOS.GestureCollectors
 {
-    public static class TapGestureCollector
+    internal static class TapGestureCollector
     {
         private static Dictionary<UIView, GestureActionsContainer> Collection { get; } = new Dictionary<UIView, GestureActionsContainer>();
 
@@ -49,7 +49,7 @@ namespace XamEffects.iOS.GestureCollectors
         private static void ActionActivator(UITapGestureRecognizer uiTapGestureRecognizer)
         {
             if (Collection.ContainsKey(uiTapGestureRecognizer.View))
-            { 
+            {
                 foreach (var valueAction in Collection[uiTapGestureRecognizer.View].Actions)
                 {
                     valueAction?.Invoke();

@@ -54,12 +54,12 @@ namespace XamEffects.iOS
             switch (state)
             {
                 case UIGestureRecognizerState.Began:
-                    await Task.Delay(500);
-                    _longCommand?.Execute(_longParameter);
                     break;
                 case UIGestureRecognizerState.Ended:
                     if (_longCommand == null)
                         TapAction();
+                    else
+                        _longCommand.Execute(_longParameter);
                     break;
                 case UIGestureRecognizerState.Cancelled:
                 case UIGestureRecognizerState.Failed:
