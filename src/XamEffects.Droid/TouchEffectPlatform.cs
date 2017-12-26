@@ -23,7 +23,7 @@ namespace XamEffects.Droid
 {
     public class TouchEffectPlatform : PlatformEffect
     {
-        public bool EnableRipple => Build.VERSION.SdkInt <= BuildVersionCodes.Lollipop;
+        public bool EnableRipple => Build.VERSION.SdkInt >= BuildVersionCodes.Lollipop;
 
         public bool IsFastRenderers = global::Xamarin.Forms.Forms.Flags.Any(x => x == "FastRenderers_Experimental");
 
