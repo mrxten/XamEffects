@@ -149,5 +149,8 @@ Add command to views.
 ```
 
 ## License
-
 MIT Licensed.
+
+### Release notes
+#### 1.4.0-pre
+Updated XForms to 2.5+
