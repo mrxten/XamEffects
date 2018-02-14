@@ -7,13 +7,26 @@
 
     <Grid HorizontalOptions="Center"
           VerticalOptions="Center"
-          HeightRequest="100" 
+          HeightRequest="300" 
           WidthRequest="200"
           BackgroundColor="LightGray"
           xe:TouchEffect.Color="Red"
           xe:Commands.Tap="{Binding TapCommand}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
         <Label Text="Test touch effect"
                 HorizontalOptions="Center"
                 VerticalOptions="Center"/>
+        <Grid Row="1"
+              Margin="5"
+              BackgroundColor="Gray"
+              xe:TouchEffect.Color="Blue"
+              xe:Commands.Tap="{Binding Tap2Command}">
+            <Label Text="Test internal touch effect"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"/>
+        </Grid>
     </Grid>
 </ContentPage>

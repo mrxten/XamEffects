@@ -48,11 +48,12 @@ namespace XamEffects.Droid
                 return;
             }
 
-            if (EnableRipple)
+	        _viewOverlay = ViewOverlayCollector.Add(Container, this);
+
+			if (EnableRipple)
                 AddRipple();
             else
             {
-                _viewOverlay = ViewOverlayCollector.Add(Container, this);
                 _viewOverlay.Touch += OnTouch;
             }
 
@@ -69,10 +70,11 @@ namespace XamEffects.Droid
                 else
                 {
                     _viewOverlay.Touch -= OnTouch;
-                    ViewOverlayCollector.Delete(Container, this);
                 }
-            }
-        }
+
+	            ViewOverlayCollector.Delete(Container, this);
+			}
+		}
 
         private void OnTouch(object sender, View.TouchEventArgs args)
         {
@@ -138,12 +140,12 @@ namespace XamEffects.Droid
             _color = color.ToAndroid();
             _color.A = 80;
 
-            _view.Foreground = CreateRipple(color.ToAndroid());
+            _viewOverlay.Foreground = CreateRipple(color.ToAndroid());
         }
 
         private void RemoveRipple()
         {
-            _view.Foreground = null;
+	        _viewOverlay.Foreground = null;
             _ripple?.Dispose();
             _ripple = null;
         }

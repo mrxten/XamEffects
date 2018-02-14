@@ -13,18 +13,25 @@ namespace XamEffects.Sample
     {
         public ICommand TapCommand { get; }
 
-        public ICommand LongTapCommand { get; }
+	    public ICommand Tap2Command { get; }
+
+		public ICommand LongTapCommand { get; }
 
         public bool On { get; set; } = true;
 
         public MainPage()
         {
-            TapCommand = new Command(() =>
-            {
-                DisplayAlert("Alert", "Item tapped", "Ok");
-            });
+			TapCommand = new Command(() =>
+			{
+				DisplayAlert("Alert", "Item tapped", "Ok");
+			});
 
-            LongTapCommand = new Command((() =>
+	        Tap2Command = new Command(() =>
+	        {
+		        DisplayAlert("Alert", "Internal item tapped", "Ok");
+	        });
+
+			LongTapCommand = new Command((() =>
             {
                 DisplayAlert("Alert", "Item long tapped", "Ok");
             }));
