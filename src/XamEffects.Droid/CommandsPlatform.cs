@@ -26,6 +26,11 @@ namespace XamEffects.Droid
 
         private FrameLayout _clickOverlay;
 
+	    public static void Init()
+	    {
+		    
+	    }
+
         protected override void OnAttached()
         {
             _view = Control ?? Container;

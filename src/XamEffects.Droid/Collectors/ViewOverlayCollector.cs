@@ -11,6 +11,11 @@ namespace XamEffects.Droid.Collectors
     {
         private static Dictionary<ViewGroup, ViewContainer> Collection { get; } = new Dictionary<ViewGroup, ViewContainer>();
 
+	    public static void Init()
+	    {
+		    
+	    }
+
         public static FrameLayout Add(ViewGroup group, object instance)
         {
             if (Collection.ContainsKey(group))

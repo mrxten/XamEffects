@@ -134,6 +134,7 @@
   <ItemGroup>
     <Compile Include="Collectors\ViewOverlayCollector.cs" />
     <Compile Include="CommandsPlatform.cs" />
+    <Compile Include="Initialize.cs" />
     <Compile Include="TouchEffectPlatform.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -25,8 +25,6 @@ namespace XamEffects.Droid
     {
         public bool EnableRipple => Build.VERSION.SdkInt >= BuildVersionCodes.Lollipop;
 
-        public bool IsFastRenderers = global::Xamarin.Forms.Forms.Flags.Any(x => x == "FastRenderers_Experimental");
-
         private DateTime _tapTime;
         private View _view;
         private Android.Graphics.Color _color;
@@ -34,6 +32,11 @@ namespace XamEffects.Droid
         private FrameLayout _viewOverlay;
         private Rect _rect;
         private bool _touchEndInside;
+
+	    public static void Init()
+	    {
+		    
+	    }
 
         protected override void OnAttached()
         {
@@ -45,12 +48,13 @@ namespace XamEffects.Droid
                 return;
             }
 
-            _viewOverlay = ViewOverlayCollector.Add(Container, this);
-
             if (EnableRipple)
                 AddRipple();
             else
+            {
+                _viewOverlay = ViewOverlayCollector.Add(Container, this);
                 _viewOverlay.Touch += OnTouch;
+            }
 
             UpdateEffectColor();
         }
@@ -60,12 +64,13 @@ namespace XamEffects.Droid
             var renderer = Container as IVisualElementRenderer;
             if (renderer?.Element != null) // Check disposed
             {
-                _viewOverlay.Touch -= OnTouch;
-
-                ViewOverlayCollector.Delete(Container, this);
-
                 if (EnableRipple)
                     RemoveRipple();
+                else
+                {
+                    _viewOverlay.Touch -= OnTouch;
+                    ViewOverlayCollector.Delete(Container, this);
+                }
             }
         }
 
@@ -133,13 +138,12 @@ namespace XamEffects.Droid
             _color = color.ToAndroid();
             _color.A = 80;
 
-            _viewOverlay.Foreground = CreateRipple(Color.Accent.ToAndroid());
-            _ripple.SetColor(GetPressedColorSelector(_color));
+            _view.Foreground = CreateRipple(color.ToAndroid());
         }
 
         private void RemoveRipple()
         {
-            _viewOverlay.Foreground = null;
+            _view.Foreground = null;
             _ripple?.Dispose();
             _ripple = null;
         }
