@@ -115,6 +115,8 @@ iOS|Android API >=21|Android API <21
 
 Add command to views.
 
+**Warning.** If you don't use TouchEffect then strongly recommend use default Xamarin gestures.
+
 ### Parameters
 
 * Tap
