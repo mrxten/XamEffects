@@ -19,6 +19,8 @@ namespace XamEffects.Sample.Droid
 
             base.OnCreate(bundle);
 
+			XamEffects.Droid.Effects.Init();
+
             global::Xamarin.Forms.Forms.Init(this, bundle);
             LoadApplication(new App());
         }

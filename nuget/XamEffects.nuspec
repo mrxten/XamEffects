@@ -13,7 +13,7 @@
     <copyright>Copyright 2017</copyright>
     <tags>xamarin xamarin-forms effects</tags>
     <dependencies>
-      <dependency id="Xamarin.Forms" version="2.5.0" />
+      <dependency id="Xamarin.Forms" version="2.5.0.77107" />
     </dependencies>
   </metadata>
 	<files>
