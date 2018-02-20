@@ -16,39 +16,39 @@ namespace XamEffects.Droid.Collectors
 		    
 	    }
 
-        public static FrameLayout Add(ViewGroup group, object instance)
+        public static FrameLayout AddOrGet(ViewGroup group, object instance)
         {
             if (Collection.ContainsKey(group))
             {
                 Collection[group].Objects.Add(instance);
                 return Collection[group].OverlayView;
             }
-            else
+            
+            var view = new FrameLayout(group.Context)
             {
-                var view = new FrameLayout(group.Context)
-                {
-                    LayoutParameters = new ViewGroup.LayoutParams(-1, -1),
-                    Clickable = true,
-                    LongClickable = true
-                };
-                group.LayoutChange += ViewOnLayoutChange;
-                group.AddView(view);
-                view.BringToFront();
+                LayoutParameters = new ViewGroup.LayoutParams(-1, -1),
+                Clickable = true,
+                LongClickable = true
+            };
+            group.LayoutChange += ViewOnLayoutChange;
+            group.AddView(view);
+            view.BringToFront();
 
-                Collection.Add(group, new ViewContainer
-                {
-                    OverlayView = view,
-                    Objects =
-                    {
-                        instance
-                    }
-                });
+	        var vc = new ViewContainer
+	        {
+		        OverlayView = view,
+		        Objects =
+		        {
+			        instance
+		        }
+	        };
 
-                return view;
-            }
+			Collection.Add(group, vc);
+
+            return view;
         }
 
-        public static void Delete(ViewGroup group, object instance)
+        public static void TryDelete(ViewGroup group, object instance)
         {
             if (Collection.ContainsKey(group))
             {
@@ -72,7 +72,7 @@ namespace XamEffects.Droid.Collectors
             }
         }
 
-        private class ViewContainer
+		private class ViewContainer
         {
             public FrameLayout OverlayView { get; set; }
 

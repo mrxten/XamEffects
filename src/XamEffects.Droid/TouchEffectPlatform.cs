@@ -42,13 +42,15 @@ namespace XamEffects.Droid
         {
             _view = Control ?? Container;
 
+	        var a = Element;
+
             if (Control is Android.Widget.ListView)
             {
                 //Except ListView because of Raising Exception OnClick
                 return;
             }
 
-	        _viewOverlay = ViewOverlayCollector.Add(Container, this);
+	        _viewOverlay = ViewOverlayCollector.AddOrGet(Container, this);
 
 			if (EnableRipple)
                 AddRipple();
@@ -72,7 +74,7 @@ namespace XamEffects.Droid
                     _viewOverlay.Touch -= OnTouch;
                 }
 
-	            ViewOverlayCollector.Delete(Container, this);
+	            ViewOverlayCollector.TryDelete(Container, this);
 			}
 		}
 

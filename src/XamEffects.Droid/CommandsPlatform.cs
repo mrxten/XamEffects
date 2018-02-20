@@ -34,7 +34,7 @@ namespace XamEffects.Droid
         protected override void OnAttached()
         {
             _view = Control ?? Container;
-            _clickOverlay = ViewOverlayCollector.Add(Container, this);
+            _clickOverlay = ViewOverlayCollector.AddOrGet(Container, this);
             _clickOverlay.Click += ViewOnClick;
             _clickOverlay.LongClick += ViewOnLongClick;
         }
@@ -66,7 +66,7 @@ namespace XamEffects.Droid
                 _clickOverlay.Click -= ViewOnClick;
                 _clickOverlay.LongClick -= ViewOnLongClick;
 
-                ViewOverlayCollector.Delete(Container, this);
+                ViewOverlayCollector.TryDelete(Container, this);
             }
         }
     }
