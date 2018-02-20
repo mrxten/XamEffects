@@ -42,9 +42,7 @@ namespace XamEffects.Droid
         {
             _view = Control ?? Container;
 
-	        var a = Element;
-
-            if (Control is Android.Widget.ListView)
+			if (Control is Android.Widget.ListView)
             {
                 //Except ListView because of Raising Exception OnClick
                 return;
