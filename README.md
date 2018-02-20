@@ -6,6 +6,8 @@
     * Add touch effect to views.
 * [Commands](#commands)
     * Add command to views.
+    
+ **Important:** TouchEffects and Commands create native view over XF control. In Android this view can overlaps the gestures on the nested controls. The problem will be fixed in the next versions.
 
 ### Install
 ```bash
