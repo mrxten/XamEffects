@@ -6,8 +6,8 @@
     * Add touch effect to views.
 * [Commands](#commands)
     * Add command to views.
-    
- **Important:** TouchEffects and Commands create native view over XF control. In Android this view can overlaps the gestures on the nested controls. The problem will be fixed in the next versions.
+* [EffectsConfig](#effectsconfig)
+   * Config for effects.
 
 ### Install
 ```bash
@@ -26,6 +26,22 @@ public override bool FinishedLaunching(UIApplication app, NSDictionary options)
 
     LoadApplication(new App());
     return base.FinishedLaunching(app, options);
+}
+```
+
+For Android should add Init to MainActivity.cs
+```csharp
+protected override void OnCreate(Bundle bundle)
+{
+    TabLayoutResource = Resource.Layout.Tabbar;
+    ToolbarResource = Resource.Layout.Toolbar;
+
+    base.OnCreate(bundle);
+
+	 XamEffects.Droid.Effects.Init();
+
+    global::Xamarin.Forms.Forms.Init(this, bundle);
+    LoadApplication(new App());
 }
 ```
 
@@ -53,7 +69,7 @@ iOS|Android API >=21|Android API <21
 <img src="images/touch/ios.gif" height="450" width="685"/>|<img src="images/touch/android.gif" height="450" width="711"/>|<img src="images/touch/old_android.gif" height="450" width="687"/>
 
 
-### Supported Views (in case Xamarin.Forms 2.3.4)
+### Supported Views (in case Xamarin.Forms 2.5.0)
 
 |                 |iOS |Android|
 |-----------------|----|-------|
@@ -150,9 +166,46 @@ Add command to views.
 </ContentPage>
 ```
 
+## EffectsConfig
+
+Config for effects.
+
+### Parameters
+
+* ChildrenInputTransparent
+    * Set InputTransparent = True for all layout's children
+
+#### ChildrenInputTransparent
+If you use **TouchEffect** or **Commands** for Layout (Grid, StackLayout, etc.) you have to set this parameter to True otherwise in Android layout's children will overlaps these effects.
+
+### Example 
+
+```xml
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:XamEffects.Sample"
+             xmlns:xe="clr-namespace:XamEffects;assembly=XamEffects"
+             x:Class="XamEffects.Sample.MainPage">
+    <Grid HorizontalOptions="Center"
+          VerticalOptions="Center"
+          HeightRequest="100"
+          WidthRequest="200"
+          BackgroundColor="LightGray" 
+          xe:Commands.Tap="{Binding TapCommand}"
+          xe:EffectsConfig.ChildrenInputTransparent="True">
+        <Label Text="Now you can tap to Label too"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"/>
+    </Grid>
+</ContentPage>
+```
+
 ## License
 MIT Licensed.
 
 ### Release notes
+#### 1.4.0
+Updated XForms to 2.5.0, fixed bug with nesting effects, fixed bug with iOS long tap gesture.
+
 #### 1.4.0-pre
 Updated XForms to 2.5+
