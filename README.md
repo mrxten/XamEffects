@@ -176,7 +176,7 @@ Config for effects.
     * Set InputTransparent = True for all layout's children
 
 #### ChildrenInputTransparent
-If you use **TouchEffect** or **Commands** for Layout (Grid, StackLayout, etc.) you have to set this parameter to True otherwise in Android layout's children will overlaps these effects.
+If you use **TouchEffect** or **Commands** for Layout (Grid, StackLayout, etc.) you have to set this parameter to True otherwise in Android layout's children will overlaps these effects. Also you can set `InputTransparent = True` for each children (EXCEPT views using any effect) manually.
 
 ### Example 
 
