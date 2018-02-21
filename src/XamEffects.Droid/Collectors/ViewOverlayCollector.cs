@@ -4,6 +4,9 @@ using System.ComponentModel;
 using Android.Views;
 using Android.Widget;
 using Java.Util;
+using Xamarin.Forms;
+using Xamarin.Forms.Platform.Android;
+using View = Android.Views.View;
 
 namespace XamEffects.Droid.Collectors
 {
@@ -23,16 +26,14 @@ namespace XamEffects.Droid.Collectors
                 Collection[group].Objects.Add(instance);
                 return Collection[group].OverlayView;
             }
-            
-            var view = new FrameLayout(group.Context)
+
+			var view = new FrameLayout(group.Context)
             {
-                LayoutParameters = new ViewGroup.LayoutParams(-1, -1),
-                Clickable = true,
-                LongClickable = true
+                LayoutParameters = new ViewGroup.LayoutParams(-1, -1)
             };
             group.LayoutChange += ViewOnLayoutChange;
-            group.AddView(view);
-            view.BringToFront();
+            //group.AddView(view);
+            //view.BringToFront();
 
 	        var vc = new ViewContainer
 	        {

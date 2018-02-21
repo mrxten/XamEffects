@@ -101,7 +101,9 @@ namespace XamEffects
 
             if (GetTap(bindable) != null || GetLongTap(bindable) != null)
             {
-                if (eff == null)
+	            view.InputTransparent = false;
+
+				if (eff == null)
                     view.Effects.Add(new CommandsRoutingEffect());
             }
             else

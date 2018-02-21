@@ -8,7 +8,7 @@ namespace XamEffects.iOS.GestureCollectors
     {
         private static Dictionary<UIView, GestureActionsContainer> Collection { get; } = new Dictionary<UIView, GestureActionsContainer>();
 
-        public static void Add(UIView view, Action<UIGestureRecognizerState> action)
+        public static void Add(UIView view, Action<UIGestureRecognizerState, bool> action)
         {
             if (Collection.ContainsKey(view))
             {
@@ -20,7 +20,7 @@ namespace XamEffects.iOS.GestureCollectors
                 Collection.Add(view, new GestureActionsContainer
                 {
                     Recognizer = gest,
-                    Actions = new List<Action<UIGestureRecognizerState>>
+                    Actions = new List<Action<UIGestureRecognizerState, bool>>
                     {
                         action
                     }
@@ -29,7 +29,7 @@ namespace XamEffects.iOS.GestureCollectors
             }
         }
 
-        public static void Delete(UIView view, Action<UIGestureRecognizerState> action)
+        public static void Delete(UIView view, Action<UIGestureRecognizerState, bool> action)
         {
             if (Collection.ContainsKey(view))
             {
@@ -48,11 +48,13 @@ namespace XamEffects.iOS.GestureCollectors
 
         private static void ActionActivator(UILongPressGestureRecognizer uiLongPressGestureRecognizer)
         {
-            if (Collection.ContainsKey(uiLongPressGestureRecognizer.View))
+	        var coord = uiLongPressGestureRecognizer.LocationInView(uiLongPressGestureRecognizer.View);
+	        var inside = uiLongPressGestureRecognizer.View.PointInside(coord, null);
+			if (Collection.ContainsKey(uiLongPressGestureRecognizer.View))
             {
                 foreach (var valueAction in Collection[uiLongPressGestureRecognizer.View].Actions)
                 {
-                    valueAction?.Invoke(uiLongPressGestureRecognizer.State);
+                    valueAction?.Invoke(uiLongPressGestureRecognizer.State, inside);
                 }
             }
         }
@@ -61,7 +63,7 @@ namespace XamEffects.iOS.GestureCollectors
         {
             public UIGestureRecognizer Recognizer { get; set; }
 
-            public List<Action<UIGestureRecognizerState>> Actions { get; set; }
+            public List<Action<UIGestureRecognizerState, bool>> Actions { get; set; }
         }
 
         public static void Init()

@@ -48,7 +48,7 @@ namespace XamEffects.iOS
             }
         }
 
-        private async void LongTapAction(UIGestureRecognizerState state)
+        private async void LongTapAction(UIGestureRecognizerState state, bool inside)
         {
             switch (state)
             {
@@ -88,8 +88,8 @@ namespace XamEffects.iOS
             if (_layer != null)
             {
                 _layer.Frame = new CGRect(0, 0, Container.Bounds.Width, Container.Bounds.Height);
-                Container.AddSubview(_layer);
-                Container.BringSubviewToFront(_layer);
+                _view.AddSubview(_layer);
+	            _view.BringSubviewToFront(_layer);
                 _layer.Alpha = (float)start;
                 await UIView.AnimateAsync(duration, () => {
                     _layer.Alpha = (float)end;

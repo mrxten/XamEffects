@@ -6,6 +6,7 @@
         {
             TouchEffect.Init();
             Commands.Init();
+			EffectsConfig.Init();
         }
     }
 }
