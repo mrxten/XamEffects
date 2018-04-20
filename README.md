@@ -75,7 +75,7 @@ iOS|Android API >=21|Android API <21
 |-----------------|----|-------|
 |ActivityIndicator|✅   |✅      |
 |BoxView          |✅   |✅      |
-|Button           |✅   |✅      |
+|Button           |❌   |❌      |
 |DatePicker       |❌   |✅      |
 |Editor           |❌   |❌      |
 |Entry            |❌   |❌      |
