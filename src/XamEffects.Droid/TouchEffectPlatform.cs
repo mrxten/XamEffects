@@ -25,6 +25,8 @@ namespace XamEffects.Droid
     {
         public bool EnableRipple => Build.VERSION.SdkInt >= BuildVersionCodes.Lollipop;
 
+        public bool IsDisposed => ((IVisualElementRenderer)Container).Element == null;
+
         private View _view;
         private Android.Graphics.Color _color;
         private RippleDrawable _ripple;
@@ -65,8 +67,7 @@ namespace XamEffects.Droid
         
         protected override void OnDetached()
         {
-            var renderer = Container as IVisualElementRenderer;
-            if (renderer?.Element != null) // Check disposed
+            if (IsDisposed)
             {
                 if (EnableRipple)
                     RemoveRipple();
@@ -191,6 +192,9 @@ namespace XamEffects.Droid
 
         private void TapAnimation(long duration, byte startAlpha = 255, byte endAlpha = 0)
         {
+            if (IsDisposed)
+                return;
+            
 	        if (_viewOverlay.Parent == null)
 				Container.AddView(_viewOverlay);
 	        _viewOverlay.BringToFront();
@@ -209,6 +213,9 @@ namespace XamEffects.Droid
 
         private void AnimationOnAnimationEnd(object sender, EventArgs eventArgs)
         {
+            if (IsDisposed)
+                return;
+            
 			if (!_rippleOnScreen)
 				Container.RemoveView(_viewOverlay);
 			var anim = ((ObjectAnimator) sender);
@@ -247,6 +254,8 @@ namespace XamEffects.Droid
 				if(!_rippleOnScreen)
 					Device.BeginInvokeOnMainThread(() =>
 					{
+                        if (IsDisposed)
+                            return;
 						Container.RemoveView(_viewOverlay);
 					});
 			});

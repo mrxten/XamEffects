@@ -14,8 +14,10 @@ namespace XamEffects.iOS
 {
     public class TouchEffectPlatform : PlatformEffect
     {
+        public bool IsDisposed => ((IVisualElementRenderer)Container).Element == null;
+
         private UIView _view;
-        private UIView _layer;
+        private UIView  _layer;
         private double _alpha;
 
         protected override void OnAttached()
@@ -94,7 +96,7 @@ namespace XamEffects.iOS
                 await UIView.AnimateAsync(duration, () => {
                     _layer.Alpha = (float)end;
                 });
-                if (remove)
+                if (remove && !IsDisposed)
                 {
                     _layer?.RemoveFromSuperview();
                 }

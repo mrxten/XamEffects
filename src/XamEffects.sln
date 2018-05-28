@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XamEffects.iOS", "XamEffect
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XamEffects.Droid", "XamEffects.Droid\XamEffects.Droid.csproj", "{43F91C33-9793-4782-AE73-6CD090481CD0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XamEffects", "XamEffects\XamEffects.csproj", "{D98B0F41-1C33-4D39-B493-42A9B3C4E788}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XamEffects", "XamEffects\XamEffects.csproj", "{D98B0F41-1C33-4D39-B493-42A9B3C4E788}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -103,5 +103,7 @@ Global
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F699A902-5000-4180-8B3D-C5ED4EABE56E}
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
 	EndGlobalSection
 EndGlobal
