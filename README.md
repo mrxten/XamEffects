@@ -204,6 +204,9 @@ If you use **TouchEffect** or **Commands** for Layout (Grid, StackLayout, etc.) 
 MIT Licensed.
 
 ### Release notes
+#### 1.5.0
+Updated to .NETStandard 2.0, fix bugs.
+
 #### 1.5.0-pre
 Updated to .NETStandard 1.6
 
