@@ -205,7 +205,7 @@ MIT Licensed.
 
 ### Release notes
 #### 1.5.0
-Updated to .NETStandard 2.0, fix bugs.
+Updated to .NETStandard 2.0, fix bugs, added EffectsConfig.
 
 #### 1.5.0-pre
 Updated to .NETStandard 1.6
