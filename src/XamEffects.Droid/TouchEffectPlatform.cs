@@ -221,7 +221,7 @@ namespace XamEffects.Droid
             if (IsDisposed)
                 return;
 
-            if (!_rippleOnScreen)
+            if (!_rippleOnScreen && !IsDisposed)
 			    Container.RemoveView(_viewOverlay);
             try {
                 _animator.AnimationEnd -= AnimationOnAnimationEnd;
