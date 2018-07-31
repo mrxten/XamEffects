@@ -14,7 +14,7 @@ namespace XamEffects.iOS
 {
     public class TouchEffectPlatform : PlatformEffect
     {
-        public bool IsDisposed => ((IVisualElementRenderer)Container).Element == null;
+        public bool IsDisposed => (Container as IVisualElementRenderer)?.Element == null;
 
         private UIView _view;
         private UIView  _layer;

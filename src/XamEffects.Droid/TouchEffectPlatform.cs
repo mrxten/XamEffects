@@ -16,6 +16,7 @@ using XamEffects.Droid;
 using XamEffects.Droid.Collectors;
 using Color = Xamarin.Forms.Color;
 using View = Android.Views.View;
+using System.Threading;
 
 [assembly: ResolutionGroupName("XamEffects")]
 [assembly: ExportEffect(typeof(TouchEffectPlatform), nameof(TouchEffect))]
@@ -25,13 +26,14 @@ namespace XamEffects.Droid
     {
         public bool EnableRipple => Build.VERSION.SdkInt >= BuildVersionCodes.Lollipop;
 
-        public bool IsDisposed => ((IVisualElementRenderer)Container).Element == null;
+        public bool IsDisposed => (Container as IVisualElementRenderer)?.Element == null;
 
         private View _view;
         private Android.Graphics.Color _color;
         private RippleDrawable _ripple;
         private FrameLayout _viewOverlay;
 	    private bool _rippleOnScreen;
+        private ObjectAnimator _animator;
 
 		public static void Init()
 	    {
@@ -53,7 +55,9 @@ namespace XamEffects.Droid
 
 			_viewOverlay = new FrameLayout(Container.Context)
 	        {
-		        LayoutParameters = new ViewGroup.LayoutParams(-1, -1)
+		        LayoutParameters = new ViewGroup.LayoutParams(-1, -1),
+                Clickable = false,
+                Focusable = false,
 	        };
 	        Container.LayoutChange += ViewOnLayoutChange;
 
@@ -194,7 +198,7 @@ namespace XamEffects.Droid
         {
             if (IsDisposed)
                 return;
-            
+
 	        if (_viewOverlay.Parent == null)
 				Container.AddView(_viewOverlay);
 	        _viewOverlay.BringToFront();
@@ -203,24 +207,29 @@ namespace XamEffects.Droid
             var end = _color;
             start.A = startAlpha;
             end.A = endAlpha;
-            var animation = ObjectAnimator.OfObject(_viewOverlay, "BackgroundColor", new ArgbEvaluator(), start.ToArgb(), end.ToArgb());
-            animation.SetDuration(duration);
-            animation.RepeatCount = 0;
-            animation.RepeatMode = ValueAnimatorRepeatMode.Restart;
-            animation.Start();
-            animation.AnimationEnd += AnimationOnAnimationEnd;
+
+            _animator = ObjectAnimator.OfObject(_viewOverlay, "BackgroundColor", new ArgbEvaluator(), start.ToArgb(), end.ToArgb());
+            _animator.SetDuration(duration);
+            _animator.RepeatCount = 0;
+            _animator.RepeatMode = ValueAnimatorRepeatMode.Restart;
+            _animator.Start();
+            _animator.AnimationEnd += AnimationOnAnimationEnd;
         }
 
         private void AnimationOnAnimationEnd(object sender, EventArgs eventArgs)
         {
             if (IsDisposed)
                 return;
-            
-			if (!_rippleOnScreen)
-				Container.RemoveView(_viewOverlay);
-			var anim = ((ObjectAnimator) sender);
-            anim.AnimationEnd -= AnimationOnAnimationEnd;
-            anim.Dispose();
+
+            if (!_rippleOnScreen)
+			    Container.RemoveView(_viewOverlay);
+            try {
+                _animator.AnimationEnd -= AnimationOnAnimationEnd;
+                _animator.Dispose();  
+            }
+            catch {
+                
+            }
 		}
 
 		private void ForceStartRipple(float x, float y)
