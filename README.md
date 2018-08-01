@@ -38,7 +38,7 @@ protected override void OnCreate(Bundle bundle)
 
     base.OnCreate(bundle);
 
-	 XamEffects.Droid.Effects.Init();
+    XamEffects.Droid.Effects.Init();
 
     global::Xamarin.Forms.Forms.Init(this, bundle);
     LoadApplication(new App());
@@ -51,6 +51,7 @@ public App()
 {
     XamEffects.Effects.Init();
     ...
+}
 ```
 
 ### Minimum requirements
