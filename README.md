@@ -13,7 +13,7 @@
 ```bash
 Install-Package XamEffects
 ```
-You have to install this nuget package to PCL project and each platform project.
+You have to install this nuget package to Xamarin.Forms project and each platform project.
 
 To use by iOS, you need to call Init method in AppDelegate.cs
 
@@ -62,7 +62,7 @@ Operability of older versions is not guaranteed.
 
 Add touch effect to views.
 
-For Android API >=21 using Ripple effect, for Android API <21 and iOS using animated color selection.
+For Android API >=21 using Ripple effect, for Android API <21 and iOS using animated highlighted view.
 
 iOS|Android API >=21|Android API <21
 ------------|------------|------------
