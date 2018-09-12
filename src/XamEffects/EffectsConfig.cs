@@ -10,18 +10,22 @@ namespace XamEffects
 			// for linker
 		}
 
-		public static readonly BindableProperty ChildrenInputTransparentProperty =
+        public static bool AutoChildrenInputTransparent { get; set; } = true;
+
+        public static readonly BindableProperty ChildrenInputTransparentProperty =
 			BindableProperty.CreateAttached(
 				"ChildrenInputTransparent",
 				typeof(bool),
 				typeof(EffectsConfig),
 				false,
-				propertyChanged: PropertyChanged
+                propertyChanged: (bindable, oldValue, newValue) => {
+                    ConfigureChildrenInputTransparent(bindable);
+                }
 			);
 
 		public static void SetChildrenInputTransparent(BindableObject view, bool value)
 		{
-			view.SetValue(ChildrenInputTransparentProperty, value);
+            view.SetValue(ChildrenInputTransparentProperty, value);
 		}
 
 		public static bool GetChildrenInputTransparent(BindableObject view)
@@ -29,39 +33,32 @@ namespace XamEffects
 			return (bool)view.GetValue(ChildrenInputTransparentProperty);
 		}
 
-		private static void PropertyChanged(BindableObject bindable, object oldValue, object newValue)
-		{
-			if (!(bindable is Layout layout))
-				return;
+        private static void ConfigureChildrenInputTransparent(BindableObject bindable)
+        {
+            if (!(bindable is Layout layout))
+                return;
 
-			if (GetChildrenInputTransparent(bindable))
-			{
-				layout.ChildAdded += Layout_ChildAdded;
-				foreach (var layoutChild in layout.Children)
-				{
-					if (layoutChild is VisualElement ve && AddInputTransparentToElement(layoutChild))
-					{
-						ve.InputTransparent = true;
-					}
-				}
-			}
-			else
-			{
-				layout.ChildAdded -= Layout_ChildAdded;
-			}
-		}
+            if (GetChildrenInputTransparent(bindable)) {
+                foreach (var layoutChild in layout.Children)
+                    AddInputTransparentToElement(layoutChild);
+                layout.ChildAdded += Layout_ChildAdded;
+            }
+            else {
+                layout.ChildAdded -= Layout_ChildAdded;
+            }
+        }
 
 		private static void Layout_ChildAdded(object sender, ElementEventArgs e)
 		{
-			if (e.Element is VisualElement ve && AddInputTransparentToElement(e.Element))
-				ve.InputTransparent = true;
-		}
+            AddInputTransparentToElement(e.Element);
+        }
 
-		private static bool AddInputTransparentToElement(BindableObject obj)
+		private static void AddInputTransparentToElement(BindableObject obj)
 		{
-			if (TouchEffect.GetColor(obj) != Color.Default || Commands.GetTap(obj) != null || Commands.GetLongTap(obj) != null)
-				return false;
-			return true;
+            if (obj is View view && TouchEffect.GetColor(view) == Color.Default && Commands.GetTap(view) == null && Commands.GetLongTap(view) == null)
+            {
+                view.InputTransparent = true;
+            }
 		}
 	}
 }

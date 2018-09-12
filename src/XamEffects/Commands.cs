@@ -92,9 +92,7 @@ namespace XamEffects
 
         private static void PropertyChanged(BindableObject bindable, object oldValue, object newValue)
         {
-            var view = bindable as View;
-
-            if (view == null)
+            if (!(bindable is View view))
                 return;
 
             var eff = view.Effects.FirstOrDefault(e => e is CommandsRoutingEffect);
@@ -103,13 +101,23 @@ namespace XamEffects
             {
 	            view.InputTransparent = false;
 
-				if (eff == null)
+				if (eff == null) 
+                {
                     view.Effects.Add(new CommandsRoutingEffect());
+                    if (EffectsConfig.AutoChildrenInputTransparent && bindable is Layout && !EffectsConfig.GetChildrenInputTransparent(view)) {
+                        EffectsConfig.SetChildrenInputTransparent(view, true);
+                    }
+                }
             }
             else
             {
                 if (eff != null && view.BindingContext != null)
+                {
                     view.Effects.Remove(eff);
+                    if (EffectsConfig.AutoChildrenInputTransparent && bindable is Layout && EffectsConfig.GetChildrenInputTransparent(view)) {
+                        EffectsConfig.SetChildrenInputTransparent(view, false);
+                    }
+                }
             }
         }
     }

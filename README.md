@@ -13,7 +13,7 @@
 ```bash
 Install-Package XamEffects
 ```
-You have to install this nuget package to PCL project and each platform project.
+You have to install this nuget package to Xamarin.Forms project and each platform project.
 
 To use by iOS, you need to call Init method in AppDelegate.cs
 
@@ -38,7 +38,7 @@ protected override void OnCreate(Bundle bundle)
 
     base.OnCreate(bundle);
 
-	 XamEffects.Droid.Effects.Init();
+    XamEffects.Droid.Effects.Init();
 
     global::Xamarin.Forms.Forms.Init(this, bundle);
     LoadApplication(new App());
@@ -51,6 +51,7 @@ public App()
 {
     XamEffects.Effects.Init();
     ...
+}
 ```
 
 ### Minimum requirements
@@ -62,7 +63,7 @@ Operability of older versions is not guaranteed.
 
 Add touch effect to views.
 
-For Android API >=21 using Ripple effect, for Android API <21 and iOS using animated color selection.
+For Android API >=21 using Ripple effect, for Android API <21 and iOS using animated highlighted view.
 
 iOS|Android API >=21|Android API <21
 ------------|------------|------------
@@ -172,11 +173,16 @@ Config for effects.
 
 ### Parameters
 
-* ChildrenInputTransparent
+* AutoChildrenInputTransparent (Static non XML property)
+    * Set ChildrenInputTransparent automatically for views with TouchEffect or Command
+* ChildrenInputTransparent (Attached property)
     * Set InputTransparent = True for all layout's children
 
+#### AutoChildrenInputTransparent (Default value: True)
+If value is True you **DON'T** need manually configure **ChildrenInputTransparent**.
+
 #### ChildrenInputTransparent
-If you use **TouchEffect** or **Commands** for Layout (Grid, StackLayout, etc.) you have to set this parameter to True otherwise in Android layout's children will overlaps these effects. Also you can set `InputTransparent = True` for each children (EXCEPT views using any effect) manually.
+If you use **TouchEffect** or **Commands** for Layout (Grid, StackLayout, etc.) and EffectsConfig.AutoChildrenInputTransparent is False you have to set this parameter to True otherwise in Android layout's children will overlaps these effects. Also you can set `InputTransparent = True` for each children (EXCEPT views using any effect) manually.
 
 ### Example 
 
@@ -204,17 +210,4 @@ If you use **TouchEffect** or **Commands** for Layout (Grid, StackLayout, etc.) 
 MIT Licensed.
 
 ### Release notes
-#### 1.5.0
-Updated to .NETStandard 2.0, fix bugs, added EffectsConfig.
-
-#### 1.5.0-pre
-Updated to .NETStandard 1.6
-
-#### 1.4.0
-Updated XForms to 2.5.0, fixed bug with nesting effects, fixed bug with iOS long tap gesture.
-
-#### 1.4.0-pre
-Updated XForms to 2.5+
-
-#### 1.3.3
-Stable version for XF 2.3.4
+Moved to [Release notes](ReleaseNotes.md)
