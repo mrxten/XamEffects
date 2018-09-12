@@ -28,8 +28,6 @@ namespace XamExample {
                 c++;
                 label.Text = $"Touches: {c}";
             }));
-            XamEffects.EffectsConfig.SetChildrenInputTransparent(grid, true);
-
 
             Content = new StackLayout {
                 HorizontalOptions = LayoutOptions.Center,
