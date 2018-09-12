@@ -37,7 +37,7 @@ namespace XamEffects
             var eff = view.Effects.FirstOrDefault(e => e is TouchRoutingEffect);
             if (GetColor(bindable) != Color.Default)
             {
-	            view.InputTransparent = false;
+                view.InputTransparent = false;
 
                 if (eff == null) 
                 {
