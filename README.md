@@ -173,11 +173,16 @@ Config for effects.
 
 ### Parameters
 
-* ChildrenInputTransparent
+* AutoChildrenInputTransparent (Static non XML property)
+    * Set ChildrenInputTransparent automatically for views with TouchEffect or Command
+* ChildrenInputTransparent (Attached property)
     * Set InputTransparent = True for all layout's children
 
+#### AutoChildrenInputTransparent (Default value: True)
+If value is True you **DON'T** need manually configure **ChildrenInputTransparent**.
+
 #### ChildrenInputTransparent
-If you use **TouchEffect** or **Commands** for Layout (Grid, StackLayout, etc.) you have to set this parameter to True otherwise in Android layout's children will overlaps these effects. Also you can set `InputTransparent = True` for each children (EXCEPT views using any effect) manually.
+If you use **TouchEffect** or **Commands** for Layout (Grid, StackLayout, etc.) and EffectsConfig.AutoChildrenInputTransparent is False you have to set this parameter to True otherwise in Android layout's children will overlaps these effects. Also you can set `InputTransparent = True` for each children (EXCEPT views using any effect) manually.
 
 ### Example 
 
@@ -205,20 +210,4 @@ If you use **TouchEffect** or **Commands** for Layout (Grid, StackLayout, etc.) 
 MIT Licensed.
 
 ### Release notes
-#### 1.5.1
-Fix bugs, add support tap through overlapped effect for fast clicks
-
-#### 1.5.0
-Update to .NETStandard 2.0, fix bugs, add EffectsConfig.
-
-#### 1.5.0-pre
-Update to .NETStandard 1.6
-
-#### 1.4.0
-Update XForms to 2.5.0, fix bug with nesting effects, fix bug with iOS long tap gesture.
-
-#### 1.4.0-pre
-Updat XForms to 2.5+
-
-#### 1.3.3
-Stable version for XF 2.3.4
+Moved to [Release notes](ReleaseNotes.md)
