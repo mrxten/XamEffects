@@ -173,7 +173,7 @@ Config for effects.
 
 ### Parameters
 
-* AutoChildrenInputTransparent (Static non XML property)
+* AutoChildrenInputTransparent (Static non bindable property)
     * Set ChildrenInputTransparent automatically for views with TouchEffect or Command
 * ChildrenInputTransparent (Attached property)
     * Set InputTransparent = True for all layout's children
