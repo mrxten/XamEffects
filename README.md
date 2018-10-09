@@ -47,6 +47,7 @@ protected override void OnCreate(Bundle bundle)
 
 ### Minimum requirements
 iOS 8+, Android 4.3 (API 18)
+
 Xamarin.Forms 2.5.0
 
 Operability of older versions is not guaranteed.
