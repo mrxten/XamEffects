@@ -45,17 +45,9 @@ protected override void OnCreate(Bundle bundle)
 }
 ```
 
-Also, for Linker you can call this method in Xamarin.Forms App.cs 
-```csharp
-public App()
-{
-    XamEffects.Effects.Init();
-    ...
-}
-```
-
 ### Minimum requirements
-iOS 8+, Android 4.3 (API 18) 
+iOS 8+, Android 4.3 (API 18)
+Xamarin.Forms 2.5.0
 
 Operability of older versions is not guaranteed.
 
