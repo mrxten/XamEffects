@@ -39,9 +39,6 @@ namespace XamEffects.Droid
             _view = Control ?? Container;
 	        _view.Clickable = true;
 	        _view.LongClickable = true;
-            _view.Click += ViewOnClick;
-	        _view.LongClick += ViewOnLongClick;
-
 			_view.Touch += ViewOnTouch;
         }
 
@@ -53,11 +50,13 @@ namespace XamEffects.Droid
 					_tapTime = DateTime.Now;
 					break;
 				case MotionEventActions.Up:
-					if (IsViewInBounds((int)args.Event.RawX, (int)args.Event.RawY))
-						if ((DateTime.Now - _tapTime).Milliseconds > 1500)
-							_view.PerformLongClick();
-						else
-							_view.CallOnClick();
+                    if (IsViewInBounds((int)args.Event.RawX, (int)args.Event.RawY)) {
+                        var range = (DateTime.Now - _tapTime).TotalMilliseconds;
+                        if (range > 800)
+                            LongClickHandler();
+                        else
+                            ClickHandler();
+                    }
 
 					goto case MotionEventActions.Cancel;
 				case MotionEventActions.Cancel:
@@ -74,23 +73,21 @@ namespace XamEffects.Droid
 		    return _rect.Contains(x, y);
 	    }
 
-		private void ViewOnClick(object sender, EventArgs eventArgs)
+        void ClickHandler() 
         {
             Commands.GetTap(Element)?.Execute(Commands.GetTapParameter(Element));
         }
 
-        private void ViewOnLongClick(object sender, View.LongClickEventArgs longClickEventArgs)
+        void LongClickHandler()
         {
             var cmd = Commands.GetLongTap(Element);
 
-            if (cmd == null)
-            {
-                longClickEventArgs.Handled = false;
+            if (cmd == null) {
+                ClickHandler();
                 return;
             }
-            
+
             cmd.Execute(Commands.GetLongTapParameter(Element));
-            longClickEventArgs.Handled = true;
         }
 
         protected override void OnDetached()
@@ -98,8 +95,6 @@ namespace XamEffects.Droid
             var renderer = Container as IVisualElementRenderer;
             if (renderer?.Element != null) // Check disposed
             {
-	            _view.Click -= ViewOnClick;
-	            _view.LongClick -= ViewOnLongClick;
 	            _view.Touch -= ViewOnTouch;
 			}
 		}
