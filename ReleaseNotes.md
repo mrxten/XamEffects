@@ -1,4 +1,7 @@
 # Release notes
+## 1.5.2
+Fix long tap for android in XF 3.0+
+
 ## 1.5.1
 Fix bugs, add support tap through overlapped effect for fast clicks, add auto children transparent
 
