@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+    xmlns ="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="XamExample.MyPage">
+   <ContentPage.Content>
+        <Grid HeightRequest="120"
+              WidthRequest="200"
+              HorizontalOptions="Center"
+              VerticalOptions="Center"
+              x:Name="plus"
+              BackgroundColor="LightGray"
+              ColumnSpacing="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label Text="+"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   Grid.Column="0"/>
+            <ContentView Grid.Column="1"
+                         BackgroundColor="LightBlue"
+                         x:Name="minus"
+                         HorizontalOptions="Fill"
+                         VerticalOptions="Fill"
+                         Margin="10">
+                <Label Text="-"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"/>
+            </ContentView>
+            <Label x:Name="counter"
+                   Grid.Row="1" Grid.ColumnSpan="2"
+                   HorizontalOptions="Center"
+                   Text="Touches: 0"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
