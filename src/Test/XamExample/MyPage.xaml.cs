@@ -17,7 +17,7 @@ namespace XamExample {
             }));
 
             XamEffects.TouchEffect.SetColor(minus, Color.White);
-            XamEffects.Commands.SetTap(minus, new Command(() => {
+            XamEffects.Commands.SetLongTap(minus, new Command(() => {
                 c--;
                 counter.Text = $"Touches: {c}";
             }));
