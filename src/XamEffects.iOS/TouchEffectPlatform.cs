@@ -17,27 +17,25 @@ namespace XamEffects.iOS
     {
         public bool IsDisposed => (Container as IVisualElementRenderer)?.Element == null;
 
-        private UIView _view;
+        public UIView View => Control ?? Container;
+
         private UIView _layer;
         private double _alpha;
-
         private CancellationTokenSource _cancellation;
 
         protected override void OnAttached()
         {
-            _view = Control ?? Container;
+            View.UserInteractionEnabled = true;
 
-            _view.UserInteractionEnabled = true;
-
-            TapGestureCollector.Add(_view, TapAction);
-            LongTapGestureCollector.Add(_view, LongTapAction);
+            TapGestureCollector.Add(View, TapAction);
+            LongTapGestureCollector.Add(View, LongTapAction);
             UpdateEffectColor();
         }
 
         protected override void OnDetached()
         {
-            TapGestureCollector.Delete(_view, TapAction);
-            LongTapGestureCollector.Delete(_view, LongTapAction);
+            TapGestureCollector.Delete(View, TapAction);
+            LongTapGestureCollector.Delete(View, LongTapAction);
             _layer?.Dispose();
             _layer = null;
         }
@@ -92,7 +90,7 @@ namespace XamEffects.iOS
 
         private async Task TapAnimation(double duration, double start = 1, double end = 0, bool remove = true)
         {
-            if (_layer != null)
+            if (!IsDisposed && _layer != null)
             {
                 _cancellation?.Cancel();
                 _cancellation = new CancellationTokenSource();
@@ -100,8 +98,8 @@ namespace XamEffects.iOS
                 var token = _cancellation.Token;
 
                 _layer.Frame = new CGRect(0, 0, Container.Bounds.Width, Container.Bounds.Height);
-                _view.AddSubview(_layer);
-	            _view.BringSubviewToFront(_layer);
+                Container.AddSubview(_layer);
+                Container.BringSubviewToFront(_layer);
                 _layer.Alpha = (float)start;
                 await UIView.AnimateAsync(duration, () => {
                     if (!token.IsCancellationRequested && !IsDisposed)

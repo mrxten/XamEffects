@@ -28,7 +28,8 @@ namespace XamEffects.Droid
 
         public bool IsDisposed => (Container as IVisualElementRenderer)?.Element == null;
 
-        private View _view;
+        public View View => Control ?? Container;
+
         private Android.Graphics.Color _color;
         private RippleDrawable _ripple;
         private FrameLayout _viewOverlay;
@@ -42,16 +43,14 @@ namespace XamEffects.Droid
 
         protected override void OnAttached()
         {
-            _view = Control ?? Container;
-
 			if (Control is Android.Widget.ListView || Control is Android.Widget.ScrollView)
             {
                 //Except ListView and ScrollView because of Raising Exception OnClick
                 return;
             }
 
-	        _view.Clickable = true;
-	        _view.LongClickable = true;
+	        View.Clickable = true;
+	        View.LongClickable = true;
 
 			_viewOverlay = new FrameLayout(Container.Context)
 	        {
@@ -64,7 +63,7 @@ namespace XamEffects.Droid
 			if (EnableRipple)
                 AddRipple();
             
-			_view.Touch += OnTouch;
+			View.Touch += OnTouch;
 
             UpdateEffectColor();
         }
@@ -75,7 +74,7 @@ namespace XamEffects.Droid
             {
                 if (EnableRipple)
                     RemoveRipple();
-	            _view.Touch -= OnTouch;
+	            View.Touch -= OnTouch;
 
 	            ViewOverlayCollector.TryDelete(Container, this);
 			}
@@ -162,7 +161,7 @@ namespace XamEffects.Droid
                 return _ripple = new RippleDrawable(GetPressedColorSelector(color), null, mask);
             }
 
-            var back = _view.Background;
+            var back = View.Background;
             if (back == null)
             {
                 var mask = new ColorDrawable(Android.Graphics.Color.White);
@@ -234,7 +233,10 @@ namespace XamEffects.Droid
 
 		private void ForceStartRipple(float x, float y)
 	    {
-		    if (_viewOverlay.Background is RippleDrawable bc)
+            if (IsDisposed)
+                return;
+
+            if (_viewOverlay.Background is RippleDrawable bc)
 		    {
 			    _rippleOnScreen = true;
 				if (_viewOverlay.Parent == null)
@@ -255,7 +257,10 @@ namespace XamEffects.Droid
 
 	    private void ForceEndRipple()
 	    {
-		    _rippleOnScreen = false;
+            if (IsDisposed)
+                return;
+
+            _rippleOnScreen = false;
 			_viewOverlay.Pressed = false;
 		    Task.Run(async () =>
 		    {

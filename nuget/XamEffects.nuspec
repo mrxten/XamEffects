@@ -2,14 +2,14 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>XamEffects</id>
-    <version>1.5.2</version>
+    <version>1.5.3</version>
     <authors>Vladislav Zhukov</authors>
     <owners>mrxten</owners>
     <licenseUrl>https://github.com/mrxten/XamEffects/blob/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/mrxten/XamEffects</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Xamarin Forms effects for Android and iOS only.</description>
-    <releaseNotes>Fox long tap for android in XF 3.0+</releaseNotes>
+    <releaseNotes>Fix using disposed containers for touch effect</releaseNotes>
     <copyright>Copyright 2017</copyright>
     <tags>xamarin xamarin-forms effects</tags>
     <dependencies>
