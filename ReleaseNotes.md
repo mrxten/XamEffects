@@ -1,4 +1,8 @@
 # Release notes
+
+## 1.5.3
+Fix using disposed containers for touch effect
+
 ## 1.5.2
 Fix long tap for android in XF 3.0+
 
