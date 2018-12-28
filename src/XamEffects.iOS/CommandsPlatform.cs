@@ -10,10 +10,8 @@ using XamEffects.iOS;
 using XamEffects.iOS.GestureCollectors;
 
 [assembly: ExportEffect(typeof(CommandsPlatform), nameof(Commands))]
-namespace XamEffects.iOS
-{
-    public class CommandsPlatform : PlatformEffect
-    {
+namespace XamEffects.iOS {
+    public class CommandsPlatform : PlatformEffect {
         private UIView _view;
 
         private ICommand _tapCommand;
@@ -24,8 +22,7 @@ namespace XamEffects.iOS
 
         private object _longParameter;
 
-        protected override void OnAttached()
-        {
+        protected override void OnAttached() {
             _view = Control ?? Container;
             _view.UserInteractionEnabled = true;
 
@@ -38,28 +35,25 @@ namespace XamEffects.iOS
             LongTapGestureCollector.Add(_view, LongTapAction);
         }
 
-        protected override void OnDetached()
-        {
+        protected override void OnDetached() {
             TapGestureCollector.Delete(_view, TapAction);
             LongTapGestureCollector.Delete(_view, LongTapAction);
         }
 
-        private void TapAction()
-        {
-           _tapCommand?.Execute(_tapParameter);
+        private void TapAction() {
+            if (_tapCommand?.CanExecute(_tapParameter) ?? false)
+                _tapCommand.Execute(_tapParameter);
         }
 
-        private void LongTapAction(UIGestureRecognizerState state, bool inside)
-        {
-            switch (state)
-            {
+        private void LongTapAction(UIGestureRecognizerState state, bool inside) {
+            switch (state) {
                 case UIGestureRecognizerState.Began:
                     break;
                 case UIGestureRecognizerState.Ended:
-					if (!inside) return;
+                    if (!inside) return;
                     if (_longCommand == null)
                         TapAction();
-                    else
+                    else if (_longCommand?.CanExecute(_longParameter) ?? false)
                         _longCommand.Execute(_longParameter);
                     break;
                 case UIGestureRecognizerState.Cancelled:
@@ -68,8 +62,7 @@ namespace XamEffects.iOS
             }
         }
 
-        protected override void OnElementPropertyChanged(PropertyChangedEventArgs args)
-        {
+        protected override void OnElementPropertyChanged(PropertyChangedEventArgs args) {
             base.OnElementPropertyChanged(args);
 
             if (args.PropertyName == Commands.TapProperty.PropertyName)
@@ -82,30 +75,25 @@ namespace XamEffects.iOS
                 UpdateLongTapParameter();
         }
 
-        private void UpdateTap()
-        {
+        private void UpdateTap() {
             _tapCommand = Commands.GetTap(Element);
         }
 
-        private void UpdateTapParameter()
-        {
+        private void UpdateTapParameter() {
             _tapParameter = Commands.GetTapParameter(Element);
         }
 
-        private void UpdateLongTap()
-        {
+        private void UpdateLongTap() {
             _longCommand = Commands.GetLongTap(Element);
         }
 
-        private void UpdateLongTapParameter()
-        {
+        private void UpdateLongTapParameter() {
             _longParameter = Commands.GetLongTapParameter(Element);
         }
 
 
-        public static void Init()
-        {
-            
+        public static void Init() {
+
         }
     }
 }

@@ -16,5 +16,6 @@
   <ItemGroup>
     <Compile Remove="MainPage.xaml.cs" />
     <Compile Remove="MainPage.cs" />
+    <Compile Remove="MyViewModel.cs" />
   </ItemGroup>
 </Project>
