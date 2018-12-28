@@ -217,6 +217,8 @@ namespace XamEffects.Droid {
                 Task.Run(async () => {
                     await Task.Delay(25);
                     Device.BeginInvokeOnMainThread(() => {
+                        if (IsDisposed)
+                            return;
                         _viewOverlay.Pressed = true;
                     });
                 });

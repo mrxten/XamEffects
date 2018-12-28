@@ -1,5 +1,8 @@
 # Release notes
 
+## 1.5.4 
+Fix using disposed view, fix using Command.CanExecute, fix style guide.
+
 ## 1.5.3
 Fix using disposed containers for touch effect
 
