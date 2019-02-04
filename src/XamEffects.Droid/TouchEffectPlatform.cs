@@ -244,8 +244,11 @@ namespace XamEffects.Droid {
 
         private void ViewOnLayoutChange(object sender, View.LayoutChangeEventArgs layoutChangeEventArgs) {
             var group = ((ViewGroup)sender);
-            _viewOverlay.Right = group.Width;
-            _viewOverlay.Bottom = group.Height;
+            if (group != null)
+            {   
+                _viewOverlay.Right = group.Width;
+                _viewOverlay.Bottom = group.Height;
+            }
         }
     }
 }
