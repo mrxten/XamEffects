@@ -7,7 +7,7 @@
     <owners>mrxten</owners>
     <licenseUrl>https://github.com/mrxten/XamEffects/blob/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/mrxten/XamEffects</projectUrl>
-    <iconUrl></iconUrl>
+    <iconUrl>https://raw.githubusercontent.com/mrxten/XamEffects/master/nuget/XamEffects_icon.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Xamarin Forms effects for Android and iOS only.</description>
     <releaseNotes>Small exception bugfixes.</releaseNotes>
