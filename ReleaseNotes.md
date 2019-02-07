@@ -1,5 +1,8 @@
 # Release notes
 
+## 1.5.5
+Small exception bugfixes.
+
 ## 1.5.4 
 Fix using disposed view, fix using Command.CanExecute, fix style guide.
 
