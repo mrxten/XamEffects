@@ -1,6 +1,6 @@
 # Release notes
 
-## 1.5.5
+## 1.5.6
 Small exception bugfixes.
 
 ## 1.5.4 
