@@ -125,7 +125,7 @@ If you use **TouchEffect** or **Commands** for Layout (Grid, StackLayout, etc.) 
 ### Another fields
 
 #### AutoChildrenInputTransparent 
-Set ChildrenInputTransparent automatically for views with TouchEffect or Command. If value is True you **DON'T** need manually configure **ChildrenInputTransparent**.
+Set ChildrenInputTransparent automatically for views with TouchEffect or Command. If value is True you **DON'T** need manually configure **ChildrenInputTransparent**. Default value is True.
 
 
 ## License
