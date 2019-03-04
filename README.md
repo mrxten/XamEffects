@@ -120,37 +120,16 @@ Configs and helpers for effects.
 ### Bindable properties
 
 * **ChildrenInputTransparent** - Set InputTransparent = True for all layout's children
+
+#### ChildrenInputTransparent
+If you use **TouchEffect** or **Commands** for Layout (Grid, StackLayout, etc.) and EffectsConfig.AutoChildrenInputTransparent is False you have to set this parameter to True otherwise in Android layout's children will overlaps these effects. Also you can set `InputTransparent = True` for each children (EXCEPT views using any effect) manually.
     
 ### Another fields
 * **AutoChildrenInputTransparent** - Set ChildrenInputTransparent automatically for views with TouchEffect or Command
 
 #### AutoChildrenInputTransparent (Default value: True)
-If value is True you **DON'T** need manually configure **ChildrenInputTransparent**.
+If value is True you **DON'T** need manually configure **ChildrenInputTransparent**
 
-#### ChildrenInputTransparent
-If you use **TouchEffect** or **Commands** for Layout (Grid, StackLayout, etc.) and EffectsConfig.AutoChildrenInputTransparent is False you have to set this parameter to True otherwise in Android layout's children will overlaps these effects. Also you can set `InputTransparent = True` for each children (EXCEPT views using any effect) manually.
-
-### Example 
-
-```xml
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:XamEffects.Sample"
-             xmlns:xe="clr-namespace:XamEffects;assembly=XamEffects"
-             x:Class="XamEffects.Sample.MainPage">
-    <Grid HorizontalOptions="Center"
-          VerticalOptions="Center"
-          HeightRequest="100"
-          WidthRequest="200"
-          BackgroundColor="LightGray" 
-          xe:Commands.Tap="{Binding TapCommand}"
-          xe:EffectsConfig.ChildrenInputTransparent="True">
-        <Label Text="Now you can tap to Label too"
-               HorizontalOptions="Center"
-               VerticalOptions="Center"/>
-    </Grid>
-</ContentPage>
-```
 
 ## License
 MIT Licensed.
