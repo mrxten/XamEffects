@@ -2,12 +2,9 @@
 [![NuGet](https://img.shields.io/nuget/v/xameffects.svg?maxAge=259200&style=flat)](http://www.nuget.org/packages/XamEffects/)
 
 ### Features
-* [TouchEffects](#toucheffect)
-    * Add touch effect to views.
-* [Commands](#commands)
-    * Add command to views.
-* [EffectsConfig](#effectsconfig)
-   * Config for effects.
+* [TouchEffects](#toucheffect) - Add touch effect to views.
+* [Commands](#commands) - Add command to views.
+* [EffectsConfig](#effectsconfig) - Config for effects.
 
 ### Install
 ```bash
@@ -15,34 +12,14 @@ Install-Package XamEffects
 ```
 You have to install this nuget package to Xamarin.Forms project and each platform project.
 
-To use by iOS, you need to call Init method in AppDelegate.cs
-
-```csharp
-public override bool FinishedLaunching(UIApplication app, NSDictionary options)
-{
-    global::Xamarin.Forms.Forms.Init();
-
-    XamEffects.iOS.Effects.Init(); //write here
-
-    LoadApplication(new App());
-    return base.FinishedLaunching(app, options);
-}
+To use in iOS, you need to call Init method in AppDelegate.cs
+```csharp 
+XamEffects.iOS.Effects.Init();
 ```
 
-For Android should add Init to MainActivity.cs
+For Android add Init to MainActivity.cs
 ```csharp
-protected override void OnCreate(Bundle bundle)
-{
-    TabLayoutResource = Resource.Layout.Tabbar;
-    ToolbarResource = Resource.Layout.Toolbar;
-
-    base.OnCreate(bundle);
-
-    XamEffects.Droid.Effects.Init();
-
-    global::Xamarin.Forms.Forms.Init(this, bundle);
-    LoadApplication(new App());
-}
+XamEffects.Droid.Effects.Init();
 ```
 
 ### Minimum requirements
@@ -53,7 +30,6 @@ Xamarin.Forms 2.5.0
 Operability of older versions is not guaranteed.
 
 ## TouchEffect
-
 Add touch effect to views.
 
 For Android API >=21 using Ripple effect, for Android API <21 and iOS using animated highlighted view.
@@ -63,42 +39,12 @@ iOS|Android API >=21|Android API <21
 <img src="images/touch/ios.gif" height="450" width="685"/>|<img src="images/touch/android.gif" height="450" width="711"/>|<img src="images/touch/old_android.gif" height="450" width="687"/>
 
 
-### Supported Views (in case Xamarin.Forms 2.5.0)
+### Supported Views 
+Almost all usual views and layouts without another gestures and effects (like Button, Slider, Picker, Entry, Editor etc.). Also not working in some views with enabled Fast Renderers. If effect doesn't work, just wrap view with ContentView and add effect to wrapper.
 
-|                 |iOS |Android|
-|-----------------|----|-------|
-|ActivityIndicator|✅   |✅      |
-|BoxView          |✅   |✅      |
-|Button           |❌   |❌      |
-|DatePicker       |❌   |✅      |
-|Editor           |❌   |❌      |
-|Entry            |❌   |❌      |
-|Image            |✅   |✅      |
-|Label            |✅   |✅      |
-|ListView         |✅   |❌      |
-|Picker           |❌   |✅      |
-|ProgressBar      |✅   |✅      |
-|SearchBar        |❌   |❌      |
-|Slider           |✅   |❌      |
-|Stepper          |✅   |❌      |
-|Switch           |❌   |✅      |
-|TableView        |❌   |❌      |
-|TimePicker       |❌   |✅      |
-|WebView          |❌   |❌      |
-|ContentPresenter |✅   |✅      |
-|ContentView      |✅   |✅      |
-|Frame            |✅   |❌      |
-|ScrollView       |✅   |❌      |
-|TemplatedView    |✅   |✅      |
-|AbsoluteLayout   |✅   |✅      |
-|Grid             |✅   |✅      |
-|RelativeLayout   |✅   |✅      |
-|StackLayout      |✅   |✅      |
+### Bindable properties
 
-### Parameters
-
-* Color
-    * Background/Ripple color when touched. For deactivate effect set Color.Default value.
+* **Color** - Front/Ripple color when touched. For deactivate effect set Color.Default value.
     
 ### Example 
 
@@ -121,22 +67,22 @@ iOS|Android API >=21|Android API <21
 </ContentPage>
 ```
 
-**Important:** if you need some gestures with touch effect, use not GestureRecognizer, but [Commands](#commands) because effects doesn't work correctly with standard gestures in Xamarin.Forms.
+```csharp
+TouchEffect.SetColor(view, Color.Red);
+```
+
+**Important: if you need some gestures with touch effect, use not GestureRecognizer, but [Commands](#commands) because effects doesn't work correctly with standard gestures in Xamarin.Forms.**
 
 ## Commands
 
 Add command to views.
 
-### Parameters
+### Bindable properties
 
-* Tap
-    * Tap Command
-* TapParameter
-    * Tap Command Parameter
-* LongTap
-    * Long Tap Command
-* LongTapParameter
-    * Long Tap Command Parameter
+* **Tap** - Tap Command
+* **TapParameter** - Tap Command Parameter
+* **LongTap** - Long Tap Command
+* **LongTapParameter** - Long Tap Command Parameter
     
 ### Example 
 
@@ -160,16 +106,23 @@ Add command to views.
 </ContentPage>
 ```
 
+```csharp
+Commands.SetTap(view, new Command(() => {
+  //do something
+}));
+Commands.SetTapParameter(view, someObject);
+```
+
 ## EffectsConfig
 
-Config for effects.
+Configs and helpers for effects.
 
-### Parameters
+### Bindable properties
 
-* AutoChildrenInputTransparent (Static non bindable property)
-    * Set ChildrenInputTransparent automatically for views with TouchEffect or Command
-* ChildrenInputTransparent (Attached property)
-    * Set InputTransparent = True for all layout's children
+* **ChildrenInputTransparent** - Set InputTransparent = True for all layout's children
+    
+### Another fields
+* **AutoChildrenInputTransparent** - Set ChildrenInputTransparent automatically for views with TouchEffect or Command
 
 #### AutoChildrenInputTransparent (Default value: True)
 If value is True you **DON'T** need manually configure **ChildrenInputTransparent**.
