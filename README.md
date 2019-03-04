@@ -40,7 +40,7 @@ iOS|Android API >=21|Android API <21
 
 
 ### Supported Views 
-Almost all usual views and layouts without another gestures and effects, e.g. for for views like Button, Slider, Picker, Entry, Editor etc. effect won't work. Also not working in some views with enabled Fast Renderers. If effect doesn't work, try wrap view with ContentView and add effect to wrapper.
+Almost all usual views and layouts without another gestures and effects, e.g. for views like Button, Slider, Picker, Entry, Editor etc. effect won't work. Also not working in some views with enabled Fast Renderers. If effect doesn't work, try wrap view with ContentView and add effect to wrapper.
 
 ### Bindable properties
 
