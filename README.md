@@ -119,16 +119,13 @@ Configs and helpers for effects.
 
 ### Bindable properties
 
-* **ChildrenInputTransparent** - Set InputTransparent = True for all layout's children
-
-#### ChildrenInputTransparent
+#### ChildrenInputTransparent 
 If you use **TouchEffect** or **Commands** for Layout (Grid, StackLayout, etc.) and EffectsConfig.AutoChildrenInputTransparent is False you have to set this parameter to True otherwise in Android layout's children will overlaps these effects. Also you can set `InputTransparent = True` for each children (EXCEPT views using any effect) manually.
     
 ### Another fields
-* **AutoChildrenInputTransparent** - Set ChildrenInputTransparent automatically for views with TouchEffect or Command
 
-#### AutoChildrenInputTransparent (Default value: True)
-If value is True you **DON'T** need manually configure **ChildrenInputTransparent**
+#### AutoChildrenInputTransparent 
+Set ChildrenInputTransparent automatically for views with TouchEffect or Command. If value is True you **DON'T** need manually configure **ChildrenInputTransparent**
 
 
 ## License
