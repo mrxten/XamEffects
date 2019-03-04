@@ -25,7 +25,7 @@ Update to .NETStandard 1.6
 Update XForms to 2.5.0, fix bug with nesting effects, fix bug with iOS long tap gesture.
 
 ## 1.4.0-pre
-Updat XForms to 2.5+
+Update XForms to 2.5+
 
 ## 1.3.3
 Stable version for XF 2.3.4
