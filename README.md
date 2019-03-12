@@ -23,7 +23,7 @@ XamEffects.Droid.Effects.Init();
 ```
 
 ### Minimum requirements
-iOS 8+, Android 4.3 (API 18)
+iOS 7, Android 4.1 (API 16)
 
 Xamarin.Forms 2.5.0
 
