@@ -1,10 +1,8 @@
-﻿using System;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
 namespace XamEffects {
     public static class EffectsConfig {
         public static void Init() {
-            // for linker
         }
 
         public static bool AutoChildrenInputTransparent { get; set; } = true;
@@ -28,7 +26,7 @@ namespace XamEffects {
             return (bool)view.GetValue(ChildrenInputTransparentProperty);
         }
 
-        private static void ConfigureChildrenInputTransparent(BindableObject bindable) {
+        static void ConfigureChildrenInputTransparent(BindableObject bindable) {
             if (!(bindable is Layout layout))
                 return;
 
@@ -42,11 +40,11 @@ namespace XamEffects {
             }
         }
 
-        private static void Layout_ChildAdded(object sender, ElementEventArgs e) {
+        static void Layout_ChildAdded(object sender, ElementEventArgs e) {
             AddInputTransparentToElement(e.Element);
         }
 
-        private static void AddInputTransparentToElement(BindableObject obj) {
+        static void AddInputTransparentToElement(BindableObject obj) {
             if (obj is View view && TouchEffect.GetColor(view) == Color.Default && Commands.GetTap(view) == null && Commands.GetLongTap(view) == null) {
                 view.InputTransparent = true;
             }

@@ -132,7 +132,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Collectors\ViewOverlayCollector.cs" />
     <Compile Include="CommandsPlatform.cs" />
     <Compile Include="Initialize.cs" />
     <Compile Include="TouchEffectPlatform.cs" />

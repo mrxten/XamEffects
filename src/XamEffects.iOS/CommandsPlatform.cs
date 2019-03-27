@@ -1,6 +1,4 @@
-﻿using System;
-using System.ComponentModel;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 using System.Windows.Input;
 using UIKit;
 using Xamarin.Forms;
@@ -10,42 +8,39 @@ using XamEffects.iOS;
 using XamEffects.iOS.GestureCollectors;
 
 [assembly: ExportEffect(typeof(CommandsPlatform), nameof(Commands))]
+
 namespace XamEffects.iOS {
     public class CommandsPlatform : PlatformEffect {
-        private UIView _view;
+        public UIView View => Control ?? Container;
 
-        private ICommand _tapCommand;
-
-        private ICommand _longCommand;
-
-        private object _tapParameter;
-
-        private object _longParameter;
+        ICommand _tapCommand;
+        ICommand _longCommand;
+        object _tapParameter;
+        object _longParameter;
 
         protected override void OnAttached() {
-            _view = Control ?? Container;
-            _view.UserInteractionEnabled = true;
+            View.UserInteractionEnabled = true;
 
             UpdateTap();
             UpdateTapParameter();
             UpdateLongTap();
             UpdateLongTapParameter();
 
-            TapGestureCollector.Add(_view, TapAction);
-            LongTapGestureCollector.Add(_view, LongTapAction);
+            TapGestureCollector.Add(View, TapAction);
+            LongTapGestureCollector.Add(View, LongTapAction);
         }
 
         protected override void OnDetached() {
-            TapGestureCollector.Delete(_view, TapAction);
-            LongTapGestureCollector.Delete(_view, LongTapAction);
+            TapGestureCollector.Delete(View, TapAction);
+            LongTapGestureCollector.Delete(View, LongTapAction);
         }
 
-        private void TapAction() {
+        void TapAction() {
             if (_tapCommand?.CanExecute(_tapParameter) ?? false)
                 _tapCommand.Execute(_tapParameter);
         }
 
-        private void LongTapAction(UIGestureRecognizerState state, bool inside) {
+        void LongTapAction(UIGestureRecognizerState state, bool inside) {
             switch (state) {
                 case UIGestureRecognizerState.Began:
                     break;
@@ -75,25 +70,23 @@ namespace XamEffects.iOS {
                 UpdateLongTapParameter();
         }
 
-        private void UpdateTap() {
+        void UpdateTap() {
             _tapCommand = Commands.GetTap(Element);
         }
 
-        private void UpdateTapParameter() {
+        void UpdateTapParameter() {
             _tapParameter = Commands.GetTapParameter(Element);
         }
 
-        private void UpdateLongTap() {
+        void UpdateLongTap() {
             _longCommand = Commands.GetLongTap(Element);
         }
 
-        private void UpdateLongTapParameter() {
+        void UpdateLongTapParameter() {
             _longParameter = Commands.GetLongTapParameter(Element);
         }
 
-
         public static void Init() {
-
         }
     }
 }

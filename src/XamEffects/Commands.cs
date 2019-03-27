@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace XamEffects {
     public static class Commands {
         public static void Init() {
-            // for linker
         }
 
         public static readonly BindableProperty TapProperty =
@@ -26,7 +21,7 @@ namespace XamEffects {
         }
 
         public static ICommand GetTap(BindableObject view) {
-            return (ICommand)view.GetValue(TapProperty);
+            return (ICommand) view.GetValue(TapProperty);
         }
 
         public static readonly BindableProperty TapParameterProperty =
@@ -60,7 +55,7 @@ namespace XamEffects {
         }
 
         public static ICommand GetLongTap(BindableObject view) {
-            return (ICommand)view.GetValue(LongTapProperty);
+            return (ICommand) view.GetValue(LongTapProperty);
         }
 
         public static readonly BindableProperty LongTapParameterProperty =
@@ -79,7 +74,7 @@ namespace XamEffects {
             return view.GetValue(LongTapParameterProperty);
         }
 
-        private static void PropertyChanged(BindableObject bindable, object oldValue, object newValue) {
+        static void PropertyChanged(BindableObject bindable, object oldValue, object newValue) {
             if (!(bindable is View view))
                 return;
 
@@ -88,25 +83,26 @@ namespace XamEffects {
             if (GetTap(bindable) != null || GetLongTap(bindable) != null) {
                 view.InputTransparent = false;
 
-                if (eff == null) {
-                    view.Effects.Add(new CommandsRoutingEffect());
-                    if (EffectsConfig.AutoChildrenInputTransparent && bindable is Layout && !EffectsConfig.GetChildrenInputTransparent(view)) {
-                        EffectsConfig.SetChildrenInputTransparent(view, true);
-                    }
+                if (eff != null) return;
+                view.Effects.Add(new CommandsRoutingEffect());
+                if (EffectsConfig.AutoChildrenInputTransparent && bindable is Layout &&
+                    !EffectsConfig.GetChildrenInputTransparent(view)) {
+                    EffectsConfig.SetChildrenInputTransparent(view, true);
                 }
             }
             else {
-                if (eff != null && view.BindingContext != null) {
-                    view.Effects.Remove(eff);
-                    if (EffectsConfig.AutoChildrenInputTransparent && bindable is Layout && EffectsConfig.GetChildrenInputTransparent(view)) {
-                        EffectsConfig.SetChildrenInputTransparent(view, false);
-                    }
+                if (eff == null || view.BindingContext == null) return;
+                view.Effects.Remove(eff);
+                if (EffectsConfig.AutoChildrenInputTransparent && bindable is Layout &&
+                    EffectsConfig.GetChildrenInputTransparent(view)) {
+                    EffectsConfig.SetChildrenInputTransparent(view, false);
                 }
             }
         }
     }
 
     public class CommandsRoutingEffect : RoutingEffect {
-        public CommandsRoutingEffect() : base("XamEffects." + nameof(Commands)) { }
+        public CommandsRoutingEffect() : base("XamEffects." + nameof(Commands)) {
+        }
     }
 }
