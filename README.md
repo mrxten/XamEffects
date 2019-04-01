@@ -2,7 +2,7 @@
 [![NuGet](https://img.shields.io/nuget/v/xameffects.svg?maxAge=259200&style=flat)](http://www.nuget.org/packages/XamEffects/)
 
 ### Features
-* [TouchEffects](#toucheffect) - Add touch effect to views.
+* [TouchEffect](#toucheffect) - Add touch effect to views.
 * [Commands](#commands) - Add command to views.
 * [EffectsConfig](#effectsconfig) - Config for effects.
 
