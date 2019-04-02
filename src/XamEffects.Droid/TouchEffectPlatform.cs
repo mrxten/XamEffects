@@ -61,7 +61,7 @@ namespace XamEffects.Droid {
             View.Touch -= OnTouch;
         }
 
-        private void OnTouch(object sender, View.TouchEventArgs args) {
+        void OnTouch(object sender, View.TouchEventArgs args) {
             switch (args.Event.Action) {
                 case MotionEventActions.Down:
                     if (EnableRipple)
@@ -231,7 +231,7 @@ namespace XamEffects.Droid {
             });
         }
 
-        private void ViewOnLayoutChange(object sender, View.LayoutChangeEventArgs layoutChangeEventArgs) {
+        void ViewOnLayoutChange(object sender, View.LayoutChangeEventArgs layoutChangeEventArgs) {
             var group = ((ViewGroup) sender);
             if (group == null) return;
             _viewOverlay.Right = group.Width;
