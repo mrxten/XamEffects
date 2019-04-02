@@ -51,7 +51,6 @@ namespace XamEffects.Droid {
                 AddRipple();
 
             View.Touch += OnTouch;
-
             UpdateEffectColor();
         }
 
