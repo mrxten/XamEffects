@@ -63,6 +63,7 @@ namespace XamEffects.Droid {
                 _viewOverlay.Dispose();
                 _ripple?.Dispose();
             }
+
             View.Touch -= OnTouch;
         }
 
