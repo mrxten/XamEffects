@@ -25,6 +25,7 @@ namespace XamEffects.Droid {
         public View View => Control ?? Container;
 
         Color _color;
+        byte _alpha;
         RippleDrawable _ripple;
         FrameLayout _viewOverlay;
         bool _rippleOnScreen;
@@ -35,97 +36,91 @@ namespace XamEffects.Droid {
 
         protected override void OnAttached() {
             if (Control is ListView || Control is ScrollView) {
-                //Except ListView and ScrollView because of Raising Exception OnClick
                 return;
             }
 
             View.Clickable = true;
             View.LongClickable = true;
+            View.Touch += OnTouch;
 
             _viewOverlay = new FrameLayout(Container.Context) {
-                LayoutParameters = new ViewGroup.LayoutParams(-1, -1), Clickable = false, Focusable = false,
+                LayoutParameters = new ViewGroup.LayoutParams(-1, -1),
+                Clickable = false,
+                Focusable = false,
             };
             Container.LayoutChange += ViewOnLayoutChange;
 
             if (EnableRipple)
-                AddRipple();
+                _viewOverlay.Background = CreateRipple(_color);
 
-            View.Touch += OnTouch;
-
-            UpdateEffectColor();
+            SetEffectColor();
         }
 
         protected override void OnDetached() {
             if (!IsDisposed) return;
-            if (EnableRipple)
-                RemoveRipple();
-            View.Touch -= OnTouch;
-        }
-
-        private void OnTouch(object sender, View.TouchEventArgs args) {
-            switch (args.Event.Action) {
-                case MotionEventActions.Down:
-                    if (EnableRipple)
-                        ForceStartRipple(args.Event.GetX(), args.Event.GetY());
-                    else {
-                        _rippleOnScreen = true;
-                        TapAnimation(250, 0, 80);
-                    }
-
-                    break;
-                case MotionEventActions.Up:
-                case MotionEventActions.Cancel:
-                    args.Handled = false;
-                    if (EnableRipple)
-                        ForceEndRipple();
-                    else {
-                        _rippleOnScreen = false;
-                        TapAnimation(250, 80);
-                    }
-
-                    break;
+            if (EnableRipple) {
+                _viewOverlay.Foreground = null;
+                _viewOverlay.Dispose();
+                _ripple?.Dispose();
             }
+            View.Touch -= OnTouch;
         }
 
         protected override void OnElementPropertyChanged(PropertyChangedEventArgs e) {
             base.OnElementPropertyChanged(e);
 
             if (e.PropertyName == TouchEffect.ColorProperty.PropertyName) {
-                UpdateEffectColor();
+                SetEffectColor();
             }
         }
 
-        void UpdateEffectColor() {
+        void SetEffectColor() {
             var color = TouchEffect.GetColor(Element);
             if (color == Xamarin.Forms.Color.Default) {
                 return;
             }
 
             _color = color.ToAndroid();
-            _color.A = 80;
+            _alpha = _color.A == 255 ? (byte)80 : _color.A;
 
             if (EnableRipple) {
                 _ripple.SetColor(GetPressedColorSelector(_color));
             }
         }
 
-        void AddRipple() {
-            var color = TouchEffect.GetColor(Element);
-            if (color == Xamarin.Forms.Color.Default) {
-                return;
+        void OnTouch(object sender, View.TouchEventArgs args) {
+            switch (args.Event.Action) {
+                case MotionEventActions.Down:
+                    _rippleOnScreen = true;
+
+                    if (EnableRipple)
+                        ForceStartRipple(args.Event.GetX(), args.Event.GetY());
+                    else
+                        TapAnimation(125, 0, _alpha);
+
+                    break;
+                case MotionEventActions.Up:
+                case MotionEventActions.Cancel:
+                    args.Handled = false;
+                    _rippleOnScreen = false;
+
+                    if (EnableRipple)
+                        ForceEndRipple();
+                    else
+                        TapAnimation(250, _alpha, 0);
+
+                    break;
             }
-
-            _color = color.ToAndroid();
-            _color.A = 80;
-
-            _viewOverlay.Background = CreateRipple(color.ToAndroid());
         }
 
-        void RemoveRipple() {
-            _viewOverlay.Foreground = null;
-            _ripple?.Dispose();
-            _ripple = null;
+        void ViewOnLayoutChange(object sender, View.LayoutChangeEventArgs layoutChangeEventArgs) {
+            var group = (ViewGroup)sender;
+            if (group == null) return;
+            _viewOverlay.Right = group.Width;
+            _viewOverlay.Bottom = group.Height;
         }
+
+        #region Ripple
 
         RippleDrawable CreateRipple(Color color) {
             if (Element is Layout) {
@@ -140,7 +135,7 @@ namespace XamEffects.Droid {
             }
 
             if (back is RippleDrawable) {
-                _ripple = (RippleDrawable) back.GetConstantState().NewDrawable();
+                _ripple = (RippleDrawable)back.GetConstantState().NewDrawable();
                 _ripple.SetColor(GetPressedColorSelector(color));
 
                 return _ripple;
@@ -151,11 +146,44 @@ namespace XamEffects.Droid {
 
         static ColorStateList GetPressedColorSelector(int pressedColor) {
             return new ColorStateList(
-                new[] {new int[] { }},
-                new[] {pressedColor,});
+                new[] { new int[] { } },
+                new[] { pressedColor, });
         }
 
-        void TapAnimation(long duration, byte startAlpha = 255, byte endAlpha = 0) {
+        async void ForceStartRipple(float x, float y) {
+            if (IsDisposed)
+                return;
+
+            if (!(_viewOverlay.Background is RippleDrawable bc)) return;
+            if (_viewOverlay.Parent == null)
+                Container.AddView(_viewOverlay);
+            _viewOverlay.BringToFront();
+            bc.SetHotspot(x, y);
+
+            await Task.Delay(25);
+            Device.BeginInvokeOnMainThread(() => {
+                if (!IsDisposed)
+                    _viewOverlay.Pressed = true;
+            });
+        }
+
+        async void ForceEndRipple() {
+            if (IsDisposed)
+                return;
+
+            _viewOverlay.Pressed = false;
+            await Task.Delay(250);
+            if (!_rippleOnScreen && !IsDisposed)
+                Device.BeginInvokeOnMainThread(() => {
+                    Container.RemoveView(_viewOverlay);
+                });
+        }
+
+        #endregion
+
+        #region Overlay
+
+        void TapAnimation(long duration, byte startAlpha, byte endAlpha) {
             if (IsDisposed)
                 return;
 
@@ -168,6 +196,7 @@ namespace XamEffects.Droid {
             start.A = startAlpha;
             end.A = endAlpha;
 
+            ClearAnimation();
             _animator = ObjectAnimator.OfObject(_viewOverlay,
                 "BackgroundColor",
                 new ArgbEvaluator(),
@@ -186,57 +215,18 @@ namespace XamEffects.Droid {
 
             if (!_rippleOnScreen && !IsDisposed)
                 Container.RemoveView(_viewOverlay);
-            try {
+            ClearAnimation();
+        }
+
+        void ClearAnimation() {
+            if (_animator != null) {
                 _animator.AnimationEnd -= AnimationOnAnimationEnd;
+                _animator.Cancel();
                 _animator.Dispose();
+                _animator = null;
             }
-            catch {
-            }
         }
 
-        void ForceStartRipple(float x, float y) {
-            if (IsDisposed)
-                return;
-
-            if (!(_viewOverlay.Background is RippleDrawable bc)) return;
-            _rippleOnScreen = true;
-            if (_viewOverlay.Parent == null)
-                Container.AddView(_viewOverlay);
-            _viewOverlay.BringToFront();
-            bc.SetHotspot(x, y);
-
-            Task.Run(async () => {
-                await Task.Delay(25);
-                Device.BeginInvokeOnMainThread(() => {
-                    if (IsDisposed)
-                        return;
-                    _viewOverlay.Pressed = true;
-                });
-            });
-        }
-
-        void ForceEndRipple() {
-            if (IsDisposed)
-                return;
-
-            _rippleOnScreen = false;
-            _viewOverlay.Pressed = false;
-            Task.Run(async () => {
-                await Task.Delay(250);
-                if (!_rippleOnScreen)
-                    Device.BeginInvokeOnMainThread(() => {
-                        if (IsDisposed)
-                            return;
-                        Container.RemoveView(_viewOverlay);
-                    });
-            });
-        }
-
-        private void ViewOnLayoutChange(object sender, View.LayoutChangeEventArgs layoutChangeEventArgs) {
-            var group = ((ViewGroup) sender);
-            if (group == null) return;
-            _viewOverlay.Right = group.Width;
-            _viewOverlay.Bottom = group.Height;
-        }
+        #endregion
     }
 }

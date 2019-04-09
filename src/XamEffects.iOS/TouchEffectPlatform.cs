@@ -8,6 +8,10 @@ using Xamarin.Forms.Platform.iOS;
 using XamEffects;
 using XamEffects.iOS;
 using XamEffects.iOS.GestureCollectors;
+using XamEffects.iOS.GestureRecognizers;
+using System;
+using System.Linq;
+using Foundation;
 
 [assembly: ExportEffect(typeof(TouchEffectPlatform), nameof(TouchEffect))]
 
@@ -17,22 +21,46 @@ namespace XamEffects.iOS {
         public UIView View => Control ?? Container;
 
         UIView _layer;
-        double _alpha;
+        nfloat _alpha;
+        TouchGestureRecognizer _touchRecognizer;
         CancellationTokenSource _cancellation;
 
         protected override void OnAttached() {
+            _touchRecognizer = new TouchGestureRecognizer {
+                Delegate = new TouchGestureRecognizerDelegate(View)
+            };
+
+            View.AddGestureRecognizer(_touchRecognizer);
             View.UserInteractionEnabled = true;
 
-            TapGestureCollector.Add(View, TapAction);
-            LongTapGestureCollector.Add(View, LongTapAction);
+            _layer = new UIView {
+                UserInteractionEnabled = false,
+                Opaque = false
+            };
+
+
             UpdateEffectColor();
+            _touchRecognizer.OnTouch += TouchRecognizer_OnTouch;
         }
 
         protected override void OnDetached() {
-            TapGestureCollector.Delete(View, TapAction);
-            LongTapGestureCollector.Delete(View, LongTapAction);
+            _touchRecognizer.OnTouch -= TouchRecognizer_OnTouch;
+            View.RemoveGestureRecognizer(_touchRecognizer);
+
             _layer?.Dispose();
             _layer = null;
+        }
+
+        async void TouchRecognizer_OnTouch(object sender, TouchGestureRecognizer.TouchArgs e) {
+            switch (e.State) {
+                case TouchGestureRecognizer.TouchState.Started:
+                    await TapAnimation(0.125, 0, _alpha, false);
+                    break;
+
+                case TouchGestureRecognizer.TouchState.Ended:
+                    await TapAnimation(0.25, _alpha, 0, true);
+                    break;
+            }
         }
 
         protected override void OnElementPropertyChanged(PropertyChangedEventArgs e) {
@@ -43,51 +71,30 @@ namespace XamEffects.iOS {
             }
         }
 
-        async void LongTapAction(UIGestureRecognizerState state, bool inside) {
-            switch (state) {
-                case UIGestureRecognizerState.Began:
-                    await TapAnimation(0.3, 0, _alpha, false);
-                    break;
-                case UIGestureRecognizerState.Ended:
-                case UIGestureRecognizerState.Cancelled:
-                case UIGestureRecognizerState.Failed:
-                    await TapAnimation(0.3, _alpha);
-                    break;
-            }
-        }
-
-        async void TapAction() {
-            await TapAnimation(0.2, _alpha, 0);
-        }
-
         void UpdateEffectColor() {
-            _layer?.Dispose();
-            _layer = null;
-
             var color = TouchEffect.GetColor(Element);
             if (color == Color.Default) {
                 return;
             }
 
-            _alpha = color.A < 1.0 ? 1 : 0.3;
-            _layer = new UIView {BackgroundColor = color.ToUIColor(), UserInteractionEnabled = false,};
+            _alpha = color.A < 1.0 ? 1 : (nfloat)0.3;
+            _layer.BackgroundColor = color.ToUIColor();
         }
 
-        async Task TapAnimation(double duration, double start = 1, double end = 0, bool remove = true) {
+        async Task TapAnimation(double duration, nfloat start, nfloat end, bool remove) {
             if (!IsDisposed && _layer != null) {
                 _cancellation?.Cancel();
                 _cancellation = new CancellationTokenSource();
-
                 var token = _cancellation.Token;
 
-                _layer.Frame = new CGRect(0, 0, Container.Bounds.Width, Container.Bounds.Height);
-                Container.AddSubview(_layer);
-                Container.BringSubviewToFront(_layer);
-                _layer.Alpha = (float) start;
+                View.AddSubview(_layer);
+                View.BringSubviewToFront(_layer);
+                _layer.Alpha = start;
+                _layer.Frame = new CGRect(0, 0, View.Bounds.Width, View.Bounds.Height);
                 await UIView.AnimateAsync(duration,
                     () => {
                         if (!token.IsCancellationRequested && !IsDisposed)
-                            _layer.Alpha = (float) end;
+                            _layer.Alpha = end;
                     });
                 if (remove && !IsDisposed && !token.IsCancellationRequested) {
                     _layer?.RemoveFromSuperview();

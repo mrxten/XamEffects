@@ -41,6 +41,12 @@ namespace XamExample.Droid
 			global::XamEffects.Droid.Resource.Animation.design_bottom_sheet_slide_out = global::XamExample.Droid.Resource.Animation.design_bottom_sheet_slide_out;
 			global::XamEffects.Droid.Resource.Animation.design_snackbar_in = global::XamExample.Droid.Resource.Animation.design_snackbar_in;
 			global::XamEffects.Droid.Resource.Animation.design_snackbar_out = global::XamExample.Droid.Resource.Animation.design_snackbar_out;
+			global::XamEffects.Droid.Resource.Animation.EnterFromLeft = global::XamExample.Droid.Resource.Animation.EnterFromLeft;
+			global::XamEffects.Droid.Resource.Animation.EnterFromRight = global::XamExample.Droid.Resource.Animation.EnterFromRight;
+			global::XamEffects.Droid.Resource.Animation.ExitToLeft = global::XamExample.Droid.Resource.Animation.ExitToLeft;
+			global::XamEffects.Droid.Resource.Animation.ExitToRight = global::XamExample.Droid.Resource.Animation.ExitToRight;
+			global::XamEffects.Droid.Resource.Animation.tooltip_enter = global::XamExample.Droid.Resource.Animation.tooltip_enter;
+			global::XamEffects.Droid.Resource.Animation.tooltip_exit = global::XamExample.Droid.Resource.Animation.tooltip_exit;
 			global::XamEffects.Droid.Resource.Animator.design_appbar_state_list_animator = global::XamExample.Droid.Resource.Animator.design_appbar_state_list_animator;
 			global::XamEffects.Droid.Resource.Attribute.actionBarDivider = global::XamExample.Droid.Resource.Attribute.actionBarDivider;
 			global::XamEffects.Droid.Resource.Attribute.actionBarItemBackground = global::XamExample.Droid.Resource.Attribute.actionBarItemBackground;
@@ -82,9 +88,15 @@ namespace XamExample.Droid
 			global::XamEffects.Droid.Resource.Attribute.alertDialogTheme = global::XamExample.Droid.Resource.Attribute.alertDialogTheme;
 			global::XamEffects.Droid.Resource.Attribute.allowStacking = global::XamExample.Droid.Resource.Attribute.allowStacking;
 			global::XamEffects.Droid.Resource.Attribute.alpha = global::XamExample.Droid.Resource.Attribute.alpha;
+			global::XamEffects.Droid.Resource.Attribute.alphabeticModifiers = global::XamExample.Droid.Resource.Attribute.alphabeticModifiers;
 			global::XamEffects.Droid.Resource.Attribute.arrowHeadLength = global::XamExample.Droid.Resource.Attribute.arrowHeadLength;
 			global::XamEffects.Droid.Resource.Attribute.arrowShaftLength = global::XamExample.Droid.Resource.Attribute.arrowShaftLength;
 			global::XamEffects.Droid.Resource.Attribute.autoCompleteTextViewStyle = global::XamExample.Droid.Resource.Attribute.autoCompleteTextViewStyle;
+			global::XamEffects.Droid.Resource.Attribute.autoSizeMaxTextSize = global::XamExample.Droid.Resource.Attribute.autoSizeMaxTextSize;
+			global::XamEffects.Droid.Resource.Attribute.autoSizeMinTextSize = global::XamExample.Droid.Resource.Attribute.autoSizeMinTextSize;
+			global::XamEffects.Droid.Resource.Attribute.autoSizePresetSizes = global::XamExample.Droid.Resource.Attribute.autoSizePresetSizes;
+			global::XamEffects.Droid.Resource.Attribute.autoSizeStepGranularity = global::XamExample.Droid.Resource.Attribute.autoSizeStepGranularity;
+			global::XamEffects.Droid.Resource.Attribute.autoSizeTextType = global::XamExample.Droid.Resource.Attribute.autoSizeTextType;
 			global::XamEffects.Droid.Resource.Attribute.background = global::XamExample.Droid.Resource.Attribute.background;
 			global::XamEffects.Droid.Resource.Attribute.backgroundSplit = global::XamExample.Droid.Resource.Attribute.backgroundSplit;
 			global::XamEffects.Droid.Resource.Attribute.backgroundStacked = global::XamExample.Droid.Resource.Attribute.backgroundStacked;
@@ -132,10 +144,12 @@ namespace XamExample.Droid
 			global::XamEffects.Droid.Resource.Attribute.colorControlActivated = global::XamExample.Droid.Resource.Attribute.colorControlActivated;
 			global::XamEffects.Droid.Resource.Attribute.colorControlHighlight = global::XamExample.Droid.Resource.Attribute.colorControlHighlight;
 			global::XamEffects.Droid.Resource.Attribute.colorControlNormal = global::XamExample.Droid.Resource.Attribute.colorControlNormal;
+			global::XamEffects.Droid.Resource.Attribute.colorError = global::XamExample.Droid.Resource.Attribute.colorError;
 			global::XamEffects.Droid.Resource.Attribute.colorPrimary = global::XamExample.Droid.Resource.Attribute.colorPrimary;
 			global::XamEffects.Droid.Resource.Attribute.colorPrimaryDark = global::XamExample.Droid.Resource.Attribute.colorPrimaryDark;
 			global::XamEffects.Droid.Resource.Attribute.colorSwitchThumbNormal = global::XamExample.Droid.Resource.Attribute.colorSwitchThumbNormal;
 			global::XamEffects.Droid.Resource.Attribute.commitIcon = global::XamExample.Droid.Resource.Attribute.commitIcon;
+			global::XamEffects.Droid.Resource.Attribute.contentDescription = global::XamExample.Droid.Resource.Attribute.contentDescription;
 			global::XamEffects.Droid.Resource.Attribute.contentInsetEnd = global::XamExample.Droid.Resource.Attribute.contentInsetEnd;
 			global::XamEffects.Droid.Resource.Attribute.contentInsetEndWithActions = global::XamExample.Droid.Resource.Attribute.contentInsetEndWithActions;
 			global::XamEffects.Droid.Resource.Attribute.contentInsetLeft = global::XamExample.Droid.Resource.Attribute.contentInsetLeft;
@@ -183,6 +197,21 @@ namespace XamExample.Droid
 			global::XamEffects.Droid.Resource.Attribute.expandedTitleTextAppearance = global::XamExample.Droid.Resource.Attribute.expandedTitleTextAppearance;
 			global::XamEffects.Droid.Resource.Attribute.externalRouteEnabledDrawable = global::XamExample.Droid.Resource.Attribute.externalRouteEnabledDrawable;
 			global::XamEffects.Droid.Resource.Attribute.fabSize = global::XamExample.Droid.Resource.Attribute.fabSize;
+			global::XamEffects.Droid.Resource.Attribute.fastScrollEnabled = global::XamExample.Droid.Resource.Attribute.fastScrollEnabled;
+			global::XamEffects.Droid.Resource.Attribute.fastScrollHorizontalThumbDrawable = global::XamExample.Droid.Resource.Attribute.fastScrollHorizontalThumbDrawable;
+			global::XamEffects.Droid.Resource.Attribute.fastScrollHorizontalTrackDrawable = global::XamExample.Droid.Resource.Attribute.fastScrollHorizontalTrackDrawable;
+			global::XamEffects.Droid.Resource.Attribute.fastScrollVerticalThumbDrawable = global::XamExample.Droid.Resource.Attribute.fastScrollVerticalThumbDrawable;
+			global::XamEffects.Droid.Resource.Attribute.fastScrollVerticalTrackDrawable = global::XamExample.Droid.Resource.Attribute.fastScrollVerticalTrackDrawable;
+			global::XamEffects.Droid.Resource.Attribute.font = global::XamExample.Droid.Resource.Attribute.font;
+			global::XamEffects.Droid.Resource.Attribute.fontFamily = global::XamExample.Droid.Resource.Attribute.fontFamily;
+			global::XamEffects.Droid.Resource.Attribute.fontProviderAuthority = global::XamExample.Droid.Resource.Attribute.fontProviderAuthority;
+			global::XamEffects.Droid.Resource.Attribute.fontProviderCerts = global::XamExample.Droid.Resource.Attribute.fontProviderCerts;
+			global::XamEffects.Droid.Resource.Attribute.fontProviderFetchStrategy = global::XamExample.Droid.Resource.Attribute.fontProviderFetchStrategy;
+			global::XamEffects.Droid.Resource.Attribute.fontProviderFetchTimeout = global::XamExample.Droid.Resource.Attribute.fontProviderFetchTimeout;
+			global::XamEffects.Droid.Resource.Attribute.fontProviderPackage = global::XamExample.Droid.Resource.Attribute.fontProviderPackage;
+			global::XamEffects.Droid.Resource.Attribute.fontProviderQuery = global::XamExample.Droid.Resource.Attribute.fontProviderQuery;
+			global::XamEffects.Droid.Resource.Attribute.fontStyle = global::XamExample.Droid.Resource.Attribute.fontStyle;
+			global::XamEffects.Droid.Resource.Attribute.fontWeight = global::XamExample.Droid.Resource.Attribute.fontWeight;
 			global::XamEffects.Droid.Resource.Attribute.foregroundInsidePadding = global::XamExample.Droid.Resource.Attribute.foregroundInsidePadding;
 			global::XamEffects.Droid.Resource.Attribute.gapBetweenBars = global::XamExample.Droid.Resource.Attribute.gapBetweenBars;
 			global::XamEffects.Droid.Resource.Attribute.goIcon = global::XamExample.Droid.Resource.Attribute.goIcon;
@@ -195,6 +224,8 @@ namespace XamExample.Droid
 			global::XamEffects.Droid.Resource.Attribute.homeAsUpIndicator = global::XamExample.Droid.Resource.Attribute.homeAsUpIndicator;
 			global::XamEffects.Droid.Resource.Attribute.homeLayout = global::XamExample.Droid.Resource.Attribute.homeLayout;
 			global::XamEffects.Droid.Resource.Attribute.icon = global::XamExample.Droid.Resource.Attribute.icon;
+			global::XamEffects.Droid.Resource.Attribute.iconTint = global::XamExample.Droid.Resource.Attribute.iconTint;
+			global::XamEffects.Droid.Resource.Attribute.iconTintMode = global::XamExample.Droid.Resource.Attribute.iconTintMode;
 			global::XamEffects.Droid.Resource.Attribute.iconifiedByDefault = global::XamExample.Droid.Resource.Attribute.iconifiedByDefault;
 			global::XamEffects.Droid.Resource.Attribute.imageButtonStyle = global::XamExample.Droid.Resource.Attribute.imageButtonStyle;
 			global::XamEffects.Droid.Resource.Attribute.indeterminateProgressStyle = global::XamExample.Droid.Resource.Attribute.indeterminateProgressStyle;
@@ -237,6 +268,7 @@ namespace XamExample.Droid
 			global::XamEffects.Droid.Resource.Attribute.measureWithLargestChild = global::XamExample.Droid.Resource.Attribute.measureWithLargestChild;
 			global::XamEffects.Droid.Resource.Attribute.mediaRouteAudioTrackDrawable = global::XamExample.Droid.Resource.Attribute.mediaRouteAudioTrackDrawable;
 			global::XamEffects.Droid.Resource.Attribute.mediaRouteButtonStyle = global::XamExample.Droid.Resource.Attribute.mediaRouteButtonStyle;
+			global::XamEffects.Droid.Resource.Attribute.mediaRouteButtonTint = global::XamExample.Droid.Resource.Attribute.mediaRouteButtonTint;
 			global::XamEffects.Droid.Resource.Attribute.mediaRouteCloseDrawable = global::XamExample.Droid.Resource.Attribute.mediaRouteCloseDrawable;
 			global::XamEffects.Droid.Resource.Attribute.mediaRouteControlPanelThemeOverlay = global::XamExample.Droid.Resource.Attribute.mediaRouteControlPanelThemeOverlay;
 			global::XamEffects.Droid.Resource.Attribute.mediaRouteDefaultIconDrawable = global::XamExample.Droid.Resource.Attribute.mediaRouteDefaultIconDrawable;
@@ -252,6 +284,7 @@ namespace XamExample.Droid
 			global::XamEffects.Droid.Resource.Attribute.navigationContentDescription = global::XamExample.Droid.Resource.Attribute.navigationContentDescription;
 			global::XamEffects.Droid.Resource.Attribute.navigationIcon = global::XamExample.Droid.Resource.Attribute.navigationIcon;
 			global::XamEffects.Droid.Resource.Attribute.navigationMode = global::XamExample.Droid.Resource.Attribute.navigationMode;
+			global::XamEffects.Droid.Resource.Attribute.numericModifiers = global::XamExample.Droid.Resource.Attribute.numericModifiers;
 			global::XamEffects.Droid.Resource.Attribute.overlapAnchor = global::XamExample.Droid.Resource.Attribute.overlapAnchor;
 			global::XamEffects.Droid.Resource.Attribute.paddingBottomNoButtons = global::XamExample.Droid.Resource.Attribute.paddingBottomNoButtons;
 			global::XamEffects.Droid.Resource.Attribute.paddingEnd = global::XamExample.Droid.Resource.Attribute.paddingEnd;
@@ -368,6 +401,9 @@ namespace XamExample.Droid
 			global::XamEffects.Droid.Resource.Attribute.toolbarId = global::XamExample.Droid.Resource.Attribute.toolbarId;
 			global::XamEffects.Droid.Resource.Attribute.toolbarNavigationButtonStyle = global::XamExample.Droid.Resource.Attribute.toolbarNavigationButtonStyle;
 			global::XamEffects.Droid.Resource.Attribute.toolbarStyle = global::XamExample.Droid.Resource.Attribute.toolbarStyle;
+			global::XamEffects.Droid.Resource.Attribute.tooltipForegroundColor = global::XamExample.Droid.Resource.Attribute.tooltipForegroundColor;
+			global::XamEffects.Droid.Resource.Attribute.tooltipFrameBackground = global::XamExample.Droid.Resource.Attribute.tooltipFrameBackground;
+			global::XamEffects.Droid.Resource.Attribute.tooltipText = global::XamExample.Droid.Resource.Attribute.tooltipText;
 			global::XamEffects.Droid.Resource.Attribute.track = global::XamExample.Droid.Resource.Attribute.track;
 			global::XamEffects.Droid.Resource.Attribute.trackTint = global::XamExample.Droid.Resource.Attribute.trackTint;
 			global::XamEffects.Droid.Resource.Attribute.trackTintMode = global::XamExample.Droid.Resource.Attribute.trackTintMode;
@@ -445,6 +481,7 @@ namespace XamExample.Droid
 			global::XamEffects.Droid.Resource.Color.dim_foreground_disabled_material_light = global::XamExample.Droid.Resource.Color.dim_foreground_disabled_material_light;
 			global::XamEffects.Droid.Resource.Color.dim_foreground_material_dark = global::XamExample.Droid.Resource.Color.dim_foreground_material_dark;
 			global::XamEffects.Droid.Resource.Color.dim_foreground_material_light = global::XamExample.Droid.Resource.Color.dim_foreground_material_light;
+			global::XamEffects.Droid.Resource.Color.error_color_material = global::XamExample.Droid.Resource.Color.error_color_material;
 			global::XamEffects.Droid.Resource.Color.foreground_material_dark = global::XamExample.Droid.Resource.Color.foreground_material_dark;
 			global::XamEffects.Droid.Resource.Color.foreground_material_light = global::XamExample.Droid.Resource.Color.foreground_material_light;
 			global::XamEffects.Droid.Resource.Color.highlighted_text_material_dark = global::XamExample.Droid.Resource.Color.highlighted_text_material_dark;
@@ -484,6 +521,8 @@ namespace XamExample.Droid
 			global::XamEffects.Droid.Resource.Color.switch_thumb_material_light = global::XamExample.Droid.Resource.Color.switch_thumb_material_light;
 			global::XamEffects.Droid.Resource.Color.switch_thumb_normal_material_dark = global::XamExample.Droid.Resource.Color.switch_thumb_normal_material_dark;
 			global::XamEffects.Droid.Resource.Color.switch_thumb_normal_material_light = global::XamExample.Droid.Resource.Color.switch_thumb_normal_material_light;
+			global::XamEffects.Droid.Resource.Color.tooltip_background_dark = global::XamExample.Droid.Resource.Color.tooltip_background_dark;
+			global::XamEffects.Droid.Resource.Color.tooltip_background_light = global::XamExample.Droid.Resource.Color.tooltip_background_light;
 			global::XamEffects.Droid.Resource.Dimension.abc_action_bar_content_inset_material = global::XamExample.Droid.Resource.Dimension.abc_action_bar_content_inset_material;
 			global::XamEffects.Droid.Resource.Dimension.abc_action_bar_content_inset_with_nav = global::XamExample.Droid.Resource.Dimension.abc_action_bar_content_inset_with_nav;
 			global::XamEffects.Droid.Resource.Dimension.abc_action_bar_default_height_material = global::XamExample.Droid.Resource.Dimension.abc_action_bar_default_height_material;
@@ -561,6 +600,11 @@ namespace XamExample.Droid
 			global::XamEffects.Droid.Resource.Dimension.cardview_compat_inset_shadow = global::XamExample.Droid.Resource.Dimension.cardview_compat_inset_shadow;
 			global::XamEffects.Droid.Resource.Dimension.cardview_default_elevation = global::XamExample.Droid.Resource.Dimension.cardview_default_elevation;
 			global::XamEffects.Droid.Resource.Dimension.cardview_default_radius = global::XamExample.Droid.Resource.Dimension.cardview_default_radius;
+			global::XamEffects.Droid.Resource.Dimension.compat_button_inset_horizontal_material = global::XamExample.Droid.Resource.Dimension.compat_button_inset_horizontal_material;
+			global::XamEffects.Droid.Resource.Dimension.compat_button_inset_vertical_material = global::XamExample.Droid.Resource.Dimension.compat_button_inset_vertical_material;
+			global::XamEffects.Droid.Resource.Dimension.compat_button_padding_horizontal_material = global::XamExample.Droid.Resource.Dimension.compat_button_padding_horizontal_material;
+			global::XamEffects.Droid.Resource.Dimension.compat_button_padding_vertical_material = global::XamExample.Droid.Resource.Dimension.compat_button_padding_vertical_material;
+			global::XamEffects.Droid.Resource.Dimension.compat_control_corner_material = global::XamExample.Droid.Resource.Dimension.compat_control_corner_material;
 			global::XamEffects.Droid.Resource.Dimension.design_appbar_elevation = global::XamExample.Droid.Resource.Dimension.design_appbar_elevation;
 			global::XamEffects.Droid.Resource.Dimension.design_bottom_navigation_active_item_max_width = global::XamExample.Droid.Resource.Dimension.design_bottom_navigation_active_item_max_width;
 			global::XamEffects.Droid.Resource.Dimension.design_bottom_navigation_active_text_size = global::XamExample.Droid.Resource.Dimension.design_bottom_navigation_active_text_size;
@@ -601,6 +645,9 @@ namespace XamExample.Droid
 			global::XamEffects.Droid.Resource.Dimension.design_tab_text_size_2line = global::XamExample.Droid.Resource.Dimension.design_tab_text_size_2line;
 			global::XamEffects.Droid.Resource.Dimension.disabled_alpha_material_dark = global::XamExample.Droid.Resource.Dimension.disabled_alpha_material_dark;
 			global::XamEffects.Droid.Resource.Dimension.disabled_alpha_material_light = global::XamExample.Droid.Resource.Dimension.disabled_alpha_material_light;
+			global::XamEffects.Droid.Resource.Dimension.fastscroll_default_thickness = global::XamExample.Droid.Resource.Dimension.fastscroll_default_thickness;
+			global::XamEffects.Droid.Resource.Dimension.fastscroll_margin = global::XamExample.Droid.Resource.Dimension.fastscroll_margin;
+			global::XamEffects.Droid.Resource.Dimension.fastscroll_minimum_range = global::XamExample.Droid.Resource.Dimension.fastscroll_minimum_range;
 			global::XamEffects.Droid.Resource.Dimension.highlight_alpha_material_colored = global::XamExample.Droid.Resource.Dimension.highlight_alpha_material_colored;
 			global::XamEffects.Droid.Resource.Dimension.highlight_alpha_material_dark = global::XamExample.Droid.Resource.Dimension.highlight_alpha_material_dark;
 			global::XamEffects.Droid.Resource.Dimension.highlight_alpha_material_light = global::XamExample.Droid.Resource.Dimension.highlight_alpha_material_light;
@@ -632,6 +679,14 @@ namespace XamExample.Droid
 			global::XamEffects.Droid.Resource.Dimension.notification_subtext_size = global::XamExample.Droid.Resource.Dimension.notification_subtext_size;
 			global::XamEffects.Droid.Resource.Dimension.notification_top_pad = global::XamExample.Droid.Resource.Dimension.notification_top_pad;
 			global::XamEffects.Droid.Resource.Dimension.notification_top_pad_large_text = global::XamExample.Droid.Resource.Dimension.notification_top_pad_large_text;
+			global::XamEffects.Droid.Resource.Dimension.tooltip_corner_radius = global::XamExample.Droid.Resource.Dimension.tooltip_corner_radius;
+			global::XamEffects.Droid.Resource.Dimension.tooltip_horizontal_padding = global::XamExample.Droid.Resource.Dimension.tooltip_horizontal_padding;
+			global::XamEffects.Droid.Resource.Dimension.tooltip_margin = global::XamExample.Droid.Resource.Dimension.tooltip_margin;
+			global::XamEffects.Droid.Resource.Dimension.tooltip_precise_anchor_extra_offset = global::XamExample.Droid.Resource.Dimension.tooltip_precise_anchor_extra_offset;
+			global::XamEffects.Droid.Resource.Dimension.tooltip_precise_anchor_threshold = global::XamExample.Droid.Resource.Dimension.tooltip_precise_anchor_threshold;
+			global::XamEffects.Droid.Resource.Dimension.tooltip_vertical_padding = global::XamExample.Droid.Resource.Dimension.tooltip_vertical_padding;
+			global::XamEffects.Droid.Resource.Dimension.tooltip_y_offset_non_touch = global::XamExample.Droid.Resource.Dimension.tooltip_y_offset_non_touch;
+			global::XamEffects.Droid.Resource.Dimension.tooltip_y_offset_touch = global::XamExample.Droid.Resource.Dimension.tooltip_y_offset_touch;
 			global::XamEffects.Droid.Resource.Drawable.abc_ab_share_pack_mtrl_alpha = global::XamExample.Droid.Resource.Drawable.abc_ab_share_pack_mtrl_alpha;
 			global::XamEffects.Droid.Resource.Drawable.abc_action_bar_item_background_material = global::XamExample.Droid.Resource.Drawable.abc_action_bar_item_background_material;
 			global::XamEffects.Droid.Resource.Drawable.abc_btn_borderless_material = global::XamExample.Droid.Resource.Drawable.abc_btn_borderless_material;
@@ -817,6 +872,22 @@ namespace XamExample.Droid
 			global::XamEffects.Droid.Resource.Drawable.ic_mr_button_connected_21_light = global::XamExample.Droid.Resource.Drawable.ic_mr_button_connected_21_light;
 			global::XamEffects.Droid.Resource.Drawable.ic_mr_button_connected_22_dark = global::XamExample.Droid.Resource.Drawable.ic_mr_button_connected_22_dark;
 			global::XamEffects.Droid.Resource.Drawable.ic_mr_button_connected_22_light = global::XamExample.Droid.Resource.Drawable.ic_mr_button_connected_22_light;
+			global::XamEffects.Droid.Resource.Drawable.ic_mr_button_connected_23_dark = global::XamExample.Droid.Resource.Drawable.ic_mr_button_connected_23_dark;
+			global::XamEffects.Droid.Resource.Drawable.ic_mr_button_connected_23_light = global::XamExample.Droid.Resource.Drawable.ic_mr_button_connected_23_light;
+			global::XamEffects.Droid.Resource.Drawable.ic_mr_button_connected_24_dark = global::XamExample.Droid.Resource.Drawable.ic_mr_button_connected_24_dark;
+			global::XamEffects.Droid.Resource.Drawable.ic_mr_button_connected_24_light = global::XamExample.Droid.Resource.Drawable.ic_mr_button_connected_24_light;
+			global::XamEffects.Droid.Resource.Drawable.ic_mr_button_connected_25_dark = global::XamExample.Droid.Resource.Drawable.ic_mr_button_connected_25_dark;
+			global::XamEffects.Droid.Resource.Drawable.ic_mr_button_connected_25_light = global::XamExample.Droid.Resource.Drawable.ic_mr_button_connected_25_light;
+			global::XamEffects.Droid.Resource.Drawable.ic_mr_button_connected_26_dark = global::XamExample.Droid.Resource.Drawable.ic_mr_button_connected_26_dark;
+			global::XamEffects.Droid.Resource.Drawable.ic_mr_button_connected_26_light = global::XamExample.Droid.Resource.Drawable.ic_mr_button_connected_26_light;
+			global::XamEffects.Droid.Resource.Drawable.ic_mr_button_connected_27_dark = global::XamExample.Droid.Resource.Drawable.ic_mr_button_connected_27_dark;
+			global::XamEffects.Droid.Resource.Drawable.ic_mr_button_connected_27_light = global::XamExample.Droid.Resource.Drawable.ic_mr_button_connected_27_light;
+			global::XamEffects.Droid.Resource.Drawable.ic_mr_button_connected_28_dark = global::XamExample.Droid.Resource.Drawable.ic_mr_button_connected_28_dark;
+			global::XamEffects.Droid.Resource.Drawable.ic_mr_button_connected_28_light = global::XamExample.Droid.Resource.Drawable.ic_mr_button_connected_28_light;
+			global::XamEffects.Droid.Resource.Drawable.ic_mr_button_connected_29_dark = global::XamExample.Droid.Resource.Drawable.ic_mr_button_connected_29_dark;
+			global::XamEffects.Droid.Resource.Drawable.ic_mr_button_connected_29_light = global::XamExample.Droid.Resource.Drawable.ic_mr_button_connected_29_light;
+			global::XamEffects.Droid.Resource.Drawable.ic_mr_button_connected_30_dark = global::XamExample.Droid.Resource.Drawable.ic_mr_button_connected_30_dark;
+			global::XamEffects.Droid.Resource.Drawable.ic_mr_button_connected_30_light = global::XamExample.Droid.Resource.Drawable.ic_mr_button_connected_30_light;
 			global::XamEffects.Droid.Resource.Drawable.ic_mr_button_connecting_00_dark = global::XamExample.Droid.Resource.Drawable.ic_mr_button_connecting_00_dark;
 			global::XamEffects.Droid.Resource.Drawable.ic_mr_button_connecting_00_light = global::XamExample.Droid.Resource.Drawable.ic_mr_button_connecting_00_light;
 			global::XamEffects.Droid.Resource.Drawable.ic_mr_button_connecting_01_dark = global::XamExample.Droid.Resource.Drawable.ic_mr_button_connecting_01_dark;
@@ -863,6 +934,22 @@ namespace XamExample.Droid
 			global::XamEffects.Droid.Resource.Drawable.ic_mr_button_connecting_21_light = global::XamExample.Droid.Resource.Drawable.ic_mr_button_connecting_21_light;
 			global::XamEffects.Droid.Resource.Drawable.ic_mr_button_connecting_22_dark = global::XamExample.Droid.Resource.Drawable.ic_mr_button_connecting_22_dark;
 			global::XamEffects.Droid.Resource.Drawable.ic_mr_button_connecting_22_light = global::XamExample.Droid.Resource.Drawable.ic_mr_button_connecting_22_light;
+			global::XamEffects.Droid.Resource.Drawable.ic_mr_button_connecting_23_dark = global::XamExample.Droid.Resource.Drawable.ic_mr_button_connecting_23_dark;
+			global::XamEffects.Droid.Resource.Drawable.ic_mr_button_connecting_23_light = global::XamExample.Droid.Resource.Drawable.ic_mr_button_connecting_23_light;
+			global::XamEffects.Droid.Resource.Drawable.ic_mr_button_connecting_24_dark = global::XamExample.Droid.Resource.Drawable.ic_mr_button_connecting_24_dark;
+			global::XamEffects.Droid.Resource.Drawable.ic_mr_button_connecting_24_light = global::XamExample.Droid.Resource.Drawable.ic_mr_button_connecting_24_light;
+			global::XamEffects.Droid.Resource.Drawable.ic_mr_button_connecting_25_dark = global::XamExample.Droid.Resource.Drawable.ic_mr_button_connecting_25_dark;
+			global::XamEffects.Droid.Resource.Drawable.ic_mr_button_connecting_25_light = global::XamExample.Droid.Resource.Drawable.ic_mr_button_connecting_25_light;
+			global::XamEffects.Droid.Resource.Drawable.ic_mr_button_connecting_26_dark = global::XamExample.Droid.Resource.Drawable.ic_mr_button_connecting_26_dark;
+			global::XamEffects.Droid.Resource.Drawable.ic_mr_button_connecting_26_light = global::XamExample.Droid.Resource.Drawable.ic_mr_button_connecting_26_light;
+			global::XamEffects.Droid.Resource.Drawable.ic_mr_button_connecting_27_dark = global::XamExample.Droid.Resource.Drawable.ic_mr_button_connecting_27_dark;
+			global::XamEffects.Droid.Resource.Drawable.ic_mr_button_connecting_27_light = global::XamExample.Droid.Resource.Drawable.ic_mr_button_connecting_27_light;
+			global::XamEffects.Droid.Resource.Drawable.ic_mr_button_connecting_28_dark = global::XamExample.Droid.Resource.Drawable.ic_mr_button_connecting_28_dark;
+			global::XamEffects.Droid.Resource.Drawable.ic_mr_button_connecting_28_light = global::XamExample.Droid.Resource.Drawable.ic_mr_button_connecting_28_light;
+			global::XamEffects.Droid.Resource.Drawable.ic_mr_button_connecting_29_dark = global::XamExample.Droid.Resource.Drawable.ic_mr_button_connecting_29_dark;
+			global::XamEffects.Droid.Resource.Drawable.ic_mr_button_connecting_29_light = global::XamExample.Droid.Resource.Drawable.ic_mr_button_connecting_29_light;
+			global::XamEffects.Droid.Resource.Drawable.ic_mr_button_connecting_30_dark = global::XamExample.Droid.Resource.Drawable.ic_mr_button_connecting_30_dark;
+			global::XamEffects.Droid.Resource.Drawable.ic_mr_button_connecting_30_light = global::XamExample.Droid.Resource.Drawable.ic_mr_button_connecting_30_light;
 			global::XamEffects.Droid.Resource.Drawable.ic_mr_button_disabled_dark = global::XamExample.Droid.Resource.Drawable.ic_mr_button_disabled_dark;
 			global::XamEffects.Droid.Resource.Drawable.ic_mr_button_disabled_light = global::XamExample.Droid.Resource.Drawable.ic_mr_button_disabled_light;
 			global::XamEffects.Droid.Resource.Drawable.ic_mr_button_disconnected_dark = global::XamExample.Droid.Resource.Drawable.ic_mr_button_disconnected_dark;
@@ -907,6 +994,14 @@ namespace XamExample.Droid
 			global::XamEffects.Droid.Resource.Drawable.notification_template_icon_low_bg = global::XamExample.Droid.Resource.Drawable.notification_template_icon_low_bg;
 			global::XamEffects.Droid.Resource.Drawable.notification_tile_bg = global::XamExample.Droid.Resource.Drawable.notification_tile_bg;
 			global::XamEffects.Droid.Resource.Drawable.notify_panel_notification_icon_bg = global::XamExample.Droid.Resource.Drawable.notify_panel_notification_icon_bg;
+			global::XamEffects.Droid.Resource.Drawable.tooltip_frame_dark = global::XamExample.Droid.Resource.Drawable.tooltip_frame_dark;
+			global::XamEffects.Droid.Resource.Drawable.tooltip_frame_light = global::XamExample.Droid.Resource.Drawable.tooltip_frame_light;
+			global::XamEffects.Droid.Resource.Id.ALT = global::XamExample.Droid.Resource.Id.ALT;
+			global::XamEffects.Droid.Resource.Id.CTRL = global::XamExample.Droid.Resource.Id.CTRL;
+			global::XamEffects.Droid.Resource.Id.FUNCTION = global::XamExample.Droid.Resource.Id.FUNCTION;
+			global::XamEffects.Droid.Resource.Id.META = global::XamExample.Droid.Resource.Id.META;
+			global::XamEffects.Droid.Resource.Id.SHIFT = global::XamExample.Droid.Resource.Id.SHIFT;
+			global::XamEffects.Droid.Resource.Id.SYM = global::XamExample.Droid.Resource.Id.SYM;
 			global::XamEffects.Droid.Resource.Id.action0 = global::XamExample.Droid.Resource.Id.action0;
 			global::XamEffects.Droid.Resource.Id.action_bar = global::XamExample.Droid.Resource.Id.action_bar;
 			global::XamEffects.Droid.Resource.Id.action_bar_activity_content = global::XamExample.Droid.Resource.Id.action_bar_activity_content;
@@ -931,9 +1026,13 @@ namespace XamExample.Droid
 			global::XamEffects.Droid.Resource.Id.alertTitle = global::XamExample.Droid.Resource.Id.alertTitle;
 			global::XamEffects.Droid.Resource.Id.all = global::XamExample.Droid.Resource.Id.all;
 			global::XamEffects.Droid.Resource.Id.always = global::XamExample.Droid.Resource.Id.always;
+			global::XamEffects.Droid.Resource.Id.async = global::XamExample.Droid.Resource.Id.async;
 			global::XamEffects.Droid.Resource.Id.auto = global::XamExample.Droid.Resource.Id.auto;
 			global::XamEffects.Droid.Resource.Id.beginning = global::XamExample.Droid.Resource.Id.beginning;
+			global::XamEffects.Droid.Resource.Id.blocking = global::XamExample.Droid.Resource.Id.blocking;
 			global::XamEffects.Droid.Resource.Id.bottom = global::XamExample.Droid.Resource.Id.bottom;
+			global::XamEffects.Droid.Resource.Id.bottomtab_navarea = global::XamExample.Droid.Resource.Id.bottomtab_navarea;
+			global::XamEffects.Droid.Resource.Id.bottomtab_tabbar = global::XamExample.Droid.Resource.Id.bottomtab_tabbar;
 			global::XamEffects.Droid.Resource.Id.buttonPanel = global::XamExample.Droid.Resource.Id.buttonPanel;
 			global::XamEffects.Droid.Resource.Id.cancel_action = global::XamExample.Droid.Resource.Id.cancel_action;
 			global::XamEffects.Droid.Resource.Id.center = global::XamExample.Droid.Resource.Id.center;
@@ -969,6 +1068,10 @@ namespace XamExample.Droid
 			global::XamEffects.Droid.Resource.Id.fill_horizontal = global::XamExample.Droid.Resource.Id.fill_horizontal;
 			global::XamEffects.Droid.Resource.Id.fill_vertical = global::XamExample.Droid.Resource.Id.fill_vertical;
 			global::XamEffects.Droid.Resource.Id.@fixed = global::XamExample.Droid.Resource.Id.@fixed;
+			global::XamEffects.Droid.Resource.Id.flyoutcontent_appbar = global::XamExample.Droid.Resource.Id.flyoutcontent_appbar;
+			global::XamEffects.Droid.Resource.Id.flyoutcontent_recycler = global::XamExample.Droid.Resource.Id.flyoutcontent_recycler;
+			global::XamEffects.Droid.Resource.Id.forever = global::XamExample.Droid.Resource.Id.forever;
+			global::XamEffects.Droid.Resource.Id.ghost_view = global::XamExample.Droid.Resource.Id.ghost_view;
 			global::XamEffects.Droid.Resource.Id.home = global::XamExample.Droid.Resource.Id.home;
 			global::XamEffects.Droid.Resource.Id.homeAsUp = global::XamExample.Droid.Resource.Id.homeAsUp;
 			global::XamEffects.Droid.Resource.Id.icon = global::XamExample.Droid.Resource.Id.icon;
@@ -976,6 +1079,7 @@ namespace XamExample.Droid
 			global::XamEffects.Droid.Resource.Id.ifRoom = global::XamExample.Droid.Resource.Id.ifRoom;
 			global::XamEffects.Droid.Resource.Id.image = global::XamExample.Droid.Resource.Id.image;
 			global::XamEffects.Droid.Resource.Id.info = global::XamExample.Droid.Resource.Id.info;
+			global::XamEffects.Droid.Resource.Id.italic = global::XamExample.Droid.Resource.Id.italic;
 			global::XamEffects.Droid.Resource.Id.item_touch_helper_previous_elevation = global::XamExample.Droid.Resource.Id.item_touch_helper_previous_elevation;
 			global::XamEffects.Droid.Resource.Id.largeLabel = global::XamExample.Droid.Resource.Id.largeLabel;
 			global::XamEffects.Droid.Resource.Id.left = global::XamExample.Droid.Resource.Id.left;
@@ -983,8 +1087,13 @@ namespace XamExample.Droid
 			global::XamEffects.Droid.Resource.Id.line3 = global::XamExample.Droid.Resource.Id.line3;
 			global::XamEffects.Droid.Resource.Id.listMode = global::XamExample.Droid.Resource.Id.listMode;
 			global::XamEffects.Droid.Resource.Id.list_item = global::XamExample.Droid.Resource.Id.list_item;
+			global::XamEffects.Droid.Resource.Id.main_appbar = global::XamExample.Droid.Resource.Id.main_appbar;
+			global::XamEffects.Droid.Resource.Id.main_scrollview = global::XamExample.Droid.Resource.Id.main_scrollview;
+			global::XamEffects.Droid.Resource.Id.main_tablayout = global::XamExample.Droid.Resource.Id.main_tablayout;
+			global::XamEffects.Droid.Resource.Id.main_toolbar = global::XamExample.Droid.Resource.Id.main_toolbar;
 			global::XamEffects.Droid.Resource.Id.masked = global::XamExample.Droid.Resource.Id.masked;
 			global::XamEffects.Droid.Resource.Id.media_actions = global::XamExample.Droid.Resource.Id.media_actions;
+			global::XamEffects.Droid.Resource.Id.message = global::XamExample.Droid.Resource.Id.message;
 			global::XamEffects.Droid.Resource.Id.middle = global::XamExample.Droid.Resource.Id.middle;
 			global::XamEffects.Droid.Resource.Id.mini = global::XamExample.Droid.Resource.Id.mini;
 			global::XamEffects.Droid.Resource.Id.mr_art = global::XamExample.Droid.Resource.Id.mr_art;
@@ -1022,6 +1131,7 @@ namespace XamExample.Droid
 			global::XamEffects.Droid.Resource.Id.notification_main_column_container = global::XamExample.Droid.Resource.Id.notification_main_column_container;
 			global::XamEffects.Droid.Resource.Id.parallax = global::XamExample.Droid.Resource.Id.parallax;
 			global::XamEffects.Droid.Resource.Id.parentPanel = global::XamExample.Droid.Resource.Id.parentPanel;
+			global::XamEffects.Droid.Resource.Id.parent_matrix = global::XamExample.Droid.Resource.Id.parent_matrix;
 			global::XamEffects.Droid.Resource.Id.pin = global::XamExample.Droid.Resource.Id.pin;
 			global::XamEffects.Droid.Resource.Id.progress_circular = global::XamExample.Droid.Resource.Id.progress_circular;
 			global::XamEffects.Droid.Resource.Id.progress_horizontal = global::XamExample.Droid.Resource.Id.progress_horizontal;
@@ -1029,6 +1139,9 @@ namespace XamExample.Droid
 			global::XamEffects.Droid.Resource.Id.right = global::XamExample.Droid.Resource.Id.right;
 			global::XamEffects.Droid.Resource.Id.right_icon = global::XamExample.Droid.Resource.Id.right_icon;
 			global::XamEffects.Droid.Resource.Id.right_side = global::XamExample.Droid.Resource.Id.right_side;
+			global::XamEffects.Droid.Resource.Id.save_image_matrix = global::XamExample.Droid.Resource.Id.save_image_matrix;
+			global::XamEffects.Droid.Resource.Id.save_non_transition_alpha = global::XamExample.Droid.Resource.Id.save_non_transition_alpha;
+			global::XamEffects.Droid.Resource.Id.save_scale_type = global::XamExample.Droid.Resource.Id.save_scale_type;
 			global::XamEffects.Droid.Resource.Id.screen = global::XamExample.Droid.Resource.Id.screen;
 			global::XamEffects.Droid.Resource.Id.scroll = global::XamExample.Droid.Resource.Id.scroll;
 			global::XamEffects.Droid.Resource.Id.scrollIndicatorDown = global::XamExample.Droid.Resource.Id.scrollIndicatorDown;
@@ -1046,6 +1159,9 @@ namespace XamExample.Droid
 			global::XamEffects.Droid.Resource.Id.search_src_text = global::XamExample.Droid.Resource.Id.search_src_text;
 			global::XamEffects.Droid.Resource.Id.search_voice_btn = global::XamExample.Droid.Resource.Id.search_voice_btn;
 			global::XamEffects.Droid.Resource.Id.select_dialog_listview = global::XamExample.Droid.Resource.Id.select_dialog_listview;
+			global::XamEffects.Droid.Resource.Id.shellcontent_appbar = global::XamExample.Droid.Resource.Id.shellcontent_appbar;
+			global::XamEffects.Droid.Resource.Id.shellcontent_scrollview = global::XamExample.Droid.Resource.Id.shellcontent_scrollview;
+			global::XamEffects.Droid.Resource.Id.shellcontent_toolbar = global::XamExample.Droid.Resource.Id.shellcontent_toolbar;
 			global::XamEffects.Droid.Resource.Id.shortcut = global::XamExample.Droid.Resource.Id.shortcut;
 			global::XamEffects.Droid.Resource.Id.showCustom = global::XamExample.Droid.Resource.Id.showCustom;
 			global::XamEffects.Droid.Resource.Id.showHome = global::XamExample.Droid.Resource.Id.showHome;
@@ -1064,6 +1180,7 @@ namespace XamExample.Droid
 			global::XamEffects.Droid.Resource.Id.submenuarrow = global::XamExample.Droid.Resource.Id.submenuarrow;
 			global::XamEffects.Droid.Resource.Id.submit_area = global::XamExample.Droid.Resource.Id.submit_area;
 			global::XamEffects.Droid.Resource.Id.tabMode = global::XamExample.Droid.Resource.Id.tabMode;
+			global::XamEffects.Droid.Resource.Id.tag_transition_group = global::XamExample.Droid.Resource.Id.tag_transition_group;
 			global::XamEffects.Droid.Resource.Id.text = global::XamExample.Droid.Resource.Id.text;
 			global::XamEffects.Droid.Resource.Id.text2 = global::XamExample.Droid.Resource.Id.text2;
 			global::XamEffects.Droid.Resource.Id.textSpacerNoButtons = global::XamExample.Droid.Resource.Id.textSpacerNoButtons;
@@ -1079,7 +1196,11 @@ namespace XamExample.Droid
 			global::XamEffects.Droid.Resource.Id.topPanel = global::XamExample.Droid.Resource.Id.topPanel;
 			global::XamEffects.Droid.Resource.Id.touch_outside = global::XamExample.Droid.Resource.Id.touch_outside;
 			global::XamEffects.Droid.Resource.Id.transition_current_scene = global::XamExample.Droid.Resource.Id.transition_current_scene;
+			global::XamEffects.Droid.Resource.Id.transition_layout_save = global::XamExample.Droid.Resource.Id.transition_layout_save;
+			global::XamEffects.Droid.Resource.Id.transition_position = global::XamExample.Droid.Resource.Id.transition_position;
 			global::XamEffects.Droid.Resource.Id.transition_scene_layoutid_cache = global::XamExample.Droid.Resource.Id.transition_scene_layoutid_cache;
+			global::XamEffects.Droid.Resource.Id.transition_transform = global::XamExample.Droid.Resource.Id.transition_transform;
+			global::XamEffects.Droid.Resource.Id.uniform = global::XamExample.Droid.Resource.Id.uniform;
 			global::XamEffects.Droid.Resource.Id.up = global::XamExample.Droid.Resource.Id.up;
 			global::XamEffects.Droid.Resource.Id.useLogo = global::XamExample.Droid.Resource.Id.useLogo;
 			global::XamEffects.Droid.Resource.Id.view_offset_helper = global::XamExample.Droid.Resource.Id.view_offset_helper;
@@ -1092,6 +1213,7 @@ namespace XamExample.Droid
 			global::XamEffects.Droid.Resource.Integer.app_bar_elevation_anim_duration = global::XamExample.Droid.Resource.Integer.app_bar_elevation_anim_duration;
 			global::XamEffects.Droid.Resource.Integer.bottom_sheet_slide_duration = global::XamExample.Droid.Resource.Integer.bottom_sheet_slide_duration;
 			global::XamEffects.Droid.Resource.Integer.cancel_button_image_alpha = global::XamExample.Droid.Resource.Integer.cancel_button_image_alpha;
+			global::XamEffects.Droid.Resource.Integer.config_tooltipAnimTime = global::XamExample.Droid.Resource.Integer.config_tooltipAnimTime;
 			global::XamEffects.Droid.Resource.Integer.design_snackbar_text_max_lines = global::XamExample.Droid.Resource.Integer.design_snackbar_text_max_lines;
 			global::XamEffects.Droid.Resource.Integer.hide_password_duration = global::XamExample.Droid.Resource.Integer.hide_password_duration;
 			global::XamEffects.Droid.Resource.Integer.mr_controller_volume_group_list_animation_duration_ms = global::XamExample.Droid.Resource.Integer.mr_controller_volume_group_list_animation_duration_ms;
@@ -1127,6 +1249,7 @@ namespace XamExample.Droid
 			global::XamEffects.Droid.Resource.Layout.abc_search_dropdown_item_icons_2line = global::XamExample.Droid.Resource.Layout.abc_search_dropdown_item_icons_2line;
 			global::XamEffects.Droid.Resource.Layout.abc_search_view = global::XamExample.Droid.Resource.Layout.abc_search_view;
 			global::XamEffects.Droid.Resource.Layout.abc_select_dialog_material = global::XamExample.Droid.Resource.Layout.abc_select_dialog_material;
+			global::XamEffects.Droid.Resource.Layout.BottomTabLayout = global::XamExample.Droid.Resource.Layout.BottomTabLayout;
 			global::XamEffects.Droid.Resource.Layout.design_bottom_navigation_item = global::XamExample.Droid.Resource.Layout.design_bottom_navigation_item;
 			global::XamEffects.Droid.Resource.Layout.design_bottom_sheet_dialog = global::XamExample.Droid.Resource.Layout.design_bottom_sheet_dialog;
 			global::XamEffects.Droid.Resource.Layout.design_layout_snackbar = global::XamExample.Droid.Resource.Layout.design_layout_snackbar;
@@ -1141,6 +1264,7 @@ namespace XamExample.Droid
 			global::XamEffects.Droid.Resource.Layout.design_navigation_menu = global::XamExample.Droid.Resource.Layout.design_navigation_menu;
 			global::XamEffects.Droid.Resource.Layout.design_navigation_menu_item = global::XamExample.Droid.Resource.Layout.design_navigation_menu_item;
 			global::XamEffects.Droid.Resource.Layout.design_text_input_password_icon = global::XamExample.Droid.Resource.Layout.design_text_input_password_icon;
+			global::XamEffects.Droid.Resource.Layout.FlyoutContent = global::XamExample.Droid.Resource.Layout.FlyoutContent;
 			global::XamEffects.Droid.Resource.Layout.mr_chooser_dialog = global::XamExample.Droid.Resource.Layout.mr_chooser_dialog;
 			global::XamEffects.Droid.Resource.Layout.mr_chooser_list_item = global::XamExample.Droid.Resource.Layout.mr_chooser_list_item;
 			global::XamEffects.Droid.Resource.Layout.mr_controller_material_dialog_b = global::XamExample.Droid.Resource.Layout.mr_controller_material_dialog_b;
@@ -1162,10 +1286,13 @@ namespace XamExample.Droid
 			global::XamEffects.Droid.Resource.Layout.notification_template_media_custom = global::XamExample.Droid.Resource.Layout.notification_template_media_custom;
 			global::XamEffects.Droid.Resource.Layout.notification_template_part_chronometer = global::XamExample.Droid.Resource.Layout.notification_template_part_chronometer;
 			global::XamEffects.Droid.Resource.Layout.notification_template_part_time = global::XamExample.Droid.Resource.Layout.notification_template_part_time;
+			global::XamEffects.Droid.Resource.Layout.RootLayout = global::XamExample.Droid.Resource.Layout.RootLayout;
 			global::XamEffects.Droid.Resource.Layout.select_dialog_item_material = global::XamExample.Droid.Resource.Layout.select_dialog_item_material;
 			global::XamEffects.Droid.Resource.Layout.select_dialog_multichoice_material = global::XamExample.Droid.Resource.Layout.select_dialog_multichoice_material;
 			global::XamEffects.Droid.Resource.Layout.select_dialog_singlechoice_material = global::XamExample.Droid.Resource.Layout.select_dialog_singlechoice_material;
+			global::XamEffects.Droid.Resource.Layout.ShellContent = global::XamExample.Droid.Resource.Layout.ShellContent;
 			global::XamEffects.Droid.Resource.Layout.support_simple_spinner_dropdown_item = global::XamExample.Droid.Resource.Layout.support_simple_spinner_dropdown_item;
+			global::XamEffects.Droid.Resource.Layout.tooltip = global::XamExample.Droid.Resource.Layout.tooltip;
 			global::XamEffects.Droid.Resource.String.ApplicationName = global::XamExample.Droid.Resource.String.ApplicationName;
 			global::XamEffects.Droid.Resource.String.Hello = global::XamExample.Droid.Resource.String.Hello;
 			global::XamEffects.Droid.Resource.String.abc_action_bar_home_description = global::XamExample.Droid.Resource.String.abc_action_bar_home_description;
@@ -1232,11 +1359,13 @@ namespace XamExample.Droid
 			global::XamEffects.Droid.Resource.Style.AlertDialog_AppCompat_Light = global::XamExample.Droid.Resource.Style.AlertDialog_AppCompat_Light;
 			global::XamEffects.Droid.Resource.Style.Animation_AppCompat_Dialog = global::XamExample.Droid.Resource.Style.Animation_AppCompat_Dialog;
 			global::XamEffects.Droid.Resource.Style.Animation_AppCompat_DropDownUp = global::XamExample.Droid.Resource.Style.Animation_AppCompat_DropDownUp;
+			global::XamEffects.Droid.Resource.Style.Animation_AppCompat_Tooltip = global::XamExample.Droid.Resource.Style.Animation_AppCompat_Tooltip;
 			global::XamEffects.Droid.Resource.Style.Animation_Design_BottomSheetDialog = global::XamExample.Droid.Resource.Style.Animation_Design_BottomSheetDialog;
 			global::XamEffects.Droid.Resource.Style.Base_AlertDialog_AppCompat = global::XamExample.Droid.Resource.Style.Base_AlertDialog_AppCompat;
 			global::XamEffects.Droid.Resource.Style.Base_AlertDialog_AppCompat_Light = global::XamExample.Droid.Resource.Style.Base_AlertDialog_AppCompat_Light;
 			global::XamEffects.Droid.Resource.Style.Base_Animation_AppCompat_Dialog = global::XamExample.Droid.Resource.Style.Base_Animation_AppCompat_Dialog;
 			global::XamEffects.Droid.Resource.Style.Base_Animation_AppCompat_DropDownUp = global::XamExample.Droid.Resource.Style.Base_Animation_AppCompat_DropDownUp;
+			global::XamEffects.Droid.Resource.Style.Base_Animation_AppCompat_Tooltip = global::XamExample.Droid.Resource.Style.Base_Animation_AppCompat_Tooltip;
 			global::XamEffects.Droid.Resource.Style.Base_CardView = global::XamExample.Droid.Resource.Style.Base_CardView;
 			global::XamEffects.Droid.Resource.Style.Base_DialogWindowTitle_AppCompat = global::XamExample.Droid.Resource.Style.Base_DialogWindowTitle_AppCompat;
 			global::XamEffects.Droid.Resource.Style.Base_DialogWindowTitleBackground_AppCompat = global::XamExample.Droid.Resource.Style.Base_DialogWindowTitleBackground_AppCompat;
@@ -1267,6 +1396,7 @@ namespace XamExample.Droid
 			global::XamEffects.Droid.Resource.Style.Base_TextAppearance_AppCompat_Subhead_Inverse = global::XamExample.Droid.Resource.Style.Base_TextAppearance_AppCompat_Subhead_Inverse;
 			global::XamEffects.Droid.Resource.Style.Base_TextAppearance_AppCompat_Title = global::XamExample.Droid.Resource.Style.Base_TextAppearance_AppCompat_Title;
 			global::XamEffects.Droid.Resource.Style.Base_TextAppearance_AppCompat_Title_Inverse = global::XamExample.Droid.Resource.Style.Base_TextAppearance_AppCompat_Title_Inverse;
+			global::XamEffects.Droid.Resource.Style.Base_TextAppearance_AppCompat_Tooltip = global::XamExample.Droid.Resource.Style.Base_TextAppearance_AppCompat_Tooltip;
 			global::XamEffects.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Menu = global::XamExample.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Menu;
 			global::XamEffects.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle = global::XamExample.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle;
 			global::XamEffects.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse = global::XamExample.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse;
@@ -1313,15 +1443,21 @@ namespace XamExample.Droid
 			global::XamEffects.Droid.Resource.Style.Base_V11_ThemeOverlay_AppCompat_Dialog = global::XamExample.Droid.Resource.Style.Base_V11_ThemeOverlay_AppCompat_Dialog;
 			global::XamEffects.Droid.Resource.Style.Base_V12_Widget_AppCompat_AutoCompleteTextView = global::XamExample.Droid.Resource.Style.Base_V12_Widget_AppCompat_AutoCompleteTextView;
 			global::XamEffects.Droid.Resource.Style.Base_V12_Widget_AppCompat_EditText = global::XamExample.Droid.Resource.Style.Base_V12_Widget_AppCompat_EditText;
+			global::XamEffects.Droid.Resource.Style.Base_V14_Widget_Design_AppBarLayout = global::XamExample.Droid.Resource.Style.Base_V14_Widget_Design_AppBarLayout;
 			global::XamEffects.Droid.Resource.Style.Base_V21_Theme_AppCompat = global::XamExample.Droid.Resource.Style.Base_V21_Theme_AppCompat;
 			global::XamEffects.Droid.Resource.Style.Base_V21_Theme_AppCompat_Dialog = global::XamExample.Droid.Resource.Style.Base_V21_Theme_AppCompat_Dialog;
 			global::XamEffects.Droid.Resource.Style.Base_V21_Theme_AppCompat_Light = global::XamExample.Droid.Resource.Style.Base_V21_Theme_AppCompat_Light;
 			global::XamEffects.Droid.Resource.Style.Base_V21_Theme_AppCompat_Light_Dialog = global::XamExample.Droid.Resource.Style.Base_V21_Theme_AppCompat_Light_Dialog;
 			global::XamEffects.Droid.Resource.Style.Base_V21_ThemeOverlay_AppCompat_Dialog = global::XamExample.Droid.Resource.Style.Base_V21_ThemeOverlay_AppCompat_Dialog;
+			global::XamEffects.Droid.Resource.Style.Base_V21_Widget_Design_AppBarLayout = global::XamExample.Droid.Resource.Style.Base_V21_Widget_Design_AppBarLayout;
 			global::XamEffects.Droid.Resource.Style.Base_V22_Theme_AppCompat = global::XamExample.Droid.Resource.Style.Base_V22_Theme_AppCompat;
 			global::XamEffects.Droid.Resource.Style.Base_V22_Theme_AppCompat_Light = global::XamExample.Droid.Resource.Style.Base_V22_Theme_AppCompat_Light;
 			global::XamEffects.Droid.Resource.Style.Base_V23_Theme_AppCompat = global::XamExample.Droid.Resource.Style.Base_V23_Theme_AppCompat;
 			global::XamEffects.Droid.Resource.Style.Base_V23_Theme_AppCompat_Light = global::XamExample.Droid.Resource.Style.Base_V23_Theme_AppCompat_Light;
+			global::XamEffects.Droid.Resource.Style.Base_V26_Theme_AppCompat = global::XamExample.Droid.Resource.Style.Base_V26_Theme_AppCompat;
+			global::XamEffects.Droid.Resource.Style.Base_V26_Theme_AppCompat_Light = global::XamExample.Droid.Resource.Style.Base_V26_Theme_AppCompat_Light;
+			global::XamEffects.Droid.Resource.Style.Base_V26_Widget_AppCompat_Toolbar = global::XamExample.Droid.Resource.Style.Base_V26_Widget_AppCompat_Toolbar;
+			global::XamEffects.Droid.Resource.Style.Base_V26_Widget_Design_AppBarLayout = global::XamExample.Droid.Resource.Style.Base_V26_Widget_Design_AppBarLayout;
 			global::XamEffects.Droid.Resource.Style.Base_V7_Theme_AppCompat = global::XamExample.Droid.Resource.Style.Base_V7_Theme_AppCompat;
 			global::XamEffects.Droid.Resource.Style.Base_V7_Theme_AppCompat_Dialog = global::XamExample.Droid.Resource.Style.Base_V7_Theme_AppCompat_Dialog;
 			global::XamEffects.Droid.Resource.Style.Base_V7_Theme_AppCompat_Light = global::XamExample.Droid.Resource.Style.Base_V7_Theme_AppCompat_Light;
@@ -1329,6 +1465,7 @@ namespace XamExample.Droid
 			global::XamEffects.Droid.Resource.Style.Base_V7_ThemeOverlay_AppCompat_Dialog = global::XamExample.Droid.Resource.Style.Base_V7_ThemeOverlay_AppCompat_Dialog;
 			global::XamEffects.Droid.Resource.Style.Base_V7_Widget_AppCompat_AutoCompleteTextView = global::XamExample.Droid.Resource.Style.Base_V7_Widget_AppCompat_AutoCompleteTextView;
 			global::XamEffects.Droid.Resource.Style.Base_V7_Widget_AppCompat_EditText = global::XamExample.Droid.Resource.Style.Base_V7_Widget_AppCompat_EditText;
+			global::XamEffects.Droid.Resource.Style.Base_V7_Widget_AppCompat_Toolbar = global::XamExample.Droid.Resource.Style.Base_V7_Widget_AppCompat_Toolbar;
 			global::XamEffects.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar = global::XamExample.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar;
 			global::XamEffects.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_Solid = global::XamExample.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_Solid;
 			global::XamEffects.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_TabBar = global::XamExample.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_TabBar;
@@ -1447,6 +1584,7 @@ namespace XamExample.Droid
 			global::XamEffects.Droid.Resource.Style.TextAppearance_AppCompat_Subhead_Inverse = global::XamExample.Droid.Resource.Style.TextAppearance_AppCompat_Subhead_Inverse;
 			global::XamEffects.Droid.Resource.Style.TextAppearance_AppCompat_Title = global::XamExample.Droid.Resource.Style.TextAppearance_AppCompat_Title;
 			global::XamEffects.Droid.Resource.Style.TextAppearance_AppCompat_Title_Inverse = global::XamExample.Droid.Resource.Style.TextAppearance_AppCompat_Title_Inverse;
+			global::XamEffects.Droid.Resource.Style.TextAppearance_AppCompat_Tooltip = global::XamExample.Droid.Resource.Style.TextAppearance_AppCompat_Tooltip;
 			global::XamEffects.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Menu = global::XamExample.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Menu;
 			global::XamEffects.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle = global::XamExample.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle;
 			global::XamEffects.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse = global::XamExample.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse;
@@ -1466,6 +1604,16 @@ namespace XamExample.Droid
 			global::XamEffects.Droid.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Small = global::XamExample.Droid.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Small;
 			global::XamEffects.Droid.Resource.Style.TextAppearance_AppCompat_Widget_Switch = global::XamExample.Droid.Resource.Style.TextAppearance_AppCompat_Widget_Switch;
 			global::XamEffects.Droid.Resource.Style.TextAppearance_AppCompat_Widget_TextView_SpinnerItem = global::XamExample.Droid.Resource.Style.TextAppearance_AppCompat_Widget_TextView_SpinnerItem;
+			global::XamEffects.Droid.Resource.Style.TextAppearance_Compat_Notification = global::XamExample.Droid.Resource.Style.TextAppearance_Compat_Notification;
+			global::XamEffects.Droid.Resource.Style.TextAppearance_Compat_Notification_Info = global::XamExample.Droid.Resource.Style.TextAppearance_Compat_Notification_Info;
+			global::XamEffects.Droid.Resource.Style.TextAppearance_Compat_Notification_Info_Media = global::XamExample.Droid.Resource.Style.TextAppearance_Compat_Notification_Info_Media;
+			global::XamEffects.Droid.Resource.Style.TextAppearance_Compat_Notification_Line2 = global::XamExample.Droid.Resource.Style.TextAppearance_Compat_Notification_Line2;
+			global::XamEffects.Droid.Resource.Style.TextAppearance_Compat_Notification_Line2_Media = global::XamExample.Droid.Resource.Style.TextAppearance_Compat_Notification_Line2_Media;
+			global::XamEffects.Droid.Resource.Style.TextAppearance_Compat_Notification_Media = global::XamExample.Droid.Resource.Style.TextAppearance_Compat_Notification_Media;
+			global::XamEffects.Droid.Resource.Style.TextAppearance_Compat_Notification_Time = global::XamExample.Droid.Resource.Style.TextAppearance_Compat_Notification_Time;
+			global::XamEffects.Droid.Resource.Style.TextAppearance_Compat_Notification_Time_Media = global::XamExample.Droid.Resource.Style.TextAppearance_Compat_Notification_Time_Media;
+			global::XamEffects.Droid.Resource.Style.TextAppearance_Compat_Notification_Title = global::XamExample.Droid.Resource.Style.TextAppearance_Compat_Notification_Title;
+			global::XamEffects.Droid.Resource.Style.TextAppearance_Compat_Notification_Title_Media = global::XamExample.Droid.Resource.Style.TextAppearance_Compat_Notification_Title_Media;
 			global::XamEffects.Droid.Resource.Style.TextAppearance_Design_CollapsingToolbar_Expanded = global::XamExample.Droid.Resource.Style.TextAppearance_Design_CollapsingToolbar_Expanded;
 			global::XamEffects.Droid.Resource.Style.TextAppearance_Design_Counter = global::XamExample.Droid.Resource.Style.TextAppearance_Design_Counter;
 			global::XamEffects.Droid.Resource.Style.TextAppearance_Design_Counter_Overflow = global::XamExample.Droid.Resource.Style.TextAppearance_Design_Counter_Overflow;
@@ -1591,6 +1739,8 @@ namespace XamExample.Droid
 			global::XamEffects.Droid.Resource.Style.Widget_AppCompat_TextView_SpinnerItem = global::XamExample.Droid.Resource.Style.Widget_AppCompat_TextView_SpinnerItem;
 			global::XamEffects.Droid.Resource.Style.Widget_AppCompat_Toolbar = global::XamExample.Droid.Resource.Style.Widget_AppCompat_Toolbar;
 			global::XamEffects.Droid.Resource.Style.Widget_AppCompat_Toolbar_Button_Navigation = global::XamExample.Droid.Resource.Style.Widget_AppCompat_Toolbar_Button_Navigation;
+			global::XamEffects.Droid.Resource.Style.Widget_Compat_NotificationActionContainer = global::XamExample.Droid.Resource.Style.Widget_Compat_NotificationActionContainer;
+			global::XamEffects.Droid.Resource.Style.Widget_Compat_NotificationActionText = global::XamExample.Droid.Resource.Style.Widget_Compat_NotificationActionText;
 			global::XamEffects.Droid.Resource.Style.Widget_Design_AppBarLayout = global::XamExample.Droid.Resource.Style.Widget_Design_AppBarLayout;
 			global::XamEffects.Droid.Resource.Style.Widget_Design_BottomNavigationView = global::XamExample.Droid.Resource.Style.Widget_Design_BottomNavigationView;
 			global::XamEffects.Droid.Resource.Style.Widget_Design_BottomSheet_Modal = global::XamExample.Droid.Resource.Style.Widget_Design_BottomSheet_Modal;
@@ -1659,6 +1809,8 @@ namespace XamExample.Droid
 			global::XamEffects.Droid.Resource.Styleable.AlertDialog_singleChoiceItemLayout = global::XamExample.Droid.Resource.Styleable.AlertDialog_singleChoiceItemLayout;
 			global::XamEffects.Droid.Resource.Styleable.AppBarLayout = global::XamExample.Droid.Resource.Styleable.AppBarLayout;
 			global::XamEffects.Droid.Resource.Styleable.AppBarLayout_android_background = global::XamExample.Droid.Resource.Styleable.AppBarLayout_android_background;
+			global::XamEffects.Droid.Resource.Styleable.AppBarLayout_android_keyboardNavigationCluster = global::XamExample.Droid.Resource.Styleable.AppBarLayout_android_keyboardNavigationCluster;
+			global::XamEffects.Droid.Resource.Styleable.AppBarLayout_android_touchscreenBlocksFocus = global::XamExample.Droid.Resource.Styleable.AppBarLayout_android_touchscreenBlocksFocus;
 			global::XamEffects.Droid.Resource.Styleable.AppBarLayout_elevation = global::XamExample.Droid.Resource.Styleable.AppBarLayout_elevation;
 			global::XamEffects.Droid.Resource.Styleable.AppBarLayout_expanded = global::XamExample.Droid.Resource.Styleable.AppBarLayout_expanded;
 			global::XamEffects.Droid.Resource.Styleable.AppBarLayoutStates = global::XamExample.Droid.Resource.Styleable.AppBarLayoutStates;
@@ -1687,6 +1839,12 @@ namespace XamExample.Droid
 			global::XamEffects.Droid.Resource.Styleable.AppCompatTextHelper_android_textAppearance = global::XamExample.Droid.Resource.Styleable.AppCompatTextHelper_android_textAppearance;
 			global::XamEffects.Droid.Resource.Styleable.AppCompatTextView = global::XamExample.Droid.Resource.Styleable.AppCompatTextView;
 			global::XamEffects.Droid.Resource.Styleable.AppCompatTextView_android_textAppearance = global::XamExample.Droid.Resource.Styleable.AppCompatTextView_android_textAppearance;
+			global::XamEffects.Droid.Resource.Styleable.AppCompatTextView_autoSizeMaxTextSize = global::XamExample.Droid.Resource.Styleable.AppCompatTextView_autoSizeMaxTextSize;
+			global::XamEffects.Droid.Resource.Styleable.AppCompatTextView_autoSizeMinTextSize = global::XamExample.Droid.Resource.Styleable.AppCompatTextView_autoSizeMinTextSize;
+			global::XamEffects.Droid.Resource.Styleable.AppCompatTextView_autoSizePresetSizes = global::XamExample.Droid.Resource.Styleable.AppCompatTextView_autoSizePresetSizes;
+			global::XamEffects.Droid.Resource.Styleable.AppCompatTextView_autoSizeStepGranularity = global::XamExample.Droid.Resource.Styleable.AppCompatTextView_autoSizeStepGranularity;
+			global::XamEffects.Droid.Resource.Styleable.AppCompatTextView_autoSizeTextType = global::XamExample.Droid.Resource.Styleable.AppCompatTextView_autoSizeTextType;
+			global::XamEffects.Droid.Resource.Styleable.AppCompatTextView_fontFamily = global::XamExample.Droid.Resource.Styleable.AppCompatTextView_fontFamily;
 			global::XamEffects.Droid.Resource.Styleable.AppCompatTextView_textAllCaps = global::XamExample.Droid.Resource.Styleable.AppCompatTextView_textAllCaps;
 			global::XamEffects.Droid.Resource.Styleable.AppCompatTheme = global::XamExample.Droid.Resource.Styleable.AppCompatTheme;
 			global::XamEffects.Droid.Resource.Styleable.AppCompatTheme_actionBarDivider = global::XamExample.Droid.Resource.Styleable.AppCompatTheme_actionBarDivider;
@@ -1743,6 +1901,7 @@ namespace XamExample.Droid
 			global::XamEffects.Droid.Resource.Styleable.AppCompatTheme_colorControlActivated = global::XamExample.Droid.Resource.Styleable.AppCompatTheme_colorControlActivated;
 			global::XamEffects.Droid.Resource.Styleable.AppCompatTheme_colorControlHighlight = global::XamExample.Droid.Resource.Styleable.AppCompatTheme_colorControlHighlight;
 			global::XamEffects.Droid.Resource.Styleable.AppCompatTheme_colorControlNormal = global::XamExample.Droid.Resource.Styleable.AppCompatTheme_colorControlNormal;
+			global::XamEffects.Droid.Resource.Styleable.AppCompatTheme_colorError = global::XamExample.Droid.Resource.Styleable.AppCompatTheme_colorError;
 			global::XamEffects.Droid.Resource.Styleable.AppCompatTheme_colorPrimary = global::XamExample.Droid.Resource.Styleable.AppCompatTheme_colorPrimary;
 			global::XamEffects.Droid.Resource.Styleable.AppCompatTheme_colorPrimaryDark = global::XamExample.Droid.Resource.Styleable.AppCompatTheme_colorPrimaryDark;
 			global::XamEffects.Droid.Resource.Styleable.AppCompatTheme_colorSwitchThumbNormal = global::XamExample.Droid.Resource.Styleable.AppCompatTheme_colorSwitchThumbNormal;
@@ -1795,6 +1954,8 @@ namespace XamExample.Droid
 			global::XamEffects.Droid.Resource.Styleable.AppCompatTheme_textColorSearchUrl = global::XamExample.Droid.Resource.Styleable.AppCompatTheme_textColorSearchUrl;
 			global::XamEffects.Droid.Resource.Styleable.AppCompatTheme_toolbarNavigationButtonStyle = global::XamExample.Droid.Resource.Styleable.AppCompatTheme_toolbarNavigationButtonStyle;
 			global::XamEffects.Droid.Resource.Styleable.AppCompatTheme_toolbarStyle = global::XamExample.Droid.Resource.Styleable.AppCompatTheme_toolbarStyle;
+			global::XamEffects.Droid.Resource.Styleable.AppCompatTheme_tooltipForegroundColor = global::XamExample.Droid.Resource.Styleable.AppCompatTheme_tooltipForegroundColor;
+			global::XamEffects.Droid.Resource.Styleable.AppCompatTheme_tooltipFrameBackground = global::XamExample.Droid.Resource.Styleable.AppCompatTheme_tooltipFrameBackground;
 			global::XamEffects.Droid.Resource.Styleable.AppCompatTheme_windowActionBar = global::XamExample.Droid.Resource.Styleable.AppCompatTheme_windowActionBar;
 			global::XamEffects.Droid.Resource.Styleable.AppCompatTheme_windowActionBarOverlay = global::XamExample.Droid.Resource.Styleable.AppCompatTheme_windowActionBarOverlay;
 			global::XamEffects.Droid.Resource.Styleable.AppCompatTheme_windowActionModeOverlay = global::XamExample.Droid.Resource.Styleable.AppCompatTheme_windowActionModeOverlay;
@@ -1894,6 +2055,20 @@ namespace XamExample.Droid
 			global::XamEffects.Droid.Resource.Styleable.FloatingActionButton_useCompatPadding = global::XamExample.Droid.Resource.Styleable.FloatingActionButton_useCompatPadding;
 			global::XamEffects.Droid.Resource.Styleable.FloatingActionButton_Behavior_Layout = global::XamExample.Droid.Resource.Styleable.FloatingActionButton_Behavior_Layout;
 			global::XamEffects.Droid.Resource.Styleable.FloatingActionButton_Behavior_Layout_behavior_autoHide = global::XamExample.Droid.Resource.Styleable.FloatingActionButton_Behavior_Layout_behavior_autoHide;
+			global::XamEffects.Droid.Resource.Styleable.FontFamily = global::XamExample.Droid.Resource.Styleable.FontFamily;
+			global::XamEffects.Droid.Resource.Styleable.FontFamily_fontProviderAuthority = global::XamExample.Droid.Resource.Styleable.FontFamily_fontProviderAuthority;
+			global::XamEffects.Droid.Resource.Styleable.FontFamily_fontProviderCerts = global::XamExample.Droid.Resource.Styleable.FontFamily_fontProviderCerts;
+			global::XamEffects.Droid.Resource.Styleable.FontFamily_fontProviderFetchStrategy = global::XamExample.Droid.Resource.Styleable.FontFamily_fontProviderFetchStrategy;
+			global::XamEffects.Droid.Resource.Styleable.FontFamily_fontProviderFetchTimeout = global::XamExample.Droid.Resource.Styleable.FontFamily_fontProviderFetchTimeout;
+			global::XamEffects.Droid.Resource.Styleable.FontFamily_fontProviderPackage = global::XamExample.Droid.Resource.Styleable.FontFamily_fontProviderPackage;
+			global::XamEffects.Droid.Resource.Styleable.FontFamily_fontProviderQuery = global::XamExample.Droid.Resource.Styleable.FontFamily_fontProviderQuery;
+			global::XamEffects.Droid.Resource.Styleable.FontFamilyFont = global::XamExample.Droid.Resource.Styleable.FontFamilyFont;
+			global::XamEffects.Droid.Resource.Styleable.FontFamilyFont_android_font = global::XamExample.Droid.Resource.Styleable.FontFamilyFont_android_font;
+			global::XamEffects.Droid.Resource.Styleable.FontFamilyFont_android_fontStyle = global::XamExample.Droid.Resource.Styleable.FontFamilyFont_android_fontStyle;
+			global::XamEffects.Droid.Resource.Styleable.FontFamilyFont_android_fontWeight = global::XamExample.Droid.Resource.Styleable.FontFamilyFont_android_fontWeight;
+			global::XamEffects.Droid.Resource.Styleable.FontFamilyFont_font = global::XamExample.Droid.Resource.Styleable.FontFamilyFont_font;
+			global::XamEffects.Droid.Resource.Styleable.FontFamilyFont_fontStyle = global::XamExample.Droid.Resource.Styleable.FontFamilyFont_fontStyle;
+			global::XamEffects.Droid.Resource.Styleable.FontFamilyFont_fontWeight = global::XamExample.Droid.Resource.Styleable.FontFamilyFont_fontWeight;
 			global::XamEffects.Droid.Resource.Styleable.ForegroundLinearLayout = global::XamExample.Droid.Resource.Styleable.ForegroundLinearLayout;
 			global::XamEffects.Droid.Resource.Styleable.ForegroundLinearLayout_android_foreground = global::XamExample.Droid.Resource.Styleable.ForegroundLinearLayout_android_foreground;
 			global::XamEffects.Droid.Resource.Styleable.ForegroundLinearLayout_android_foregroundGravity = global::XamExample.Droid.Resource.Styleable.ForegroundLinearLayout_android_foregroundGravity;
@@ -1920,6 +2095,7 @@ namespace XamExample.Droid
 			global::XamEffects.Droid.Resource.Styleable.MediaRouteButton_android_minHeight = global::XamExample.Droid.Resource.Styleable.MediaRouteButton_android_minHeight;
 			global::XamEffects.Droid.Resource.Styleable.MediaRouteButton_android_minWidth = global::XamExample.Droid.Resource.Styleable.MediaRouteButton_android_minWidth;
 			global::XamEffects.Droid.Resource.Styleable.MediaRouteButton_externalRouteEnabledDrawable = global::XamExample.Droid.Resource.Styleable.MediaRouteButton_externalRouteEnabledDrawable;
+			global::XamEffects.Droid.Resource.Styleable.MediaRouteButton_mediaRouteButtonTint = global::XamExample.Droid.Resource.Styleable.MediaRouteButton_mediaRouteButtonTint;
 			global::XamEffects.Droid.Resource.Styleable.MenuGroup = global::XamExample.Droid.Resource.Styleable.MenuGroup;
 			global::XamEffects.Droid.Resource.Styleable.MenuGroup_android_checkableBehavior = global::XamExample.Droid.Resource.Styleable.MenuGroup_android_checkableBehavior;
 			global::XamEffects.Droid.Resource.Styleable.MenuGroup_android_enabled = global::XamExample.Droid.Resource.Styleable.MenuGroup_android_enabled;
@@ -1931,6 +2107,7 @@ namespace XamExample.Droid
 			global::XamEffects.Droid.Resource.Styleable.MenuItem_actionLayout = global::XamExample.Droid.Resource.Styleable.MenuItem_actionLayout;
 			global::XamEffects.Droid.Resource.Styleable.MenuItem_actionProviderClass = global::XamExample.Droid.Resource.Styleable.MenuItem_actionProviderClass;
 			global::XamEffects.Droid.Resource.Styleable.MenuItem_actionViewClass = global::XamExample.Droid.Resource.Styleable.MenuItem_actionViewClass;
+			global::XamEffects.Droid.Resource.Styleable.MenuItem_alphabeticModifiers = global::XamExample.Droid.Resource.Styleable.MenuItem_alphabeticModifiers;
 			global::XamEffects.Droid.Resource.Styleable.MenuItem_android_alphabeticShortcut = global::XamExample.Droid.Resource.Styleable.MenuItem_android_alphabeticShortcut;
 			global::XamEffects.Droid.Resource.Styleable.MenuItem_android_checkable = global::XamExample.Droid.Resource.Styleable.MenuItem_android_checkable;
 			global::XamEffects.Droid.Resource.Styleable.MenuItem_android_checked = global::XamExample.Droid.Resource.Styleable.MenuItem_android_checked;
@@ -1944,7 +2121,12 @@ namespace XamExample.Droid
 			global::XamEffects.Droid.Resource.Styleable.MenuItem_android_title = global::XamExample.Droid.Resource.Styleable.MenuItem_android_title;
 			global::XamEffects.Droid.Resource.Styleable.MenuItem_android_titleCondensed = global::XamExample.Droid.Resource.Styleable.MenuItem_android_titleCondensed;
 			global::XamEffects.Droid.Resource.Styleable.MenuItem_android_visible = global::XamExample.Droid.Resource.Styleable.MenuItem_android_visible;
+			global::XamEffects.Droid.Resource.Styleable.MenuItem_contentDescription = global::XamExample.Droid.Resource.Styleable.MenuItem_contentDescription;
+			global::XamEffects.Droid.Resource.Styleable.MenuItem_iconTint = global::XamExample.Droid.Resource.Styleable.MenuItem_iconTint;
+			global::XamEffects.Droid.Resource.Styleable.MenuItem_iconTintMode = global::XamExample.Droid.Resource.Styleable.MenuItem_iconTintMode;
+			global::XamEffects.Droid.Resource.Styleable.MenuItem_numericModifiers = global::XamExample.Droid.Resource.Styleable.MenuItem_numericModifiers;
 			global::XamEffects.Droid.Resource.Styleable.MenuItem_showAsAction = global::XamExample.Droid.Resource.Styleable.MenuItem_showAsAction;
+			global::XamEffects.Droid.Resource.Styleable.MenuItem_tooltipText = global::XamExample.Droid.Resource.Styleable.MenuItem_tooltipText;
 			global::XamEffects.Droid.Resource.Styleable.MenuView = global::XamExample.Droid.Resource.Styleable.MenuView;
 			global::XamEffects.Droid.Resource.Styleable.MenuView_android_headerBackground = global::XamExample.Droid.Resource.Styleable.MenuView_android_headerBackground;
 			global::XamEffects.Droid.Resource.Styleable.MenuView_android_horizontalDivider = global::XamExample.Droid.Resource.Styleable.MenuView_android_horizontalDivider;
@@ -1978,6 +2160,11 @@ namespace XamExample.Droid
 			global::XamEffects.Droid.Resource.Styleable.RecyclerView = global::XamExample.Droid.Resource.Styleable.RecyclerView;
 			global::XamEffects.Droid.Resource.Styleable.RecyclerView_android_descendantFocusability = global::XamExample.Droid.Resource.Styleable.RecyclerView_android_descendantFocusability;
 			global::XamEffects.Droid.Resource.Styleable.RecyclerView_android_orientation = global::XamExample.Droid.Resource.Styleable.RecyclerView_android_orientation;
+			global::XamEffects.Droid.Resource.Styleable.RecyclerView_fastScrollEnabled = global::XamExample.Droid.Resource.Styleable.RecyclerView_fastScrollEnabled;
+			global::XamEffects.Droid.Resource.Styleable.RecyclerView_fastScrollHorizontalThumbDrawable = global::XamExample.Droid.Resource.Styleable.RecyclerView_fastScrollHorizontalThumbDrawable;
+			global::XamEffects.Droid.Resource.Styleable.RecyclerView_fastScrollHorizontalTrackDrawable = global::XamExample.Droid.Resource.Styleable.RecyclerView_fastScrollHorizontalTrackDrawable;
+			global::XamEffects.Droid.Resource.Styleable.RecyclerView_fastScrollVerticalThumbDrawable = global::XamExample.Droid.Resource.Styleable.RecyclerView_fastScrollVerticalThumbDrawable;
+			global::XamEffects.Droid.Resource.Styleable.RecyclerView_fastScrollVerticalTrackDrawable = global::XamExample.Droid.Resource.Styleable.RecyclerView_fastScrollVerticalTrackDrawable;
 			global::XamEffects.Droid.Resource.Styleable.RecyclerView_layoutManager = global::XamExample.Droid.Resource.Styleable.RecyclerView_layoutManager;
 			global::XamEffects.Droid.Resource.Styleable.RecyclerView_reverseLayout = global::XamExample.Droid.Resource.Styleable.RecyclerView_reverseLayout;
 			global::XamEffects.Droid.Resource.Styleable.RecyclerView_spanCount = global::XamExample.Droid.Resource.Styleable.RecyclerView_spanCount;
@@ -2051,15 +2238,18 @@ namespace XamExample.Droid
 			global::XamEffects.Droid.Resource.Styleable.TabLayout_tabTextAppearance = global::XamExample.Droid.Resource.Styleable.TabLayout_tabTextAppearance;
 			global::XamEffects.Droid.Resource.Styleable.TabLayout_tabTextColor = global::XamExample.Droid.Resource.Styleable.TabLayout_tabTextColor;
 			global::XamEffects.Droid.Resource.Styleable.TextAppearance = global::XamExample.Droid.Resource.Styleable.TextAppearance;
+			global::XamEffects.Droid.Resource.Styleable.TextAppearance_android_fontFamily = global::XamExample.Droid.Resource.Styleable.TextAppearance_android_fontFamily;
 			global::XamEffects.Droid.Resource.Styleable.TextAppearance_android_shadowColor = global::XamExample.Droid.Resource.Styleable.TextAppearance_android_shadowColor;
 			global::XamEffects.Droid.Resource.Styleable.TextAppearance_android_shadowDx = global::XamExample.Droid.Resource.Styleable.TextAppearance_android_shadowDx;
 			global::XamEffects.Droid.Resource.Styleable.TextAppearance_android_shadowDy = global::XamExample.Droid.Resource.Styleable.TextAppearance_android_shadowDy;
 			global::XamEffects.Droid.Resource.Styleable.TextAppearance_android_shadowRadius = global::XamExample.Droid.Resource.Styleable.TextAppearance_android_shadowRadius;
 			global::XamEffects.Droid.Resource.Styleable.TextAppearance_android_textColor = global::XamExample.Droid.Resource.Styleable.TextAppearance_android_textColor;
 			global::XamEffects.Droid.Resource.Styleable.TextAppearance_android_textColorHint = global::XamExample.Droid.Resource.Styleable.TextAppearance_android_textColorHint;
+			global::XamEffects.Droid.Resource.Styleable.TextAppearance_android_textColorLink = global::XamExample.Droid.Resource.Styleable.TextAppearance_android_textColorLink;
 			global::XamEffects.Droid.Resource.Styleable.TextAppearance_android_textSize = global::XamExample.Droid.Resource.Styleable.TextAppearance_android_textSize;
 			global::XamEffects.Droid.Resource.Styleable.TextAppearance_android_textStyle = global::XamExample.Droid.Resource.Styleable.TextAppearance_android_textStyle;
 			global::XamEffects.Droid.Resource.Styleable.TextAppearance_android_typeface = global::XamExample.Droid.Resource.Styleable.TextAppearance_android_typeface;
+			global::XamEffects.Droid.Resource.Styleable.TextAppearance_fontFamily = global::XamExample.Droid.Resource.Styleable.TextAppearance_fontFamily;
 			global::XamEffects.Droid.Resource.Styleable.TextAppearance_textAllCaps = global::XamExample.Droid.Resource.Styleable.TextAppearance_textAllCaps;
 			global::XamEffects.Droid.Resource.Styleable.TextInputLayout = global::XamExample.Droid.Resource.Styleable.TextInputLayout;
 			global::XamEffects.Droid.Resource.Styleable.TextInputLayout_android_hint = global::XamExample.Droid.Resource.Styleable.TextInputLayout_android_hint;
@@ -2170,10 +2360,22 @@ namespace XamExample.Droid
 			public const int design_snackbar_out = 2131034125;
 			
 			// aapt resource value: 0x7f05000e
-			public const int tooltip_enter = 2131034126;
+			public const int EnterFromLeft = 2131034126;
 			
 			// aapt resource value: 0x7f05000f
-			public const int tooltip_exit = 2131034127;
+			public const int EnterFromRight = 2131034127;
+			
+			// aapt resource value: 0x7f050010
+			public const int ExitToLeft = 2131034128;
+			
+			// aapt resource value: 0x7f050011
+			public const int ExitToRight = 2131034129;
+			
+			// aapt resource value: 0x7f050012
+			public const int tooltip_enter = 2131034130;
+			
+			// aapt resource value: 0x7f050013
+			public const int tooltip_exit = 2131034131;
 			
 			static Animation()
 			{
@@ -5143,8 +5345,8 @@ namespace XamExample.Droid
 			// aapt resource value: 0x7f0a0037
 			public const int SYM = 2131361847;
 			
-			// aapt resource value: 0x7f0a00b6
-			public const int action0 = 2131361974;
+			// aapt resource value: 0x7f0a00ba
+			public const int action0 = 2131361978;
 			
 			// aapt resource value: 0x7f0a007c
 			public const int action_bar = 2131361916;
@@ -5167,17 +5369,17 @@ namespace XamExample.Droid
 			// aapt resource value: 0x7f0a005a
 			public const int action_bar_title = 2131361882;
 			
-			// aapt resource value: 0x7f0a00b3
-			public const int action_container = 2131361971;
+			// aapt resource value: 0x7f0a00b7
+			public const int action_container = 2131361975;
 			
 			// aapt resource value: 0x7f0a007d
 			public const int action_context_bar = 2131361917;
 			
-			// aapt resource value: 0x7f0a00ba
-			public const int action_divider = 2131361978;
+			// aapt resource value: 0x7f0a00be
+			public const int action_divider = 2131361982;
 			
-			// aapt resource value: 0x7f0a00b4
-			public const int action_image = 2131361972;
+			// aapt resource value: 0x7f0a00b8
+			public const int action_image = 2131361976;
 			
 			// aapt resource value: 0x7f0a0003
 			public const int action_menu_divider = 2131361795;
@@ -5194,11 +5396,11 @@ namespace XamExample.Droid
 			// aapt resource value: 0x7f0a005c
 			public const int action_mode_close_button = 2131361884;
 			
-			// aapt resource value: 0x7f0a00b5
-			public const int action_text = 2131361973;
+			// aapt resource value: 0x7f0a00b9
+			public const int action_text = 2131361977;
 			
-			// aapt resource value: 0x7f0a00c3
-			public const int actions = 2131361987;
+			// aapt resource value: 0x7f0a00c7
+			public const int actions = 2131361991;
 			
 			// aapt resource value: 0x7f0a005d
 			public const int activity_chooser_view_content = 2131361885;
@@ -5230,11 +5432,17 @@ namespace XamExample.Droid
 			// aapt resource value: 0x7f0a003d
 			public const int bottom = 2131361853;
 			
+			// aapt resource value: 0x7f0a008b
+			public const int bottomtab_navarea = 2131361931;
+			
+			// aapt resource value: 0x7f0a008c
+			public const int bottomtab_tabbar = 2131361932;
+			
 			// aapt resource value: 0x7f0a0063
 			public const int buttonPanel = 2131361891;
 			
-			// aapt resource value: 0x7f0a00b7
-			public const int cancel_action = 2131361975;
+			// aapt resource value: 0x7f0a00bb
+			public const int cancel_action = 2131361979;
 			
 			// aapt resource value: 0x7f0a0045
 			public const int center = 2131361861;
@@ -5248,8 +5456,8 @@ namespace XamExample.Droid
 			// aapt resource value: 0x7f0a0073
 			public const int checkbox = 2131361907;
 			
-			// aapt resource value: 0x7f0a00bf
-			public const int chronometer = 2131361983;
+			// aapt resource value: 0x7f0a00c3
+			public const int chronometer = 2131361987;
 			
 			// aapt resource value: 0x7f0a004e
 			public const int clip_horizontal = 2131361870;
@@ -5260,14 +5468,14 @@ namespace XamExample.Droid
 			// aapt resource value: 0x7f0a0039
 			public const int collapseActionView = 2131361849;
 			
-			// aapt resource value: 0x7f0a008d
-			public const int container = 2131361933;
+			// aapt resource value: 0x7f0a008f
+			public const int container = 2131361935;
 			
 			// aapt resource value: 0x7f0a0066
 			public const int contentPanel = 2131361894;
 			
-			// aapt resource value: 0x7f0a008e
-			public const int coordinator = 2131361934;
+			// aapt resource value: 0x7f0a0090
+			public const int coordinator = 2131361936;
 			
 			// aapt resource value: 0x7f0a006d
 			public const int custom = 2131361901;
@@ -5281,20 +5489,20 @@ namespace XamExample.Droid
 			// aapt resource value: 0x7f0a0060
 			public const int default_activity_button = 2131361888;
 			
-			// aapt resource value: 0x7f0a0090
-			public const int design_bottom_sheet = 2131361936;
+			// aapt resource value: 0x7f0a0092
+			public const int design_bottom_sheet = 2131361938;
+			
+			// aapt resource value: 0x7f0a0099
+			public const int design_menu_item_action_area = 2131361945;
+			
+			// aapt resource value: 0x7f0a0098
+			public const int design_menu_item_action_area_stub = 2131361944;
 			
 			// aapt resource value: 0x7f0a0097
-			public const int design_menu_item_action_area = 2131361943;
+			public const int design_menu_item_text = 2131361943;
 			
 			// aapt resource value: 0x7f0a0096
-			public const int design_menu_item_action_area_stub = 2131361942;
-			
-			// aapt resource value: 0x7f0a0095
-			public const int design_menu_item_text = 2131361941;
-			
-			// aapt resource value: 0x7f0a0094
-			public const int design_navigation_view = 2131361940;
+			public const int design_navigation_view = 2131361942;
 			
 			// aapt resource value: 0x7f0a0020
 			public const int disableHome = 2131361824;
@@ -5305,8 +5513,8 @@ namespace XamExample.Droid
 			// aapt resource value: 0x7f0a0030
 			public const int end = 2131361840;
 			
-			// aapt resource value: 0x7f0a00c5
-			public const int end_padder = 2131361989;
+			// aapt resource value: 0x7f0a00c9
+			public const int end_padder = 2131361993;
 			
 			// aapt resource value: 0x7f0a003f
 			public const int enterAlways = 2131361855;
@@ -5335,6 +5543,12 @@ namespace XamExample.Droid
 			// aapt resource value: 0x7f0a0054
 			public const int @fixed = 2131361876;
 			
+			// aapt resource value: 0x7f0a009b
+			public const int flyoutcontent_appbar = 2131361947;
+			
+			// aapt resource value: 0x7f0a009c
+			public const int flyoutcontent_recycler = 2131361948;
+			
 			// aapt resource value: 0x7f0a0058
 			public const int forever = 2131361880;
 			
@@ -5350,8 +5564,8 @@ namespace XamExample.Droid
 			// aapt resource value: 0x7f0a0062
 			public const int icon = 2131361890;
 			
-			// aapt resource value: 0x7f0a00c4
-			public const int icon_group = 2131361988;
+			// aapt resource value: 0x7f0a00c8
+			public const int icon_group = 2131361992;
 			
 			// aapt resource value: 0x7f0a003a
 			public const int ifRoom = 2131361850;
@@ -5359,8 +5573,8 @@ namespace XamExample.Droid
 			// aapt resource value: 0x7f0a005f
 			public const int image = 2131361887;
 			
-			// aapt resource value: 0x7f0a00c0
-			public const int info = 2131361984;
+			// aapt resource value: 0x7f0a00c4
+			public const int info = 2131361988;
 			
 			// aapt resource value: 0x7f0a0059
 			public const int italic = 2131361881;
@@ -5368,8 +5582,8 @@ namespace XamExample.Droid
 			// aapt resource value: 0x7f0a0000
 			public const int item_touch_helper_previous_elevation = 2131361792;
 			
-			// aapt resource value: 0x7f0a008c
-			public const int largeLabel = 2131361932;
+			// aapt resource value: 0x7f0a008e
+			public const int largeLabel = 2131361934;
 			
 			// aapt resource value: 0x7f0a0049
 			public const int left = 2131361865;
@@ -5387,13 +5601,25 @@ namespace XamExample.Droid
 			public const int list_item = 2131361889;
 			
 			// aapt resource value: 0x7f0a00ca
-			public const int masked = 2131361994;
+			public const int main_appbar = 2131361994;
 			
-			// aapt resource value: 0x7f0a00b9
-			public const int media_actions = 2131361977;
+			// aapt resource value: 0x7f0a00cd
+			public const int main_scrollview = 2131361997;
 			
-			// aapt resource value: 0x7f0a00c8
-			public const int message = 2131361992;
+			// aapt resource value: 0x7f0a00cc
+			public const int main_tablayout = 2131361996;
+			
+			// aapt resource value: 0x7f0a00cb
+			public const int main_toolbar = 2131361995;
+			
+			// aapt resource value: 0x7f0a00d5
+			public const int masked = 2131362005;
+			
+			// aapt resource value: 0x7f0a00bd
+			public const int media_actions = 2131361981;
+			
+			// aapt resource value: 0x7f0a00d3
+			public const int message = 2131362003;
 			
 			// aapt resource value: 0x7f0a0031
 			public const int middle = 2131361841;
@@ -5401,86 +5627,86 @@ namespace XamExample.Droid
 			// aapt resource value: 0x7f0a0053
 			public const int mini = 2131361875;
 			
-			// aapt resource value: 0x7f0a00a5
-			public const int mr_art = 2131361957;
-			
-			// aapt resource value: 0x7f0a009a
-			public const int mr_chooser_list = 2131361946;
-			
-			// aapt resource value: 0x7f0a009d
-			public const int mr_chooser_route_desc = 2131361949;
-			
-			// aapt resource value: 0x7f0a009b
-			public const int mr_chooser_route_icon = 2131361947;
-			
-			// aapt resource value: 0x7f0a009c
-			public const int mr_chooser_route_name = 2131361948;
-			
-			// aapt resource value: 0x7f0a0099
-			public const int mr_chooser_title = 2131361945;
-			
-			// aapt resource value: 0x7f0a00a2
-			public const int mr_close = 2131361954;
-			
-			// aapt resource value: 0x7f0a00a8
-			public const int mr_control_divider = 2131361960;
-			
-			// aapt resource value: 0x7f0a00ae
-			public const int mr_control_playback_ctrl = 2131361966;
-			
-			// aapt resource value: 0x7f0a00b1
-			public const int mr_control_subtitle = 2131361969;
-			
-			// aapt resource value: 0x7f0a00b0
-			public const int mr_control_title = 2131361968;
-			
-			// aapt resource value: 0x7f0a00af
-			public const int mr_control_title_container = 2131361967;
-			
-			// aapt resource value: 0x7f0a00a3
-			public const int mr_custom_control = 2131361955;
-			
-			// aapt resource value: 0x7f0a00a4
-			public const int mr_default_control = 2131361956;
-			
-			// aapt resource value: 0x7f0a009f
-			public const int mr_dialog_area = 2131361951;
+			// aapt resource value: 0x7f0a00a9
+			public const int mr_art = 2131361961;
 			
 			// aapt resource value: 0x7f0a009e
-			public const int mr_expandable_area = 2131361950;
-			
-			// aapt resource value: 0x7f0a00b2
-			public const int mr_group_expand_collapse = 2131361970;
-			
-			// aapt resource value: 0x7f0a00a6
-			public const int mr_media_main_control = 2131361958;
+			public const int mr_chooser_list = 2131361950;
 			
 			// aapt resource value: 0x7f0a00a1
-			public const int mr_name = 2131361953;
+			public const int mr_chooser_route_desc = 2131361953;
 			
-			// aapt resource value: 0x7f0a00a7
-			public const int mr_playback_control = 2131361959;
+			// aapt resource value: 0x7f0a009f
+			public const int mr_chooser_route_icon = 2131361951;
 			
 			// aapt resource value: 0x7f0a00a0
-			public const int mr_title_bar = 2131361952;
+			public const int mr_chooser_route_name = 2131361952;
 			
-			// aapt resource value: 0x7f0a00a9
-			public const int mr_volume_control = 2131361961;
+			// aapt resource value: 0x7f0a009d
+			public const int mr_chooser_title = 2131361949;
 			
-			// aapt resource value: 0x7f0a00aa
-			public const int mr_volume_group_list = 2131361962;
+			// aapt resource value: 0x7f0a00a6
+			public const int mr_close = 2131361958;
 			
 			// aapt resource value: 0x7f0a00ac
-			public const int mr_volume_item_icon = 2131361964;
+			public const int mr_control_divider = 2131361964;
+			
+			// aapt resource value: 0x7f0a00b2
+			public const int mr_control_playback_ctrl = 2131361970;
+			
+			// aapt resource value: 0x7f0a00b5
+			public const int mr_control_subtitle = 2131361973;
+			
+			// aapt resource value: 0x7f0a00b4
+			public const int mr_control_title = 2131361972;
+			
+			// aapt resource value: 0x7f0a00b3
+			public const int mr_control_title_container = 2131361971;
+			
+			// aapt resource value: 0x7f0a00a7
+			public const int mr_custom_control = 2131361959;
+			
+			// aapt resource value: 0x7f0a00a8
+			public const int mr_default_control = 2131361960;
+			
+			// aapt resource value: 0x7f0a00a3
+			public const int mr_dialog_area = 2131361955;
+			
+			// aapt resource value: 0x7f0a00a2
+			public const int mr_expandable_area = 2131361954;
+			
+			// aapt resource value: 0x7f0a00b6
+			public const int mr_group_expand_collapse = 2131361974;
+			
+			// aapt resource value: 0x7f0a00aa
+			public const int mr_media_main_control = 2131361962;
+			
+			// aapt resource value: 0x7f0a00a5
+			public const int mr_name = 2131361957;
+			
+			// aapt resource value: 0x7f0a00ab
+			public const int mr_playback_control = 2131361963;
+			
+			// aapt resource value: 0x7f0a00a4
+			public const int mr_title_bar = 2131361956;
 			
 			// aapt resource value: 0x7f0a00ad
-			public const int mr_volume_slider = 2131361965;
+			public const int mr_volume_control = 2131361965;
+			
+			// aapt resource value: 0x7f0a00ae
+			public const int mr_volume_group_list = 2131361966;
+			
+			// aapt resource value: 0x7f0a00b0
+			public const int mr_volume_item_icon = 2131361968;
+			
+			// aapt resource value: 0x7f0a00b1
+			public const int mr_volume_slider = 2131361969;
 			
 			// aapt resource value: 0x7f0a0028
 			public const int multiply = 2131361832;
 			
-			// aapt resource value: 0x7f0a0093
-			public const int navigation_header_container = 2131361939;
+			// aapt resource value: 0x7f0a0095
+			public const int navigation_header_container = 2131361941;
 			
 			// aapt resource value: 0x7f0a003b
 			public const int never = 2131361851;
@@ -5491,14 +5717,14 @@ namespace XamExample.Droid
 			// aapt resource value: 0x7f0a001e
 			public const int normal = 2131361822;
 			
-			// aapt resource value: 0x7f0a00c2
-			public const int notification_background = 2131361986;
+			// aapt resource value: 0x7f0a00c6
+			public const int notification_background = 2131361990;
 			
-			// aapt resource value: 0x7f0a00bc
-			public const int notification_main_column = 2131361980;
+			// aapt resource value: 0x7f0a00c0
+			public const int notification_main_column = 2131361984;
 			
-			// aapt resource value: 0x7f0a00bb
-			public const int notification_main_column_container = 2131361979;
+			// aapt resource value: 0x7f0a00bf
+			public const int notification_main_column_container = 2131361983;
 			
 			// aapt resource value: 0x7f0a004c
 			public const int parallax = 2131361868;
@@ -5524,11 +5750,11 @@ namespace XamExample.Droid
 			// aapt resource value: 0x7f0a004a
 			public const int right = 2131361866;
 			
-			// aapt resource value: 0x7f0a00c1
-			public const int right_icon = 2131361985;
+			// aapt resource value: 0x7f0a00c5
+			public const int right_icon = 2131361989;
 			
-			// aapt resource value: 0x7f0a00bd
-			public const int right_side = 2131361981;
+			// aapt resource value: 0x7f0a00c1
+			public const int right_side = 2131361985;
 			
 			// aapt resource value: 0x7f0a000c
 			public const int save_image_matrix = 2131361804;
@@ -5590,6 +5816,15 @@ namespace XamExample.Droid
 			// aapt resource value: 0x7f0a008a
 			public const int select_dialog_listview = 2131361930;
 			
+			// aapt resource value: 0x7f0a00ce
+			public const int shellcontent_appbar = 2131361998;
+			
+			// aapt resource value: 0x7f0a00d0
+			public const int shellcontent_scrollview = 2131362000;
+			
+			// aapt resource value: 0x7f0a00cf
+			public const int shellcontent_toolbar = 2131361999;
+			
 			// aapt resource value: 0x7f0a0074
 			public const int shortcut = 2131361908;
 			
@@ -5602,17 +5837,17 @@ namespace XamExample.Droid
 			// aapt resource value: 0x7f0a0025
 			public const int showTitle = 2131361829;
 			
-			// aapt resource value: 0x7f0a00c6
-			public const int sliding_tabs = 2131361990;
+			// aapt resource value: 0x7f0a00d1
+			public const int sliding_tabs = 2131362001;
 			
-			// aapt resource value: 0x7f0a008b
-			public const int smallLabel = 2131361931;
+			// aapt resource value: 0x7f0a008d
+			public const int smallLabel = 2131361933;
 			
-			// aapt resource value: 0x7f0a0092
-			public const int snackbar_action = 2131361938;
+			// aapt resource value: 0x7f0a0094
+			public const int snackbar_action = 2131361940;
 			
-			// aapt resource value: 0x7f0a0091
-			public const int snackbar_text = 2131361937;
+			// aapt resource value: 0x7f0a0093
+			public const int snackbar_text = 2131361939;
 			
 			// aapt resource value: 0x7f0a0043
 			public const int snap = 2131361859;
@@ -5635,8 +5870,8 @@ namespace XamExample.Droid
 			// aapt resource value: 0x7f0a004b
 			public const int start = 2131361867;
 			
-			// aapt resource value: 0x7f0a00b8
-			public const int status_bar_latest_event_content = 2131361976;
+			// aapt resource value: 0x7f0a00bc
+			public const int status_bar_latest_event_content = 2131361980;
 			
 			// aapt resource value: 0x7f0a0076
 			public const int submenuarrow = 2131361910;
@@ -5662,8 +5897,8 @@ namespace XamExample.Droid
 			// aapt resource value: 0x7f0a0069
 			public const int textSpacerNoTitle = 2131361897;
 			
-			// aapt resource value: 0x7f0a0098
-			public const int text_input_password_toggle = 2131361944;
+			// aapt resource value: 0x7f0a009a
+			public const int text_input_password_toggle = 2131361946;
 			
 			// aapt resource value: 0x7f0a0014
 			public const int textinput_counter = 2131361812;
@@ -5671,8 +5906,8 @@ namespace XamExample.Droid
 			// aapt resource value: 0x7f0a0015
 			public const int textinput_error = 2131361813;
 			
-			// aapt resource value: 0x7f0a00be
-			public const int time = 2131361982;
+			// aapt resource value: 0x7f0a00c2
+			public const int time = 2131361986;
 			
 			// aapt resource value: 0x7f0a001c
 			public const int title = 2131361820;
@@ -5683,8 +5918,8 @@ namespace XamExample.Droid
 			// aapt resource value: 0x7f0a006f
 			public const int title_template = 2131361903;
 			
-			// aapt resource value: 0x7f0a00c7
-			public const int toolbar = 2131361991;
+			// aapt resource value: 0x7f0a00d2
+			public const int toolbar = 2131362002;
 			
 			// aapt resource value: 0x7f0a003e
 			public const int top = 2131361854;
@@ -5692,8 +5927,8 @@ namespace XamExample.Droid
 			// aapt resource value: 0x7f0a006e
 			public const int topPanel = 2131361902;
 			
-			// aapt resource value: 0x7f0a008f
-			public const int touch_outside = 2131361935;
+			// aapt resource value: 0x7f0a0091
+			public const int touch_outside = 2131361937;
 			
 			// aapt resource value: 0x7f0a000f
 			public const int transition_current_scene = 2131361807;
@@ -5722,11 +5957,11 @@ namespace XamExample.Droid
 			// aapt resource value: 0x7f0a0016
 			public const int view_offset_helper = 2131361814;
 			
-			// aapt resource value: 0x7f0a00c9
-			public const int visible = 2131361993;
+			// aapt resource value: 0x7f0a00d4
+			public const int visible = 2131362004;
 			
-			// aapt resource value: 0x7f0a00ab
-			public const int volume_item_container = 2131361963;
+			// aapt resource value: 0x7f0a00af
+			public const int volume_item_container = 2131361967;
 			
 			// aapt resource value: 0x7f0a003c
 			public const int withText = 2131361852;
@@ -5897,130 +6132,142 @@ namespace XamExample.Droid
 			public const int abc_select_dialog_material = 2130968601;
 			
 			// aapt resource value: 0x7f04001a
-			public const int design_bottom_navigation_item = 2130968602;
+			public const int BottomTabLayout = 2130968602;
 			
 			// aapt resource value: 0x7f04001b
-			public const int design_bottom_sheet_dialog = 2130968603;
+			public const int design_bottom_navigation_item = 2130968603;
 			
 			// aapt resource value: 0x7f04001c
-			public const int design_layout_snackbar = 2130968604;
+			public const int design_bottom_sheet_dialog = 2130968604;
 			
 			// aapt resource value: 0x7f04001d
-			public const int design_layout_snackbar_include = 2130968605;
+			public const int design_layout_snackbar = 2130968605;
 			
 			// aapt resource value: 0x7f04001e
-			public const int design_layout_tab_icon = 2130968606;
+			public const int design_layout_snackbar_include = 2130968606;
 			
 			// aapt resource value: 0x7f04001f
-			public const int design_layout_tab_text = 2130968607;
+			public const int design_layout_tab_icon = 2130968607;
 			
 			// aapt resource value: 0x7f040020
-			public const int design_menu_item_action_area = 2130968608;
+			public const int design_layout_tab_text = 2130968608;
 			
 			// aapt resource value: 0x7f040021
-			public const int design_navigation_item = 2130968609;
+			public const int design_menu_item_action_area = 2130968609;
 			
 			// aapt resource value: 0x7f040022
-			public const int design_navigation_item_header = 2130968610;
+			public const int design_navigation_item = 2130968610;
 			
 			// aapt resource value: 0x7f040023
-			public const int design_navigation_item_separator = 2130968611;
+			public const int design_navigation_item_header = 2130968611;
 			
 			// aapt resource value: 0x7f040024
-			public const int design_navigation_item_subheader = 2130968612;
+			public const int design_navigation_item_separator = 2130968612;
 			
 			// aapt resource value: 0x7f040025
-			public const int design_navigation_menu = 2130968613;
+			public const int design_navigation_item_subheader = 2130968613;
 			
 			// aapt resource value: 0x7f040026
-			public const int design_navigation_menu_item = 2130968614;
+			public const int design_navigation_menu = 2130968614;
 			
 			// aapt resource value: 0x7f040027
-			public const int design_text_input_password_icon = 2130968615;
+			public const int design_navigation_menu_item = 2130968615;
 			
 			// aapt resource value: 0x7f040028
-			public const int mr_chooser_dialog = 2130968616;
+			public const int design_text_input_password_icon = 2130968616;
 			
 			// aapt resource value: 0x7f040029
-			public const int mr_chooser_list_item = 2130968617;
+			public const int FlyoutContent = 2130968617;
 			
 			// aapt resource value: 0x7f04002a
-			public const int mr_controller_material_dialog_b = 2130968618;
+			public const int mr_chooser_dialog = 2130968618;
 			
 			// aapt resource value: 0x7f04002b
-			public const int mr_controller_volume_item = 2130968619;
+			public const int mr_chooser_list_item = 2130968619;
 			
 			// aapt resource value: 0x7f04002c
-			public const int mr_playback_control = 2130968620;
+			public const int mr_controller_material_dialog_b = 2130968620;
 			
 			// aapt resource value: 0x7f04002d
-			public const int mr_volume_control = 2130968621;
+			public const int mr_controller_volume_item = 2130968621;
 			
 			// aapt resource value: 0x7f04002e
-			public const int notification_action = 2130968622;
+			public const int mr_playback_control = 2130968622;
 			
 			// aapt resource value: 0x7f04002f
-			public const int notification_action_tombstone = 2130968623;
+			public const int mr_volume_control = 2130968623;
 			
 			// aapt resource value: 0x7f040030
-			public const int notification_media_action = 2130968624;
+			public const int notification_action = 2130968624;
 			
 			// aapt resource value: 0x7f040031
-			public const int notification_media_cancel_action = 2130968625;
+			public const int notification_action_tombstone = 2130968625;
 			
 			// aapt resource value: 0x7f040032
-			public const int notification_template_big_media = 2130968626;
+			public const int notification_media_action = 2130968626;
 			
 			// aapt resource value: 0x7f040033
-			public const int notification_template_big_media_custom = 2130968627;
+			public const int notification_media_cancel_action = 2130968627;
 			
 			// aapt resource value: 0x7f040034
-			public const int notification_template_big_media_narrow = 2130968628;
+			public const int notification_template_big_media = 2130968628;
 			
 			// aapt resource value: 0x7f040035
-			public const int notification_template_big_media_narrow_custom = 2130968629;
+			public const int notification_template_big_media_custom = 2130968629;
 			
 			// aapt resource value: 0x7f040036
-			public const int notification_template_custom_big = 2130968630;
+			public const int notification_template_big_media_narrow = 2130968630;
 			
 			// aapt resource value: 0x7f040037
-			public const int notification_template_icon_group = 2130968631;
+			public const int notification_template_big_media_narrow_custom = 2130968631;
 			
 			// aapt resource value: 0x7f040038
-			public const int notification_template_lines_media = 2130968632;
+			public const int notification_template_custom_big = 2130968632;
 			
 			// aapt resource value: 0x7f040039
-			public const int notification_template_media = 2130968633;
+			public const int notification_template_icon_group = 2130968633;
 			
 			// aapt resource value: 0x7f04003a
-			public const int notification_template_media_custom = 2130968634;
+			public const int notification_template_lines_media = 2130968634;
 			
 			// aapt resource value: 0x7f04003b
-			public const int notification_template_part_chronometer = 2130968635;
+			public const int notification_template_media = 2130968635;
 			
 			// aapt resource value: 0x7f04003c
-			public const int notification_template_part_time = 2130968636;
+			public const int notification_template_media_custom = 2130968636;
 			
 			// aapt resource value: 0x7f04003d
-			public const int select_dialog_item_material = 2130968637;
+			public const int notification_template_part_chronometer = 2130968637;
 			
 			// aapt resource value: 0x7f04003e
-			public const int select_dialog_multichoice_material = 2130968638;
+			public const int notification_template_part_time = 2130968638;
 			
 			// aapt resource value: 0x7f04003f
-			public const int select_dialog_singlechoice_material = 2130968639;
+			public const int RootLayout = 2130968639;
 			
 			// aapt resource value: 0x7f040040
-			public const int support_simple_spinner_dropdown_item = 2130968640;
+			public const int select_dialog_item_material = 2130968640;
 			
 			// aapt resource value: 0x7f040041
-			public const int Tabbar = 2130968641;
+			public const int select_dialog_multichoice_material = 2130968641;
 			
 			// aapt resource value: 0x7f040042
-			public const int Toolbar = 2130968642;
+			public const int select_dialog_singlechoice_material = 2130968642;
 			
 			// aapt resource value: 0x7f040043
-			public const int tooltip = 2130968643;
+			public const int ShellContent = 2130968643;
+			
+			// aapt resource value: 0x7f040044
+			public const int support_simple_spinner_dropdown_item = 2130968644;
+			
+			// aapt resource value: 0x7f040045
+			public const int Tabbar = 2130968645;
+			
+			// aapt resource value: 0x7f040046
+			public const int Toolbar = 2130968646;
+			
+			// aapt resource value: 0x7f040047
+			public const int tooltip = 2130968647;
 			
 			static Layout()
 			{

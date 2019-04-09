@@ -17,6 +17,8 @@ namespace XamEffects.iOS {
         ICommand _longCommand;
         object _tapParameter;
         object _longParameter;
+        UITapGestureRecognizer _tapRecognizer;
+        UILongPressGestureRecognizer _longTapRecognizer;
 
         protected override void OnAttached() {
             View.UserInteractionEnabled = true;
@@ -26,13 +28,18 @@ namespace XamEffects.iOS {
             UpdateLongTap();
             UpdateLongTapParameter();
 
-            TapGestureCollector.Add(View, TapAction);
-            LongTapGestureCollector.Add(View, LongTapAction);
+            _tapRecognizer = new UITapGestureRecognizer(TapAction);
+            _longTapRecognizer = new UILongPressGestureRecognizer(LongTapAction);
+
+            View.AddGestureRecognizer(_tapRecognizer);
+            View.AddGestureRecognizer(_longTapRecognizer);
         }
 
         protected override void OnDetached() {
-            TapGestureCollector.Delete(View, TapAction);
-            LongTapGestureCollector.Delete(View, LongTapAction);
+            View.RemoveGestureRecognizer(_tapRecognizer);
+            View.RemoveGestureRecognizer(_longTapRecognizer);
+            _tapRecognizer.Dispose();
+            _longTapRecognizer.Dispose();
         }
 
         void TapAction() {
@@ -40,8 +47,11 @@ namespace XamEffects.iOS {
                 _tapCommand.Execute(_tapParameter);
         }
 
-        void LongTapAction(UIGestureRecognizerState state, bool inside) {
-            switch (state) {
+        void LongTapAction(UILongPressGestureRecognizer uiLongPressGestureRecognizer) {
+            var coord = uiLongPressGestureRecognizer.LocationInView(uiLongPressGestureRecognizer.View);
+            var inside = uiLongPressGestureRecognizer.View.PointInside(coord, null);
+
+            switch (uiLongPressGestureRecognizer.State) {
                 case UIGestureRecognizerState.Began:
                     break;
                 case UIGestureRecognizerState.Ended:
