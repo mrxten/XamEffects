@@ -58,11 +58,14 @@ namespace XamEffects.Droid {
 
         protected override void OnDetached() {
             if (!IsDisposed) return;
+            
+            Container.RemoveView(_viewOverlay);
             if (EnableRipple) {
                 _viewOverlay.Foreground = null;
                 _viewOverlay.Dispose();
                 _ripple?.Dispose();
             }
+            Container.LayoutChange -= ViewOnLayoutChange;
 
             View.Touch -= OnTouch;
         }
@@ -93,7 +96,6 @@ namespace XamEffects.Droid {
             switch (args.Event.Action) {
                 case MotionEventActions.Down:
                     _rippleOnScreen = true;
-
                     if (EnableRipple)
                         ForceStartRipple(args.Event.GetX(), args.Event.GetY());
                     else
@@ -104,7 +106,6 @@ namespace XamEffects.Droid {
                 case MotionEventActions.Cancel:
                     args.Handled = false;
                     _rippleOnScreen = false;
-
                     if (EnableRipple)
                         ForceEndRipple();
                     else
@@ -116,7 +117,7 @@ namespace XamEffects.Droid {
 
         void ViewOnLayoutChange(object sender, View.LayoutChangeEventArgs layoutChangeEventArgs) {
             var group = (ViewGroup)sender;
-            if (group == null) return;
+            if (group == null || IsDisposed) return;
             _viewOverlay.Right = group.Width;
             _viewOverlay.Bottom = group.Height;
         }

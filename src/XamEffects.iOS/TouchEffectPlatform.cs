@@ -38,7 +38,6 @@ namespace XamEffects.iOS {
                 Opaque = false
             };
 
-
             UpdateEffectColor();
             _touchRecognizer.OnTouch += TouchRecognizer_OnTouch;
         }
@@ -47,14 +46,14 @@ namespace XamEffects.iOS {
             _touchRecognizer.OnTouch -= TouchRecognizer_OnTouch;
             View.RemoveGestureRecognizer(_touchRecognizer);
 
+            _layer?.RemoveFromSuperview();
             _layer?.Dispose();
-            _layer = null;
         }
 
         async void TouchRecognizer_OnTouch(object sender, TouchGestureRecognizer.TouchArgs e) {
             switch (e.State) {
                 case TouchGestureRecognizer.TouchState.Started:
-                    await TapAnimation(0.125, 0, _alpha, false);
+                    await TapAnimation(0.1, 0, _alpha, false);
                     break;
 
                 case TouchGestureRecognizer.TouchState.Ended:
@@ -87,6 +86,7 @@ namespace XamEffects.iOS {
                 _cancellation = new CancellationTokenSource();
                 var token = _cancellation.Token;
 
+                _layer.RemoveFromSuperview();
                 View.AddSubview(_layer);
                 View.BringSubviewToFront(_layer);
                 _layer.Alpha = start;
