@@ -2,16 +2,15 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>XamEffects</id>
-    <version>1.5.6</version>
+    <version>1.6.0-pre</version>
     <authors>Vladislav Zhukov</authors>
     <owners>mrxten</owners>
     <licenseUrl>https://github.com/mrxten/XamEffects/blob/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/mrxten/XamEffects</projectUrl>
     <iconUrl>https://raw.githubusercontent.com/mrxten/XamEffects/master/nuget/XamEffects_icon.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Xamarin Forms effects for Android and iOS only.</description>
-    <releaseNotes>Small exception bugfixes.</releaseNotes>
-    <copyright>Copyright 2017</copyright>
+    <description>Xamarin Forms UI effects for Android and iOS only.</description>
+    <copyright>Copyright 2019</copyright>
     <tags>xamarin xamarin-forms effects</tags>
     <dependencies>
       <dependency id="Xamarin.Forms" version="2.5.0.77107" />
