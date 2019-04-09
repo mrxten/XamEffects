@@ -1,5 +1,11 @@
 # Release notes
 
+## 1.6.0-pre
+  * Rewrite using gestures in iOS - immediately starts touch effect after began touch
+  * Fix using and add customization alpha channel in touch color.
+  * Fix touch animation ending in old android (in API < 21).
+  * Reformat and restruct source code
+
 ## 1.5.6
 Small exception bugfixes.
 
