@@ -25,12 +25,14 @@ namespace XamEffects.Droid {
             View.Clickable = true;
             View.LongClickable = true;
             View.Touch += ViewOnTouch;
+            View.SoundEffectsEnabled = true;
         }
 
         void ViewOnTouch(object sender, View.TouchEventArgs args) {
             switch (args.Event.Action) {
                 case MotionEventActions.Down:
                     _tapTime = DateTime.Now;
+                    View.PlaySoundEffect(SoundEffects.Click);
                     break;
 
                 case MotionEventActions.Up:
