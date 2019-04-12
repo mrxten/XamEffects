@@ -26,12 +26,8 @@ namespace XamEffects.iOS {
         CancellationTokenSource _cancellation;
 
         protected override void OnAttached() {
-            _touchRecognizer = new TouchGestureRecognizer {
-                CancelsTouchesInView = false,
-                Delegate = new TouchGestureRecognizerDelegate(View)
-            };
+            TouchGestureCollector.Add(View, OnTouch);
 
-            View.AddGestureRecognizer(_touchRecognizer);
             View.UserInteractionEnabled = true;
 
             _layer = new UIView {
@@ -40,18 +36,16 @@ namespace XamEffects.iOS {
             };
 
             UpdateEffectColor();
-            _touchRecognizer.OnTouch += TouchRecognizer_OnTouch;
         }
 
         protected override void OnDetached() {
-            _touchRecognizer.OnTouch -= TouchRecognizer_OnTouch;
-            View.RemoveGestureRecognizer(_touchRecognizer);
+            TouchGestureCollector.Delete(View, OnTouch);
 
             _layer?.RemoveFromSuperview();
             _layer?.Dispose();
         }
 
-        async void TouchRecognizer_OnTouch(object sender, TouchGestureRecognizer.TouchArgs e) {
+        async void OnTouch(TouchGestureRecognizer.TouchArgs e) {
             switch (e.State) {
                 case TouchGestureRecognizer.TouchState.Started:
                     _cancellation?.Cancel();
@@ -62,7 +56,7 @@ namespace XamEffects.iOS {
                     break;
 
                 case TouchGestureRecognizer.TouchState.Ended:
-                    await EndANimation();
+                    await EndAnimation();
                     break;
 
                 case TouchGestureRecognizer.TouchState.Cancelled:
@@ -92,7 +86,7 @@ namespace XamEffects.iOS {
             _layer.BackgroundColor = color.ToUIColor();
         }
 
-        async Task EndANimation() {
+        async Task EndAnimation() {
             if (!IsDisposed && _layer != null) {
                 _cancellation?.Cancel();
                 _cancellation = new CancellationTokenSource();

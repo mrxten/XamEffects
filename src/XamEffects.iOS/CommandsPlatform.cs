@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Windows.Input;
 using UIKit;
 using Xamarin.Forms;
@@ -14,58 +15,58 @@ namespace XamEffects.iOS {
     public class CommandsPlatform : PlatformEffect {
         public UIView View => Control ?? Container;
 
+        DateTime _tapTime;
         ICommand _tapCommand;
         ICommand _longCommand;
         object _tapParameter;
         object _longParameter;
-        UITapGestureRecognizer _tapRecognizer;
-        UILongPressGestureRecognizer _longTapRecognizer;
 
         protected override void OnAttached() {
             View.UserInteractionEnabled = true;
-            _tapRecognizer = new UITapGestureRecognizer(TapAction) {
-                Delegate = new TapGestureRecognizerDelegate(View)
-            };
-            _longTapRecognizer = new UILongPressGestureRecognizer(LongTapAction) {
-                Delegate = new TapGestureRecognizerDelegate(View)
-            };
-            
+
             UpdateTap();
             UpdateTapParameter();
             UpdateLongTap();
             UpdateLongTapParameter();
+
+            TouchGestureCollector.Add(View, OnTouch);
         }
 
         protected override void OnDetached() {
-            View.RemoveGestureRecognizer(_tapRecognizer);
-            View.RemoveGestureRecognizer(_longTapRecognizer);
-            _tapRecognizer.Dispose();
-            _longTapRecognizer.Dispose();
+            TouchGestureCollector.Delete(View, OnTouch);
         }
 
-        void TapAction() {
+        void OnTouch(TouchGestureRecognizer.TouchArgs e) {
+            switch (e.State) {
+                case TouchGestureRecognizer.TouchState.Started:
+                    _tapTime = DateTime.Now;
+                    break;
+
+                case TouchGestureRecognizer.TouchState.Ended:
+                    if (e.Inside) {
+                        var range = (DateTime.Now - _tapTime).TotalMilliseconds;
+                        if (range > 800)
+                            LongClickHandler();
+                        else
+                            ClickHandler();
+                    }
+                    break;
+
+                case TouchGestureRecognizer.TouchState.Cancelled:
+                    break;
+            }
+        }
+
+        void ClickHandler() {
             if (_tapCommand?.CanExecute(_tapParameter) ?? false)
                 _tapCommand.Execute(_tapParameter);
         }
 
-        void LongTapAction(UILongPressGestureRecognizer uiLongPressGestureRecognizer) {
-            var coord = uiLongPressGestureRecognizer.LocationInView(uiLongPressGestureRecognizer.View);
-            var inside = uiLongPressGestureRecognizer.View.PointInside(coord, null);
-
-            switch (uiLongPressGestureRecognizer.State) {
-                case UIGestureRecognizerState.Began:
-                    break;
-                case UIGestureRecognizerState.Ended:
-                    if (!inside) return;
-                    if (_longCommand == null)
-                        TapAction();
-                    else if (_longCommand.CanExecute(_longParameter))
-                        _longCommand.Execute(_longParameter);
-                    break;
-                case UIGestureRecognizerState.Cancelled:
-                case UIGestureRecognizerState.Failed:
-                    break;
-            }
+        void LongClickHandler() {
+            if (_longCommand == null)
+                ClickHandler();
+            else if (_longCommand.CanExecute(_longParameter))
+                _longCommand.Execute(_longParameter);
         }
 
         protected override void OnElementPropertyChanged(PropertyChangedEventArgs args) {
@@ -83,10 +84,6 @@ namespace XamEffects.iOS {
 
         void UpdateTap() {
             _tapCommand = Commands.GetTap(Element);
-            if (_tapCommand == null)
-                View.RemoveGestureRecognizer(_tapRecognizer);
-            else 
-                View.AddGestureRecognizer(_tapRecognizer);
         }
 
         void UpdateTapParameter() {
@@ -95,10 +92,6 @@ namespace XamEffects.iOS {
 
         void UpdateLongTap() {
             _longCommand = Commands.GetLongTap(Element);
-            if (_longCommand == null)
-                View.RemoveGestureRecognizer(_longTapRecognizer);
-            else 
-                View.AddGestureRecognizer(_longTapRecognizer);
         }
 
         void UpdateLongTapParameter() {
@@ -106,18 +99,6 @@ namespace XamEffects.iOS {
         }
 
         public static void Init() {
-        }
-        
-        public class TapGestureRecognizerDelegate : UIGestureRecognizerDelegate {
-            readonly UIView _view;
-
-            public TapGestureRecognizerDelegate(UIView view) {
-                _view = view;
-            }
-
-            public override bool ShouldReceiveTouch(UIGestureRecognizer recognizer, UITouch touch) {
-                return touch.View == _view;
-            }
         }
     }
 }

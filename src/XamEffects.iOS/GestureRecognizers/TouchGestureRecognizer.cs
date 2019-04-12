@@ -6,12 +6,14 @@ using Xamarin.Forms;
 using System.Threading.Tasks;
 using CoreGraphics;
 using XamEffects.iOS.GestureCollectors;
+using System.Threading;
 
 namespace XamEffects.iOS.GestureRecognizers {
     public class TouchGestureRecognizer : UIGestureRecognizer {
-        CGPoint _startPoint;
-        TaskCompletionSource<bool> _awaiter;
-        bool _ended;
+        CGPoint _startPos;
+        TaskCompletionSource<object> _startAwaiter;
+
+        public bool Processing => State == UIGestureRecognizerState.Began || State == UIGestureRecognizerState.Changed;
 
         public enum TouchState {
             Started,
@@ -23,68 +25,59 @@ namespace XamEffects.iOS.GestureRecognizers {
 
         public override async void TouchesBegan(NSSet touches, UIEvent evt) {
             base.TouchesBegan(touches, evt);
-            _ended = false;
-            _startPoint = PointInWindow(View);
-            _awaiter?.TrySetResult(false);
-            _awaiter = new TaskCompletionSource<bool>();
 
-#pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
-            Task.Delay(125).ContinueWith(task => {
-                _awaiter.TrySetResult(true);
-            });
-#pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
-
-            var start = await _awaiter.Task;
-            if (start && !_ended) {
-                OnTouch?.Invoke(View, new TouchArgs(TouchState.Started));
-                State = UIGestureRecognizerState.Began;
+            if (Processing)
                 return;
+
+            _startPos = PointInWindow(View);
+            State = UIGestureRecognizerState.Began;
+            _startAwaiter?.TrySetCanceled();
+            _startAwaiter = new TaskCompletionSource<object>();
+
+            await Task.Delay(125);
+
+            if (Processing) {
+                OnTouch?.Invoke(this, new TouchArgs(TouchState.Started, true));
+                _startAwaiter.TrySetResult(null);
             }
-            State = UIGestureRecognizerState.Cancelled;
         }
 
         public override void TouchesMoved(NSSet touches, UIEvent evt) {
-            bool inside;
-            CGPoint current;
+            var inside = View.PointInside(LocationInView(View), evt);
+            var currentPos = inside ? PointInWindow(View) : _startPos;
 
-            if (HasActivatedLongPressRecognizer(View)) {
-                inside = true;
-                current = _startPoint;
-            }
-            else {
-                inside = View.PointInside(LocationInView(View), null);
-                current = inside ? PointInWindow(View) : _startPoint;
-            }
-            
-            if (!inside || Math.Abs(current.X - _startPoint.X) > 1 || Math.Abs(current.Y - _startPoint.Y) > 1) {
-                _awaiter?.TrySetResult(false);
-                if (State == UIGestureRecognizerState.Began || State == UIGestureRecognizerState.Changed) {
-                    OnTouch?.Invoke(View, new TouchArgs(TouchState.Ended));
-                    State = UIGestureRecognizerState.Ended;
-                }
+            if (!inside || Math.Abs(currentPos.X - _startPos.X) > 1 || Math.Abs(currentPos.Y - _startPos.Y) > 1) {
+                if (Processing)
+                    OnTouch?.Invoke(this, new TouchArgs(TouchState.Ended, false));
+                State = UIGestureRecognizerState.Ended;
+                return;
             }
 
             State = UIGestureRecognizerState.Changed;
-
             base.TouchesMoved(touches, evt);
         }
 
         public override async void TouchesEnded(NSSet touches, UIEvent evt) {
-            base.TouchesEnded(touches, evt);
+            var inside = View.PointInside(LocationInView(View), evt);
 
-            var end = await _awaiter.Task;
-            if (end) {
-                _ended = true;
-                OnTouch?.Invoke(View, new TouchArgs(TouchState.Ended));
-                State = UIGestureRecognizerState.Ended;
-                return;
+            if (Processing && inside) {
+                try {
+                    await _startAwaiter.Task;
+                    OnTouch?.Invoke(this, new TouchArgs(TouchState.Ended, View.PointInside(LocationInView(View), null)));
+                    State = UIGestureRecognizerState.Ended;
+                }
+                catch (TaskCanceledException) {
+                    State = UIGestureRecognizerState.Cancelled;
+                }
             }
-            State = UIGestureRecognizerState.Cancelled;
+            State = UIGestureRecognizerState.Ended;
+
+            base.TouchesEnded(touches, evt);
         }
 
         public override void TouchesCancelled(NSSet touches, UIEvent evt) {
             base.TouchesCancelled(touches, evt);
-            OnTouch?.Invoke(View, new TouchArgs(TouchState.Cancelled));
+            OnTouch?.Invoke(this, new TouchArgs(TouchState.Cancelled, false));
             State = UIGestureRecognizerState.Cancelled;
         }
 
@@ -95,22 +88,13 @@ namespace XamEffects.iOS.GestureRecognizers {
             return new CGPoint(relativeFrame.X, relativeFrame.Y);
         }
 
-        bool HasActivatedLongPressRecognizer(UIView view) {
-            return view.GestureRecognizers?.Any(e => {
-                if (e is UILongPressGestureRecognizer recognizer) {
-                    return recognizer.State == UIGestureRecognizerState.Began ||
-                           recognizer.State == UIGestureRecognizerState.Changed;
-                }
-
-                return false;
-            }) ?? false;
-        }
-
         public class TouchArgs : EventArgs {
             public TouchState State { get; }
+            public bool Inside { get; }
 
-            public TouchArgs(TouchState state) {
+            public TouchArgs(TouchState state, bool inside) {
                 State = state;
+                Inside = inside;
             }
         }
     }
