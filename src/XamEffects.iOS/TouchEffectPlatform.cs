@@ -54,15 +54,14 @@ namespace XamEffects.iOS {
             switch (e.State) {
                 case TouchGestureRecognizer.TouchState.Started:
                     _cancellation?.Cancel();
-                    _layer.RemoveFromSuperview();
-                    View.AddSubview(_layer);
-                    View.BringSubviewToFront(_layer);
                     _layer.Alpha = _alpha;
                     _layer.Frame = new CGRect(0, 0, View.Bounds.Width, View.Bounds.Height);
+                    View.AddSubview(_layer);
+                    View.BringSubviewToFront(_layer);
                     break;
 
                 case TouchGestureRecognizer.TouchState.Ended:
-                    await TapAnimation();
+                    await EndANimation();
                     break;
 
                 case TouchGestureRecognizer.TouchState.Cancelled:
@@ -92,7 +91,7 @@ namespace XamEffects.iOS {
             _layer.BackgroundColor = color.ToUIColor();
         }
 
-        async Task TapAnimation() {
+        async Task EndANimation() {
             if (!IsDisposed && _layer != null) {
                 _cancellation?.Cancel();
                 _cancellation = new CancellationTokenSource();

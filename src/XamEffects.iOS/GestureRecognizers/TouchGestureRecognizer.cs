@@ -8,6 +8,7 @@ namespace XamEffects.iOS.GestureRecognizers {
     public class TouchGestureRecognizer : UIGestureRecognizer {
         Point _startPoint;
         TaskCompletionSource<bool> _awaiter;
+        bool _ended;
 
         public enum TouchState {
             Started,
@@ -23,7 +24,7 @@ namespace XamEffects.iOS.GestureRecognizers {
 
         public override async void TouchesBegan(NSSet touches, UIEvent evt) {
             base.TouchesBegan(touches, evt);
-
+            _ended = false;
             _startPoint = PointInWindow(View);
             _awaiter?.TrySetResult(false);
             _awaiter = new TaskCompletionSource<bool>();
@@ -35,7 +36,7 @@ namespace XamEffects.iOS.GestureRecognizers {
 #pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
 
             var start = await _awaiter.Task;
-            if (start) {
+            if (start && !_ended) {
                 OnTouch?.Invoke(View, new TouchArgs(TouchState.Started));
                 State = UIGestureRecognizerState.Began;
                 return;
@@ -63,6 +64,7 @@ namespace XamEffects.iOS.GestureRecognizers {
 
             var end = await _awaiter.Task;
             if (end) {
+                _ended = true;
                 OnTouch?.Invoke(View, new TouchArgs(TouchState.Ended));
                 State = UIGestureRecognizerState.Ended;
                 return;
