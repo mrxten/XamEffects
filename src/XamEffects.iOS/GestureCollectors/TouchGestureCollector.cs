@@ -35,9 +35,6 @@ namespace XamEffects.iOS.GestureCollectors {
 
             if (ci.Actions.Count != 0) return;
             view.RemoveGestureRecognizer(ci.Recognizer);
-            ci.Recognizer.Dispose();
-            ci.Recognizer = null;
-            ci.Actions = null;
             Collection.Remove(view);
         }
 
