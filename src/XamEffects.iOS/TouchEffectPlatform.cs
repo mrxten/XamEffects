@@ -53,11 +53,23 @@ namespace XamEffects.iOS {
         async void TouchRecognizer_OnTouch(object sender, TouchGestureRecognizer.TouchArgs e) {
             switch (e.State) {
                 case TouchGestureRecognizer.TouchState.Started:
-                    await TapAnimation(0.1, 0, _alpha, false);
+                    _cancellation?.Cancel();
+                    _layer.RemoveFromSuperview();
+                    View.AddSubview(_layer);
+                    View.BringSubviewToFront(_layer);
+                    _layer.Alpha = _alpha;
+                    _layer.Frame = new CGRect(0, 0, View.Bounds.Width, View.Bounds.Height);
                     break;
 
                 case TouchGestureRecognizer.TouchState.Ended:
-                    await TapAnimation(0.25, _alpha, 0, true);
+                    await TapAnimation();
+                    break;
+
+                case TouchGestureRecognizer.TouchState.Cancelled:
+                    if (!IsDisposed && _layer != null) {
+                        _layer.Alpha = 0;
+                        _layer.RemoveFromSuperview();
+                    }
                     break;
             }
         }
@@ -80,23 +92,19 @@ namespace XamEffects.iOS {
             _layer.BackgroundColor = color.ToUIColor();
         }
 
-        async Task TapAnimation(double duration, nfloat start, nfloat end, bool remove) {
+        async Task TapAnimation() {
             if (!IsDisposed && _layer != null) {
                 _cancellation?.Cancel();
                 _cancellation = new CancellationTokenSource();
                 var token = _cancellation.Token;
 
-                _layer.RemoveFromSuperview();
-                View.AddSubview(_layer);
-                View.BringSubviewToFront(_layer);
-                _layer.Alpha = start;
-                _layer.Frame = new CGRect(0, 0, View.Bounds.Width, View.Bounds.Height);
-                await UIView.AnimateAsync(duration,
-                    () => {
-                        if (!token.IsCancellationRequested && !IsDisposed)
-                            _layer.Alpha = end;
-                    });
-                if (remove && !IsDisposed && !token.IsCancellationRequested) {
+                await UIView.AnimateAsync(0.25,
+                () => {
+                    if (!token.IsCancellationRequested && !IsDisposed)
+                        _layer.Alpha = 0;
+                });
+
+                if (!IsDisposed && !token.IsCancellationRequested) {
                     _layer?.RemoveFromSuperview();
                 }
             }

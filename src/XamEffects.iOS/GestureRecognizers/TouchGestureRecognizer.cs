@@ -1,32 +1,86 @@
 ﻿using System;
 using Foundation;
 using UIKit;
+using Xamarin.Forms;
+using System.Threading.Tasks;
 
 namespace XamEffects.iOS.GestureRecognizers {
     public class TouchGestureRecognizer : UIGestureRecognizer {
+        Point _startPoint;
+        TaskCompletionSource<bool> _awaiter;
+
         public enum TouchState {
             Started,
-            Ended
+            Ended,
+            Cancelled
+        }
+
+        public TouchGestureRecognizer() {
+            CancelsTouchesInView = false;
         }
 
         public event EventHandler<TouchArgs> OnTouch;
 
-        public override void TouchesBegan(NSSet touches, UIEvent evt) {
+        public override async void TouchesBegan(NSSet touches, UIEvent evt) {
             base.TouchesBegan(touches, evt);
-            OnTouch?.Invoke(View, new TouchArgs(TouchState.Started));
-            State = UIGestureRecognizerState.Began;
+
+            _startPoint = PointInWindow(View);
+            _awaiter?.TrySetResult(false);
+            _awaiter = new TaskCompletionSource<bool>();
+
+#pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
+            Task.Delay(125).ContinueWith(task => {
+                _awaiter.TrySetResult(true);
+            });
+#pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
+
+            var start = await _awaiter.Task;
+            if (start) {
+                OnTouch?.Invoke(View, new TouchArgs(TouchState.Started));
+                State = UIGestureRecognizerState.Began;
+                return;
+            }
+            State = UIGestureRecognizerState.Cancelled;
         }
 
-        public override void TouchesEnded(NSSet touches, UIEvent evt) {
+        public override void TouchesMoved(NSSet touches, UIEvent evt) {
+            var current = PointInWindow(View);
+            if (Math.Abs(current.X - _startPoint.X) > 1 || Math.Abs(current.Y - _startPoint.Y) > 1) {
+                _awaiter?.TrySetResult(false);
+                if (State == UIGestureRecognizerState.Began || State == UIGestureRecognizerState.Changed) {
+                    OnTouch?.Invoke(View, new TouchArgs(TouchState.Ended));
+                    State = UIGestureRecognizerState.Ended;
+                }
+            }
+
+            State = UIGestureRecognizerState.Changed;
+
+            base.TouchesMoved(touches, evt);
+        }
+
+        public override async void TouchesEnded(NSSet touches, UIEvent evt) {
             base.TouchesEnded(touches, evt);
-            OnTouch?.Invoke(View, new TouchArgs(TouchState.Ended));
-            State = UIGestureRecognizerState.Ended;
+
+            var end = await _awaiter.Task;
+            if (end) {
+                OnTouch?.Invoke(View, new TouchArgs(TouchState.Ended));
+                State = UIGestureRecognizerState.Ended;
+                return;
+            }
+            State = UIGestureRecognizerState.Cancelled;
         }
 
         public override void TouchesCancelled(NSSet touches, UIEvent evt) {
             base.TouchesCancelled(touches, evt);
-            OnTouch?.Invoke(View, new TouchArgs(TouchState.Ended));
+            OnTouch?.Invoke(View, new TouchArgs(TouchState.Cancelled));
             State = UIGestureRecognizerState.Cancelled;
+        }
+
+        Point PointInWindow(UIView view) {
+            var relativePositionView = UIApplication.SharedApplication.KeyWindow;
+            var relativeFrame = view.Superview.ConvertRectToView(view.Frame, relativePositionView);
+
+            return new Point(relativeFrame.X, relativeFrame.Y);
         }
 
         public class TouchArgs : EventArgs {
