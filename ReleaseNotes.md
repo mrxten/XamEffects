@@ -1,10 +1,13 @@
 # Release notes
 
 ## 1.6.0-pre
-  * Rewrite using gestures in iOS - immediately starts touch effect after began touch
+  * Add experimental gesture recognizer for iOS:
+    * Touch effect immediately starts when you touch View
+    * Cancelling touch effect when View scrolled
   * Fix using and add customization alpha channel in touch color.
-  * Fix touch animation ending in old android (in API < 21).
+  * Fix touch animation ending in old android (in API < 21)
   * Reformat and restruct source code
+  * Add standard sound effect for Android when touch
 
 ## 1.5.6
 Small exception bugfixes.
