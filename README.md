@@ -36,7 +36,7 @@ For Android API >=21 using Ripple effect, for Android API <21 and iOS using anim
 
 iOS|Android API >=21|Android API <21
 ------------|------------|------------
-<img src="images/touch/ios.gif" height="450" width="685"/>|<img src="images/touch/android.gif" height="450" width="711"/>|<img src="images/touch/old_android.gif" height="450" width="687"/>
+<img src="images/touch/ios.gif" width="450"/>|<img src="images/touch/android.gif" width="450"/>|<img src="images/touch/old_android.gif" width="450"/>
 
 
 ### Supported Views 
