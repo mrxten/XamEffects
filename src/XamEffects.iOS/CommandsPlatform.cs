@@ -6,6 +6,7 @@ using Xamarin.Forms.Platform.iOS;
 using XamEffects;
 using XamEffects.iOS;
 using XamEffects.iOS.GestureCollectors;
+using XamEffects.iOS.GestureRecognizers;
 
 [assembly: ExportEffect(typeof(CommandsPlatform), nameof(Commands))]
 
@@ -22,17 +23,17 @@ namespace XamEffects.iOS {
 
         protected override void OnAttached() {
             View.UserInteractionEnabled = true;
-
+            _tapRecognizer = new UITapGestureRecognizer(TapAction) {
+                Delegate = new TapGestureRecognizerDelegate(View)
+            };
+            _longTapRecognizer = new UILongPressGestureRecognizer(LongTapAction) {
+                Delegate = new TapGestureRecognizerDelegate(View)
+            };
+            
             UpdateTap();
             UpdateTapParameter();
             UpdateLongTap();
             UpdateLongTapParameter();
-
-            _tapRecognizer = new UITapGestureRecognizer(TapAction);
-            _longTapRecognizer = new UILongPressGestureRecognizer(LongTapAction);
-
-            View.AddGestureRecognizer(_tapRecognizer);
-            View.AddGestureRecognizer(_longTapRecognizer);
         }
 
         protected override void OnDetached() {
@@ -58,7 +59,7 @@ namespace XamEffects.iOS {
                     if (!inside) return;
                     if (_longCommand == null)
                         TapAction();
-                    else if (_longCommand?.CanExecute(_longParameter) ?? false)
+                    else if (_longCommand.CanExecute(_longParameter))
                         _longCommand.Execute(_longParameter);
                     break;
                 case UIGestureRecognizerState.Cancelled:
@@ -82,6 +83,10 @@ namespace XamEffects.iOS {
 
         void UpdateTap() {
             _tapCommand = Commands.GetTap(Element);
+            if (_tapCommand == null)
+                View.RemoveGestureRecognizer(_tapRecognizer);
+            else 
+                View.AddGestureRecognizer(_tapRecognizer);
         }
 
         void UpdateTapParameter() {
@@ -90,6 +95,10 @@ namespace XamEffects.iOS {
 
         void UpdateLongTap() {
             _longCommand = Commands.GetLongTap(Element);
+            if (_longCommand == null)
+                View.RemoveGestureRecognizer(_longTapRecognizer);
+            else 
+                View.AddGestureRecognizer(_longTapRecognizer);
         }
 
         void UpdateLongTapParameter() {
@@ -97,6 +106,18 @@ namespace XamEffects.iOS {
         }
 
         public static void Init() {
+        }
+        
+        public class TapGestureRecognizerDelegate : UIGestureRecognizerDelegate {
+            readonly UIView _view;
+
+            public TapGestureRecognizerDelegate(UIView view) {
+                _view = view;
+            }
+
+            public override bool ShouldReceiveTouch(UIGestureRecognizer recognizer, UITouch touch) {
+                return touch.View == _view;
+            }
         }
     }
 }

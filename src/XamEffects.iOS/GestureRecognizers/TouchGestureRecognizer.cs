@@ -1,12 +1,15 @@
 ﻿using System;
+using System.Linq;
 using Foundation;
 using UIKit;
 using Xamarin.Forms;
 using System.Threading.Tasks;
+using CoreGraphics;
+using XamEffects.iOS.GestureCollectors;
 
 namespace XamEffects.iOS.GestureRecognizers {
     public class TouchGestureRecognizer : UIGestureRecognizer {
-        Point _startPoint;
+        CGPoint _startPoint;
         TaskCompletionSource<bool> _awaiter;
         bool _ended;
 
@@ -14,10 +17,6 @@ namespace XamEffects.iOS.GestureRecognizers {
             Started,
             Ended,
             Cancelled
-        }
-
-        public TouchGestureRecognizer() {
-            CancelsTouchesInView = false;
         }
 
         public event EventHandler<TouchArgs> OnTouch;
@@ -45,8 +44,19 @@ namespace XamEffects.iOS.GestureRecognizers {
         }
 
         public override void TouchesMoved(NSSet touches, UIEvent evt) {
-            var current = PointInWindow(View);
-            if (Math.Abs(current.X - _startPoint.X) > 1 || Math.Abs(current.Y - _startPoint.Y) > 1) {
+            bool inside;
+            CGPoint current;
+
+            if (HasActivatedLongPressRecognizer(View)) {
+                inside = true;
+                current = _startPoint;
+            }
+            else {
+                inside = View.PointInside(LocationInView(View), null);
+                current = inside ? PointInWindow(View) : _startPoint;
+            }
+            
+            if (!inside || Math.Abs(current.X - _startPoint.X) > 1 || Math.Abs(current.Y - _startPoint.Y) > 1) {
                 _awaiter?.TrySetResult(false);
                 if (State == UIGestureRecognizerState.Began || State == UIGestureRecognizerState.Changed) {
                     OnTouch?.Invoke(View, new TouchArgs(TouchState.Ended));
@@ -78,11 +88,22 @@ namespace XamEffects.iOS.GestureRecognizers {
             State = UIGestureRecognizerState.Cancelled;
         }
 
-        Point PointInWindow(UIView view) {
+        CGPoint PointInWindow(UIView view) {
             var relativePositionView = UIApplication.SharedApplication.KeyWindow;
             var relativeFrame = view.Superview.ConvertRectToView(view.Frame, relativePositionView);
 
-            return new Point(relativeFrame.X, relativeFrame.Y);
+            return new CGPoint(relativeFrame.X, relativeFrame.Y);
+        }
+
+        bool HasActivatedLongPressRecognizer(UIView view) {
+            return view.GestureRecognizers?.Any(e => {
+                if (e is UILongPressGestureRecognizer recognizer) {
+                    return recognizer.State == UIGestureRecognizerState.Began ||
+                           recognizer.State == UIGestureRecognizerState.Changed;
+                }
+
+                return false;
+            }) ?? false;
         }
 
         public class TouchArgs : EventArgs {

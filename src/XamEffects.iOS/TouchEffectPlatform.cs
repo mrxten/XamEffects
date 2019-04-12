@@ -27,6 +27,7 @@ namespace XamEffects.iOS {
 
         protected override void OnAttached() {
             _touchRecognizer = new TouchGestureRecognizer {
+                CancelsTouchesInView = false,
                 Delegate = new TouchGestureRecognizerDelegate(View)
             };
 
