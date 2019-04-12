@@ -44,7 +44,7 @@ Almost all usual views and layouts without another gestures and effects, e.g. fo
 
 ### Bindable properties
 
-* **Color** - Front/Ripple color when touched. For deactivate effect set Color.Default value.
+* **Color** - Front/Ripple color when touched. For deactivate effect set Color.Default value. If color will have alpha channel is 255 effect will change it to ±80.
     
 ### Example 
 
