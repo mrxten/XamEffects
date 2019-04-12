@@ -44,8 +44,5 @@ namespace XamEffects.iOS.GestureCollectors {
             public UIGestureRecognizer Recognizer { get; set; }
             public List<Action> Actions { get; set; }
         }
-
-        public static void Init() {
-        }
     }
 }

@@ -5,8 +5,6 @@ namespace XamEffects.iOS {
         public static void Init() {
             CommandsPlatform.Init();
             TouchEffectPlatform.Init();
-            LongTapGestureCollector.Init();
-            TapGestureCollector.Init();
         }
     }
 }
