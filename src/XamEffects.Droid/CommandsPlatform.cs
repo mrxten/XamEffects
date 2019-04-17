@@ -6,6 +6,8 @@ using Xamarin.Forms.Platform.Android;
 using XamEffects;
 using XamEffects.Droid;
 using View = Android.Views.View;
+using System.Threading;
+using XamEffects.Droid.GestureCollectors;
 
 [assembly: ExportEffect(typeof(CommandsPlatform), nameof(Commands))]
 
@@ -24,30 +26,24 @@ namespace XamEffects.Droid {
         protected override void OnAttached() {
             View.Clickable = true;
             View.LongClickable = true;
-            View.Touch += ViewOnTouch;
             View.SoundEffectsEnabled = true;
+            TouchCollector.Add(View, OnTouch);
         }
 
-        void ViewOnTouch(object sender, View.TouchEventArgs args) {
+        void OnTouch(View.TouchEventArgs args) {
             switch (args.Event.Action) {
                 case MotionEventActions.Down:
                     _tapTime = DateTime.Now;
-                    View.PlaySoundEffect(SoundEffects.Click);
                     break;
 
                 case MotionEventActions.Up:
-                    if (IsViewInBounds((int) args.Event.RawX, (int) args.Event.RawY)) {
+                    if (IsViewInBounds((int)args.Event.RawX, (int)args.Event.RawY)) {
                         var range = (DateTime.Now - _tapTime).TotalMilliseconds;
                         if (range > 800)
                             LongClickHandler();
                         else
                             ClickHandler();
                     }
-
-                    goto case MotionEventActions.Cancel;
-
-                case MotionEventActions.Cancel:
-                    args.Handled = false;
                     break;
             }
         }
@@ -80,9 +76,8 @@ namespace XamEffects.Droid {
         }
 
         protected override void OnDetached() {
-            if (!IsDisposed) {
-                View.Touch -= ViewOnTouch;
-            }
+            if (IsDisposed) return;
+            TouchCollector.Delete(View, OnTouch);
         }
     }
 }
