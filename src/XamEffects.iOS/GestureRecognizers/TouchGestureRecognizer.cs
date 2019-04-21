@@ -7,16 +7,19 @@ using System.Threading.Tasks;
 using CoreGraphics;
 using XamEffects.iOS.GestureCollectors;
 using System.Threading;
+using CoreFoundation;
 
 namespace XamEffects.iOS.GestureRecognizers {
     public class TouchGestureRecognizer : UIGestureRecognizer {
-        public static bool IsActive { get; private set; }
+        public class TouchArgs : EventArgs {
+            public TouchState State { get; }
+            public bool Inside { get; }
 
-        CGPoint _startPos;
-        TaskCompletionSource<object> _startAwaiter;
-        bool _disposed;
-
-        public bool Processing => State == UIGestureRecognizerState.Began || State == UIGestureRecognizerState.Changed;
+            public TouchArgs(TouchState state, bool inside) {
+                State = state;
+                Inside = inside;
+            }
+        }
 
         public enum TouchState {
             Started,
@@ -24,34 +27,38 @@ namespace XamEffects.iOS.GestureRecognizers {
             Cancelled
         }
 
+        bool _disposed;
+        bool _startCalled;
+        
+        public static bool IsActive { get; private set; }
+
+        public bool Processing => State == UIGestureRecognizerState.Began || State == UIGestureRecognizerState.Changed;
         public event EventHandler<TouchArgs> OnTouch;
 
         public override async void TouchesBegan(NSSet touches, UIEvent evt) {
             base.TouchesBegan(touches, evt);
-
             if (Processing)
                 return;
 
-            _startPos = PointInWindow(View);
             State = UIGestureRecognizerState.Began;
-            _startAwaiter?.TrySetCanceled();
-            _startAwaiter = new TaskCompletionSource<object>();
             IsActive = true;
+            _startCalled = false;
 
             await Task.Delay(125);
-
-            if (Processing && !_disposed) {
+            DispatchQueue.MainQueue.DispatchAsync(() => {
+                if (!Processing || _disposed) return;
                 OnTouch?.Invoke(this, new TouchArgs(TouchState.Started, true));
-                _startAwaiter.TrySetResult(null);
-            }
+                _startCalled = true;
+            });
         }
 
         public override void TouchesMoved(NSSet touches, UIEvent evt) {
-            var inside = View.PointInside(LocationInView(View), evt);
-            var currentPos = inside ? PointInWindow(View) : _startPos;
+            base.TouchesMoved(touches, evt);
 
-            if (!inside || Math.Abs(currentPos.X - _startPos.X) > 1 || Math.Abs(currentPos.Y - _startPos.Y) > 1) {
-                if (Processing)
+            var inside = View.PointInside(LocationInView(View), evt);
+
+            if (!inside) {
+                if (_startCalled)
                     OnTouch?.Invoke(this, new TouchArgs(TouchState.Ended, false));
                 State = UIGestureRecognizerState.Ended;
                 IsActive = false;
@@ -59,27 +66,17 @@ namespace XamEffects.iOS.GestureRecognizers {
             }
 
             State = UIGestureRecognizerState.Changed;
-            base.TouchesMoved(touches, evt);
         }
 
-        public override async void TouchesEnded(NSSet touches, UIEvent evt) {
-            var inside = View.PointInside(LocationInView(View), evt);
+        public override void TouchesEnded(NSSet touches, UIEvent evt) {
+            base.TouchesEnded(touches, evt);
 
-            if (Processing && inside) {
-                try {
-                    await _startAwaiter.Task;
-                    if (_disposed) return;
-                    OnTouch?.Invoke(this, new TouchArgs(TouchState.Ended, View.PointInside(LocationInView(View), null)));
-                }
-                catch (TaskCanceledException) {
-                    State = UIGestureRecognizerState.Cancelled;
-                    return;
-                }
-            }
+            if (!_startCalled)
+                OnTouch?.Invoke(this, new TouchArgs(TouchState.Started, true));
+            
+            OnTouch?.Invoke(this, new TouchArgs(TouchState.Ended, View.PointInside(LocationInView(View), null)));
             State = UIGestureRecognizerState.Ended;
             IsActive = false;
-
-            base.TouchesEnded(touches, evt);
         }
 
         public override void TouchesCancelled(NSSet touches, UIEvent evt) {
@@ -89,29 +86,22 @@ namespace XamEffects.iOS.GestureRecognizers {
             IsActive = false;
         }
 
+        internal void TryEndOrFail() {
+            if (_startCalled) {
+                OnTouch?.Invoke(this, new TouchArgs(TouchState.Ended, View.PointInside(LocationInView(View), null)));
+                State = UIGestureRecognizerState.Ended;
+            }
+            
+            State = UIGestureRecognizerState.Failed;
+            IsActive = false;
+        }
+
         protected override void Dispose(bool disposing) {
             _disposed = true;
             State = UIGestureRecognizerState.Cancelled;
             IsActive = false;
 
             base.Dispose(disposing);
-        }
-
-        CGPoint PointInWindow(UIView view) {
-            var relativePositionView = UIApplication.SharedApplication.KeyWindow;
-            var relativeFrame = view.Superview.ConvertRectToView(view.Frame, relativePositionView);
-
-            return new CGPoint(relativeFrame.X, relativeFrame.Y);
-        }
-
-        public class TouchArgs : EventArgs {
-            public TouchState State { get; }
-            public bool Inside { get; }
-
-            public TouchArgs(TouchState state, bool inside) {
-                State = state;
-                Inside = inside;
-            }
         }
     }
 
@@ -124,6 +114,11 @@ namespace XamEffects.iOS.GestureRecognizers {
 
         public override bool ShouldRecognizeSimultaneously(UIGestureRecognizer gestureRecognizer,
             UIGestureRecognizer otherGestureRecognizer) {
+            if (gestureRecognizer is TouchGestureRecognizer rec && otherGestureRecognizer is UIPanGestureRecognizer &&
+                otherGestureRecognizer.State == UIGestureRecognizerState.Began) {
+                rec.TryEndOrFail();
+            }
+
             return true;
         }
 
@@ -131,6 +126,7 @@ namespace XamEffects.iOS.GestureRecognizers {
             if (recognizer is TouchGestureRecognizer rec && TouchGestureRecognizer.IsActive) {
                 return false;
             }
+
             return touch.View == _view;
         }
     }
