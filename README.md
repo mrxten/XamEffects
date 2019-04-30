@@ -27,7 +27,7 @@ iOS 8, Android 4.1 (API 16)
 
 Xamarin.Forms 2.5.0
 
-Operability of older versions is not guaranteed.
+Operability for older OS versions is not guaranteed.
 
 ## TouchEffect
 Add touch effect to views.
