@@ -112,7 +112,8 @@ namespace XamEffects.Droid {
                     break;
 
                 case MotionEventActions.Cancel:
-                    Container.RemoveView(_viewOverlay);
+                    if (_viewOverlay.Parent == Container)
+                        Container.RemoveView(_viewOverlay);
                     _viewOverlay.Pressed = false;
                     break;
             }
@@ -175,7 +176,8 @@ namespace XamEffects.Droid {
             await Task.Delay(250);
             if (!IsDisposed && !cancell.IsCancellationRequested)
                 Device.BeginInvokeOnMainThread(() => {
-                    Container.RemoveView(_viewOverlay);
+                    if (_viewOverlay.Parent == Container)
+                        Container.RemoveView(_viewOverlay);
                 });
         }
 
@@ -223,7 +225,7 @@ namespace XamEffects.Droid {
         }
 
         void AnimationOnAnimationEnd(object sender, EventArgs eventArgs) {
-            if (!IsDisposed)
+            if (!IsDisposed && _viewOverlay.Parent == Container)
                 Container.RemoveView(_viewOverlay);
             ClearAnimation();
         }

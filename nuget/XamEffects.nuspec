@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>XamEffects</id>
-    <version>1.6.0.16-pre</version>
+    <version>1.6.0.17-pre</version>
     <authors>Vladislav Zhukov</authors>
     <owners>mrxten</owners>
     <licenseUrl>https://github.com/mrxten/XamEffects/blob/master/LICENSE</licenseUrl>

@@ -98,7 +98,6 @@ namespace XamEffects.iOS.GestureRecognizers {
 
         protected override void Dispose(bool disposing) {
             _disposed = true;
-            State = UIGestureRecognizerState.Cancelled;
             IsActive = false;
 
             base.Dispose(disposing);
