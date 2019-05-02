@@ -113,7 +113,7 @@ View with borders, corner radius and clipping to bounds. View based on ContentVi
 
 |Property|Type|Value type|Default|Description|
 |------------|------------|------------|------------|------------|
-|CornerRadius|bindable attached|float|0|Corner radius|
+|CornerRadius|bindable attached|double|0|Corner radius|
 |BorderWidth|bindable attached|double|0|Border width|
 |BorderColor|bindable attached|Color|Color.Default|Border color|
 
