@@ -20,6 +20,7 @@ Install-Package XamEffects
 ### Features
 * [TouchEffect](#toucheffect) - Add touch effect to views.
 * [Commands](#commands) - Add command to views.
+* [BorderView](#borderview) - View with borders, corner radius and clipping to bounds.
 * [EffectsConfig](#effectsconfig) - Config for effects.
 
 
@@ -106,6 +107,41 @@ Commands.SetTap(view, new Command(() => {
 }));
 Commands.SetTapParameter(view, someObject);
 ```
+
+## BorderView
+View with borders, corner radius and clipping to bounds. View based on ContentView, you can specify child through Content property.
+
+|Property|Type|Value type|Default|Description|
+|------------|------------|------------|------------|------------|
+|CornerRadius|bindable attached|float|0|Corner radius|
+|BorderWidth|bindable attached|double|0|Border width|
+|BorderColor|bindable attached|Color|Color.Default|Border color|
+
+### Example 
+
+```xml
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:XamEffects.Sample"
+             xmlns:xe="clr-namespace:XamEffects;assembly=XamEffects"
+             x:Class="XamEffects.Sample.MainPage">
+    <xe:BorderView 
+          HeightRequest="100"
+          WidthRequest="200"
+          HorizontalOptions="Center"
+          VerticalOptions="Center"
+          BackgroundColor="LightGray"
+          CornerRadius="15"
+          BorderColor="Green"
+          BorderWidth="2">
+        <Label HorizontalOptions="Center"
+               VerticalOptions="Center"
+               Text="Some content"/>
+    </xe:BorderView>
+</ContentPage>
+```
+
+Why view, not effect like others? Firstly I planned made it. For iOS there are no problems, but for Android for clipping to rounded corners need override DispatchDraw from native view, that isn't possible from effect.
 
 ## EffectsConfig
 
