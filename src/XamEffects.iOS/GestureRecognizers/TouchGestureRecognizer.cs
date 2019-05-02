@@ -88,7 +88,7 @@ namespace XamEffects.iOS.GestureRecognizers {
 
         internal void TryEndOrFail() {
             if (_startCalled) {
-                OnTouch?.Invoke(this, new TouchArgs(TouchState.Ended, View.PointInside(LocationInView(View), null)));
+                OnTouch?.Invoke(this, new TouchArgs(TouchState.Ended, false));
                 State = UIGestureRecognizerState.Ended;
             }
 

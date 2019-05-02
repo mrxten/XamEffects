@@ -58,7 +58,7 @@ namespace XamEffects.Droid {
         }
 
         protected override void OnDetached() {
-            if (!IsDisposed) return;
+            if (IsDisposed) return;
 
             Container.RemoveView(_viewOverlay);
             _viewOverlay.Pressed = false;
@@ -104,6 +104,8 @@ namespace XamEffects.Droid {
 
                     break;
                 case MotionEventActions.Up:
+                    if (IsDisposed) return;
+
                     if (EnableRipple)
                         ForceEndRipple(_cancellationSource.Token);
                     else
@@ -112,8 +114,9 @@ namespace XamEffects.Droid {
                     break;
 
                 case MotionEventActions.Cancel:
-                    if (_viewOverlay.Parent == Container)
-                        Container.RemoveView(_viewOverlay);
+                    if (IsDisposed) return;
+
+                    Container.RemoveView(_viewOverlay);
                     _viewOverlay.Pressed = false;
                     break;
             }
@@ -162,8 +165,7 @@ namespace XamEffects.Droid {
             _cancellationSource?.Cancel();
             _cancellationSource = new CancellationTokenSource();
 
-            if (_viewOverlay.Parent == null)
-                Container.AddView(_viewOverlay);
+            Container.AddView(_viewOverlay);
             _viewOverlay.BringToFront();
             bc.SetHotspot(x, y);
             _viewOverlay.Pressed = true;
@@ -176,8 +178,7 @@ namespace XamEffects.Droid {
             await Task.Delay(250);
             if (!IsDisposed && !cancell.IsCancellationRequested)
                 Device.BeginInvokeOnMainThread(() => {
-                    if (_viewOverlay.Parent == Container)
-                        Container.RemoveView(_viewOverlay);
+                    Container.RemoveView(_viewOverlay);
                 });
         }
 
@@ -225,7 +226,7 @@ namespace XamEffects.Droid {
         }
 
         void AnimationOnAnimationEnd(object sender, EventArgs eventArgs) {
-            if (!IsDisposed && _viewOverlay.Parent == Container)
+            if (!IsDisposed)
                 Container.RemoveView(_viewOverlay);
             ClearAnimation();
         }
