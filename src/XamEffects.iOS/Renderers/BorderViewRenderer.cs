@@ -45,7 +45,7 @@ namespace XamEffects.iOS.Renderers {
         #region Borders
 
         void SetCornerRadius() {
-            NativeView.Layer.CornerRadius = Element.CornerRadius;
+            NativeView.Layer.CornerRadius = new nfloat(Element.CornerRadius);
         }
 
         void SetBorders() {

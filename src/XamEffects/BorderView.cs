@@ -5,12 +5,12 @@ namespace XamEffects {
         public static readonly BindableProperty CornerRadiusProperty =
             BindableProperty.Create(
                 nameof(CornerRadius),
-                typeof(float),
+                typeof(double),
                 typeof(BorderView),
-                default(float));
+                default(double));
 
-        public float CornerRadius {
-            get => (float)GetValue(CornerRadiusProperty);
+        public double CornerRadius {
+            get => (double)GetValue(CornerRadiusProperty);
             set => SetValue(CornerRadiusProperty, value);
         }
 
