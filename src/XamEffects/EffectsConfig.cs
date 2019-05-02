@@ -1,7 +1,9 @@
-﻿using Xamarin.Forms;
+﻿using System;
+using Xamarin.Forms;
 
 namespace XamEffects {
     public static class EffectsConfig {
+        [Obsolete("Not needed with usual Linking")]
         public static void Init() {
         }
 

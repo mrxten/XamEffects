@@ -6,7 +6,7 @@ using Xamarin.Forms.Platform.Android;
 using Xamarin.Forms;
 using System.Linq;
 using Android.Graphics;
-using XamEffects.Controls;
+
 namespace XamEffects.Droid.Renderers {
     public static class BorderRendererVisual {
         public static void UpdateBackground(BorderView touchView, Android.Views.View view) {

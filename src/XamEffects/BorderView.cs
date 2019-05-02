@@ -1,8 +1,6 @@
-using System.Windows.Input;
 using Xamarin.Forms;
-using XamEffects.Helpers;
 
-namespace XamEffects.Controls {
+namespace XamEffects {
     public class BorderView : ContentView {
         public static readonly BindableProperty CornerRadiusProperty =
             BindableProperty.Create(

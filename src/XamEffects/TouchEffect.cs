@@ -1,8 +1,10 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Xamarin.Forms;
 
 namespace XamEffects {
     public static class TouchEffect {
+        [Obsolete("Not needed with usual Linking")]
         public static void Init() {
         }
 
@@ -20,7 +22,7 @@ namespace XamEffects {
         }
 
         public static Color GetColor(BindableObject view) {
-            return (Color) view.GetValue(ColorProperty);
+            return (Color)view.GetValue(ColorProperty);
         }
 
         static void PropertyChanged(BindableObject bindable, object oldValue, object newValue) {

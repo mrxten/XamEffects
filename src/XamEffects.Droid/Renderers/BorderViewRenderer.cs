@@ -6,13 +6,16 @@ using Android.OS;
 using Android.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
-using XamEffects.Controls;
+using XamEffects;
 using XamEffects.Droid.Renderers;
 using AColor = Android.Graphics.Color;
 
 [assembly: ExportRenderer(typeof(BorderView), typeof(BorderViewRenderer))]
 namespace XamEffects.Droid.Renderers {
     public class BorderViewRenderer : VisualElementRenderer<BorderView> {
+        public static void Init() {
+        }
+
         public BorderViewRenderer(Context context) : base(context) {
         }
 

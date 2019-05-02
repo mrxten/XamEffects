@@ -9,7 +9,7 @@ using CoreGraphics;
 using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
-using XamEffects.Controls;
+using XamEffects;
 using XamEffects.Helpers;
 using XamEffects.iOS.GestureCollectors;
 using XamEffects.iOS.GestureRecognizers;
@@ -19,6 +19,9 @@ using XamEffects.iOS.Renderers;
 
 namespace XamEffects.iOS.Renderers {
     public class BorderViewRenderer : VisualElementRenderer<BorderView> {
+        public static void Link() {
+        }
+
         protected override void OnElementChanged(ElementChangedEventArgs<BorderView> e) {
             base.OnElementChanged(e);
             NativeView.ClipsToBounds = true;
