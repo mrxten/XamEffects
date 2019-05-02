@@ -100,7 +100,7 @@ namespace XamEffects.Droid {
                     if (EnableRipple)
                         ForceStartRipple(args.Event.GetX(), args.Event.GetY());
                     else
-                        TapAnimation(125, 0, _alpha);
+                        BringLayer();
 
                     break;
                 case MotionEventActions.Up:
@@ -155,7 +155,7 @@ namespace XamEffects.Droid {
                 new[] { pressedColor, });
         }
 
-        async void ForceStartRipple(float x, float y) {
+        void ForceStartRipple(float x, float y) {
             if (IsDisposed || !(_viewOverlay.Background is RippleDrawable bc)) return;
 
             _cancellationSource?.Cancel();
@@ -165,12 +165,7 @@ namespace XamEffects.Droid {
                 Container.AddView(_viewOverlay);
             _viewOverlay.BringToFront();
             bc.SetHotspot(x, y);
-
-            await Task.Delay(25);
-            Device.BeginInvokeOnMainThread(() => {
-                if (!IsDisposed)
-                    _viewOverlay.Pressed = true;
-            });
+            _viewOverlay.Pressed = true;
         }
 
         async void ForceEndRipple(CancellationToken cancell) {
@@ -187,6 +182,19 @@ namespace XamEffects.Droid {
         #endregion
 
         #region Overlay
+
+        void BringLayer() {
+            if (IsDisposed)
+                return;
+
+            ClearAnimation();
+            if (_viewOverlay.Parent == null)
+                Container.AddView(_viewOverlay);
+            _viewOverlay.BringToFront();
+            var color = _color;
+            color.A = _alpha;
+            _viewOverlay.SetBackgroundColor(color);
+        }
 
         void TapAnimation(long duration, byte startAlpha, byte endAlpha) {
             if (IsDisposed)

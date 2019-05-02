@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommandsPlatform.cs" />
+    <Compile Include="Renderers\BorderViewRenderer.cs" />
     <Compile Include="TouchEffectPlatform.cs" />
     <Compile Include="Initialize.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -29,7 +29,7 @@ namespace XamEffects.iOS.GestureRecognizers {
 
         bool _disposed;
         bool _startCalled;
-        
+
         public static bool IsActive { get; private set; }
 
         public bool Processing => State == UIGestureRecognizerState.Began || State == UIGestureRecognizerState.Changed;
@@ -73,7 +73,7 @@ namespace XamEffects.iOS.GestureRecognizers {
 
             if (!_startCalled)
                 OnTouch?.Invoke(this, new TouchArgs(TouchState.Started, true));
-            
+
             OnTouch?.Invoke(this, new TouchArgs(TouchState.Ended, View.PointInside(LocationInView(View), null)));
             State = UIGestureRecognizerState.Ended;
             IsActive = false;
@@ -91,7 +91,7 @@ namespace XamEffects.iOS.GestureRecognizers {
                 OnTouch?.Invoke(this, new TouchArgs(TouchState.Ended, View.PointInside(LocationInView(View), null)));
                 State = UIGestureRecognizerState.Ended;
             }
-            
+
             State = UIGestureRecognizerState.Failed;
             IsActive = false;
         }
@@ -123,7 +123,7 @@ namespace XamEffects.iOS.GestureRecognizers {
         }
 
         public override bool ShouldReceiveTouch(UIGestureRecognizer recognizer, UITouch touch) {
-            if (recognizer is TouchGestureRecognizer rec && TouchGestureRecognizer.IsActive) {
+            if (recognizer is TouchGestureRecognizer && TouchGestureRecognizer.IsActive) {
                 return false;
             }
 

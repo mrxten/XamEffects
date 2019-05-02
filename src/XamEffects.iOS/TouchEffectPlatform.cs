@@ -88,21 +88,21 @@ namespace XamEffects.iOS {
             View.BringSubviewToFront(_layer);
         }
 
-        async Task EndAnimation() {
+        void EndAnimation() {
             if (!IsDisposed && _layer != null) {
                 _cancellation?.Cancel();
                 _cancellation = new CancellationTokenSource();
                 var token = _cancellation.Token;
 
-                await UIView.AnimateAsync(0.225,
+                UIView.Animate(0.225,
                 () => {
-                    if (!token.IsCancellationRequested && !IsDisposed)
-                        _layer.Alpha = 0;
+                    _layer.Alpha = 0;
+                },
+                () => {
+                    if (!IsDisposed && !token.IsCancellationRequested) {
+                        _layer?.RemoveFromSuperview();
+                    }
                 });
-
-                if (!IsDisposed && !token.IsCancellationRequested) {
-                    _layer?.RemoveFromSuperview();
-                }
             }
         }
 

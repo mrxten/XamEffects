@@ -134,10 +134,12 @@
   <ItemGroup>
     <Compile Include="CommandsPlatform.cs" />
     <Compile Include="Initialize.cs" />
+    <Compile Include="Renderers\BorderViewRenderer.cs" />
     <Compile Include="TouchEffectPlatform.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="GestureCollectors\TouchCollector.cs" />
+    <Compile Include="Renderers\BorderRendererVisual.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
