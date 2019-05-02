@@ -4,24 +4,20 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:xe="clr-namespace:XamEffects;assembly=XamEffects"
     x:Class="XamExample.MyPage">
-   <ContentPage.Content>
-        <xe:BorderView 
-              HeightRequest="120"
-              WidthRequest="200"
-              HorizontalOptions="Center"
-              VerticalOptions="Center"
-              BackgroundColor="LightGray"
-              CornerRadius="15"
-              BorderColor="Green"
-              BorderWidth="2"
-              xe:TouchEffect.Color="Red"
-              x:Name="touch">
-              
-            <Label x:Name="text"
-                   HorizontalOptions="Center"
-                   VerticalOptions="Center"
-                   Text="0"/>
-        </xe:BorderView>
-            
-    </ContentPage.Content>
+    <xe:BorderView 
+          HeightRequest="120"
+          WidthRequest="200"
+          HorizontalOptions="Center"
+          VerticalOptions="Center"
+          BackgroundColor="LightGray"
+          CornerRadius="15"
+          BorderColor="Green"
+          BorderWidth="2"
+          xe:TouchEffect.Color="Red"
+          x:Name="touch">
+        <Label x:Name="text"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"
+               Text="0"/>
+    </xe:BorderView>
 </ContentPage>
