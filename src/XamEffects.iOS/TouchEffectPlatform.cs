@@ -22,17 +22,25 @@ namespace XamEffects.iOS {
 
         UIView _layer;
         nfloat _alpha;
-        CancellationTokenSource _cancellation;
 
         protected override void OnAttached() {
             View.UserInteractionEnabled = true;
             _layer = new UIView {
                 UserInteractionEnabled = false,
-                Opaque = false
+                Opaque = false,
+                Alpha = 0,
+                TranslatesAutoresizingMaskIntoConstraints = false
             };
 
             UpdateEffectColor();
             TouchGestureCollector.Add(View, OnTouch);
+
+            View.AddSubview(_layer);
+            View.BringSubviewToFront(_layer);
+            _layer.TopAnchor.ConstraintEqualTo(View.TopAnchor).Active = true;
+            _layer.LeftAnchor.ConstraintEqualTo(View.LeftAnchor).Active = true;
+            _layer.BottomAnchor.ConstraintEqualTo(View.BottomAnchor).Active = true;
+            _layer.RightAnchor.ConstraintEqualTo(View.RightAnchor).Active = true;
         }
 
         protected override void OnDetached() {
@@ -53,9 +61,8 @@ namespace XamEffects.iOS {
 
                 case TouchGestureRecognizer.TouchState.Cancelled:
                     if (!IsDisposed && _layer != null) {
-                        _cancellation?.Cancel();
+                        _layer.Layer.RemoveAllAnimations();
                         _layer.Alpha = 0;
-                        _layer.RemoveFromSuperview();
                     }
 
                     break;
@@ -81,27 +88,17 @@ namespace XamEffects.iOS {
         }
 
         void BringLayer() {
-            _cancellation?.Cancel();
+            _layer.Layer.RemoveAllAnimations();
             _layer.Alpha = _alpha;
-            _layer.Frame = new CGRect(0, 0, View.Bounds.Width, View.Bounds.Height);
-            View.AddSubview(_layer);
             View.BringSubviewToFront(_layer);
         }
 
         void EndAnimation() {
             if (!IsDisposed && _layer != null) {
-                _cancellation?.Cancel();
-                _cancellation = new CancellationTokenSource();
-                var token = _cancellation.Token;
-
+                _layer.Layer.RemoveAllAnimations();
                 UIView.Animate(0.225,
                 () => {
                     _layer.Alpha = 0;
-                },
-                () => {
-                    if (!IsDisposed && !token.IsCancellationRequested) {
-                        _layer?.RemoveFromSuperview();
-                    }
                 });
             }
         }

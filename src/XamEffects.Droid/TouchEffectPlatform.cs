@@ -31,7 +31,6 @@ namespace XamEffects.Droid {
         RippleDrawable _ripple;
         FrameLayout _viewOverlay;
         ObjectAnimator _animator;
-        CancellationTokenSource _cancellationSource;
 
         public static void Init() {
         }
@@ -55,6 +54,9 @@ namespace XamEffects.Droid {
 
             SetEffectColor();
             TouchCollector.Add(View, OnTouch);
+
+            Container.AddView(_viewOverlay);
+            _viewOverlay.BringToFront();
         }
 
         protected override void OnDetached() {
@@ -103,21 +105,16 @@ namespace XamEffects.Droid {
                         BringLayer();
 
                     break;
+
                 case MotionEventActions.Up:
-                    if (IsDisposed) return;
-
-                    if (EnableRipple)
-                        ForceEndRipple(_cancellationSource.Token);
-                    else
-                        TapAnimation(250, _alpha, 0);
-
-                    break;
-
                 case MotionEventActions.Cancel:
                     if (IsDisposed) return;
 
-                    Container.RemoveView(_viewOverlay);
-                    _viewOverlay.Pressed = false;
+                    if (EnableRipple)
+                        ForceEndRipple();
+                    else
+                        TapAnimation(250, _alpha, 0);
+
                     break;
             }
         }
@@ -162,24 +159,15 @@ namespace XamEffects.Droid {
         void ForceStartRipple(float x, float y) {
             if (IsDisposed || !(_viewOverlay.Background is RippleDrawable bc)) return;
 
-            _cancellationSource?.Cancel();
-            _cancellationSource = new CancellationTokenSource();
-
-            Container.AddView(_viewOverlay);
             _viewOverlay.BringToFront();
             bc.SetHotspot(x, y);
             _viewOverlay.Pressed = true;
         }
 
-        async void ForceEndRipple(CancellationToken cancell) {
+        void ForceEndRipple() {
             if (IsDisposed) return;
 
             _viewOverlay.Pressed = false;
-            await Task.Delay(250);
-            if (!IsDisposed && !cancell.IsCancellationRequested)
-                Device.BeginInvokeOnMainThread(() => {
-                    Container.RemoveView(_viewOverlay);
-                });
         }
 
         #endregion
@@ -191,8 +179,7 @@ namespace XamEffects.Droid {
                 return;
 
             ClearAnimation();
-            if (_viewOverlay.Parent == null)
-                Container.AddView(_viewOverlay);
+
             _viewOverlay.BringToFront();
             var color = _color;
             color.A = _alpha;
@@ -203,8 +190,6 @@ namespace XamEffects.Droid {
             if (IsDisposed)
                 return;
 
-            if (_viewOverlay.Parent == null)
-                Container.AddView(_viewOverlay);
             _viewOverlay.BringToFront();
 
             var start = _color;
@@ -226,8 +211,8 @@ namespace XamEffects.Droid {
         }
 
         void AnimationOnAnimationEnd(object sender, EventArgs eventArgs) {
-            if (!IsDisposed)
-                Container.RemoveView(_viewOverlay);
+            if (IsDisposed) return;
+
             ClearAnimation();
         }
 

@@ -15,9 +15,16 @@
           BorderWidth="2"
           xe:TouchEffect.Color="Red"
           x:Name="touch">
-        <Label x:Name="text"
-               HorizontalOptions="Center"
-               VerticalOptions="Center"
-               Text="0"/>
+        <ContentView HorizontalOptions="Center"
+                     VerticalOptions="Center"
+                     HeightRequest="50"
+                     WidthRequest="50"
+                     xe:TouchEffect.Color="Blue">
+            <Label x:Name="text"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   Text="0"/>
+        </ContentView>
+        
     </xe:BorderView>
 </ContentPage>
