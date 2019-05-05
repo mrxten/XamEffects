@@ -9,6 +9,7 @@
   * Fix touch animation ending in old android (in API < 21);
   * Reformat and restruct source code;
   * Add standard sound effect for Android when touch.
+  * Changed logic appearing overlay view. Now overlay always is subview for view with touch effect.
 
 ## 1.5.6
 Small exception bugfixes.
