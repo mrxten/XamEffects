@@ -141,7 +141,7 @@ View with borders, corner radius and clipping to bounds. View based on ContentVi
 </ContentPage>
 ```
 
-Why view, not effect like other features? Firstly I planned made it. For iOS there are no problems, but for Android for clipping to rounded corners need override DispatchDraw from native view, that isn't possible from effect.
+Why view, not effect like other features? Firstly I planned to do this. For iOS there are no problems, but for Android for clipping to rounded corners need override DispatchDraw from native view, that isn't possible from effect.
 
 ## EffectsConfig
 
