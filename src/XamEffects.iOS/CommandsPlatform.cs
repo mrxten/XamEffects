@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Windows.Input;
 using UIKit;
 using Xamarin.Forms;
@@ -6,6 +7,7 @@ using Xamarin.Forms.Platform.iOS;
 using XamEffects;
 using XamEffects.iOS;
 using XamEffects.iOS.GestureCollectors;
+using XamEffects.iOS.GestureRecognizers;
 
 [assembly: ExportEffect(typeof(CommandsPlatform), nameof(Commands))]
 
@@ -13,6 +15,7 @@ namespace XamEffects.iOS {
     public class CommandsPlatform : PlatformEffect {
         public UIView View => Control ?? Container;
 
+        DateTime _tapTime;
         ICommand _tapCommand;
         ICommand _longCommand;
         object _tapParameter;
@@ -26,35 +29,44 @@ namespace XamEffects.iOS {
             UpdateLongTap();
             UpdateLongTapParameter();
 
-            TapGestureCollector.Add(View, TapAction);
-            LongTapGestureCollector.Add(View, LongTapAction);
+            TouchGestureCollector.Add(View, OnTouch);
         }
 
         protected override void OnDetached() {
-            TapGestureCollector.Delete(View, TapAction);
-            LongTapGestureCollector.Delete(View, LongTapAction);
+            TouchGestureCollector.Delete(View, OnTouch);
         }
 
-        void TapAction() {
+        void OnTouch(TouchGestureRecognizer.TouchArgs e) {
+            switch (e.State) {
+                case TouchGestureRecognizer.TouchState.Started:
+                    _tapTime = DateTime.Now;
+                    break;
+
+                case TouchGestureRecognizer.TouchState.Ended:
+                    if (e.Inside) {
+                        var range = (DateTime.Now - _tapTime).TotalMilliseconds;
+                        if (range > 800)
+                            LongClickHandler();
+                        else
+                            ClickHandler();
+                    }
+                    break;
+
+                case TouchGestureRecognizer.TouchState.Cancelled:
+                    break;
+            }
+        }
+
+        void ClickHandler() {
             if (_tapCommand?.CanExecute(_tapParameter) ?? false)
                 _tapCommand.Execute(_tapParameter);
         }
 
-        void LongTapAction(UIGestureRecognizerState state, bool inside) {
-            switch (state) {
-                case UIGestureRecognizerState.Began:
-                    break;
-                case UIGestureRecognizerState.Ended:
-                    if (!inside) return;
-                    if (_longCommand == null)
-                        TapAction();
-                    else if (_longCommand?.CanExecute(_longParameter) ?? false)
-                        _longCommand.Execute(_longParameter);
-                    break;
-                case UIGestureRecognizerState.Cancelled:
-                case UIGestureRecognizerState.Failed:
-                    break;
-            }
+        void LongClickHandler() {
+            if (_longCommand == null)
+                ClickHandler();
+            else if (_longCommand.CanExecute(_longParameter))
+                _longCommand.Execute(_longParameter);
         }
 
         protected override void OnElementPropertyChanged(PropertyChangedEventArgs args) {

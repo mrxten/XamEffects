@@ -59,14 +59,16 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
+    <Folder Include="GestureRecognizers\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommandsPlatform.cs" />
-    <Compile Include="GestureCollectors\LongTapGestureCollector.cs" />
+    <Compile Include="Renderers\BorderViewRenderer.cs" />
     <Compile Include="TouchEffectPlatform.cs" />
     <Compile Include="Initialize.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="GestureCollectors\TapGestureCollector.cs" />
+    <Compile Include="GestureCollectors\TouchGestureCollector.cs" />
+    <Compile Include="GestureRecognizers\TouchGestureRecognizer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

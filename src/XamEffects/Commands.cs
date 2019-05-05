@@ -1,9 +1,11 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace XamEffects {
     public static class Commands {
+        [Obsolete("Not needed with usual Linking")]
         public static void Init() {
         }
 
@@ -21,7 +23,7 @@ namespace XamEffects {
         }
 
         public static ICommand GetTap(BindableObject view) {
-            return (ICommand) view.GetValue(TapProperty);
+            return (ICommand)view.GetValue(TapProperty);
         }
 
         public static readonly BindableProperty TapParameterProperty =
@@ -55,7 +57,7 @@ namespace XamEffects {
         }
 
         public static ICommand GetLongTap(BindableObject view) {
-            return (ICommand) view.GetValue(LongTapProperty);
+            return (ICommand)view.GetValue(LongTapProperty);
         }
 
         public static readonly BindableProperty LongTapParameterProperty =
