@@ -1,6 +1,6 @@
 # Release notes
 
-## 1.6.0-pre
+## 1.6.0
   * Add BorderView;
   * Add experimental gesture recognizer for iOS:
     * Touch effect immediately starts when you touch View
