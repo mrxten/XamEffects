@@ -1,4 +1,4 @@
-<img src="/nuget/XamEffects_icon.png" />
+<img src="/nuget/XamEffects_icon.png" height="100"/>
 
 # XamEffects - UI effects for Xamarin.Forms
 [![NuGet](https://img.shields.io/nuget/v/xameffects.svg?maxAge=259200&style=flat)](http://www.nuget.org/packages/XamEffects/)
