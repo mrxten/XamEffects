@@ -1,5 +1,8 @@
 # Release notes
 
+## 1.6.1
+Add compatibility with PCL Profile 44.
+
 ## 1.6.0
   * Add BorderView;
   * Add experimental gesture recognizer for iOS:
