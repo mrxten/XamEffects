@@ -2,14 +2,15 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>XamEffects</id>
-    <version>1.6.1</version>
+    <version>1.6.1.2</version>
     <authors>Vladislav Zhukov</authors>
     <owners>mrxten</owners>
     <licenseUrl>https://github.com/mrxten/XamEffects/blob/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/mrxten/XamEffects</projectUrl>
     <iconUrl>https://raw.githubusercontent.com/mrxten/XamEffects/master/nuget/XamEffects_icon.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Xamarin Forms UI effects.</description>
+    <description>Xamarin Forms UI effects.
+Release notes: https://github.com/mrxten/XamEffects/blob/master/ReleaseNotes.md</description>
     <copyright>Copyright 2019</copyright>
     <tags>xamarin xamarin-forms effects</tags>
     <dependencies>
@@ -18,20 +19,20 @@
   </metadata>
 	<files>
 	  <!--NETStandard-->
-	  <file src="..\src\XamEffects\bin\Release\netstandard2.0\XamEffects.dll" target="lib\netstandard2.0" />
-	  <file src="..\src\XamEffects\bin\Release\netstandard2.0\XamEffects.pdb" target="lib\netstandard2.0" />
+	  <file src="..\src\XamEffects\bin\Release\netstandard1.0\XamEffects.dll" target="lib\netstandard1.0" />
+	  <file src="..\src\XamEffects\bin\Release\netstandard1.0\XamEffects.pdb" target="lib\netstandard1.0" />
 	  <!--Android-->
-	  <file src="..\src\XamEffects\bin\Release\netstandard2.0\XamEffects.dll" target="lib\MonoAndroid" />
-	  <file src="..\src\XamEffects\bin\Release\netstandard2.0\XamEffects.pdb" target="lib\MonoAndroid" />
+	  <file src="..\src\XamEffects\bin\Release\netstandard1.0\XamEffects.dll" target="lib\MonoAndroid" />
+	  <file src="..\src\XamEffects\bin\Release\netstandard1.0\XamEffects.pdb" target="lib\MonoAndroid" />
 	  <file src="..\src\XamEffects.Droid\bin\Release\XamEffects.Droid.dll" target="lib\MonoAndroid" />
 	  <file src="..\src\XamEffects.Droid\bin\Release\XamEffects.Droid.pdb" target="lib\MonoAndroid" />
 	  <!--IOS-->
-	  <file src="..\src\XamEffects\bin\Release\netstandard2.0\XamEffects.dll" target="lib\MonoTouch" />
-	  <file src="..\src\XamEffects\bin\Release\netstandard2.0\XamEffects.dll" target="lib\Xamarin.IOS" />
+	  <file src="..\src\XamEffects\bin\Release\netstandard1.0\XamEffects.dll" target="lib\MonoTouch" />
+	  <file src="..\src\XamEffects\bin\Release\netstandard1.0\XamEffects.dll" target="lib\Xamarin.IOS" />
 	  <file src="..\src\XamEffects.iOS\bin\Release\XamEffects.iOS.dll" target="lib\MonoTouch" />
 	  <file src="..\src\XamEffects.iOS\bin\Release\XamEffects.iOS.dll" target="lib\Xamarin.IOS" />  
-	  <file src="..\src\XamEffects\bin\Release\netstandard2.0\XamEffects.pdb" target="lib\MonoTouch" />
-	  <file src="..\src\XamEffects\bin\Release\netstandard2.0\XamEffects.pdb" target="lib\Xamarin.IOS" />
+	  <file src="..\src\XamEffects\bin\Release\netstandard1.0\XamEffects.pdb" target="lib\MonoTouch" />
+	  <file src="..\src\XamEffects\bin\Release\netstandard1.0\XamEffects.pdb" target="lib\Xamarin.IOS" />
 	  <file src="..\src\XamEffects.iOS\bin\Release\XamEffects.iOS.pdb" target="lib\MonoTouch" />
 	  <file src="..\src\XamEffects.iOS\bin\Release\XamEffects.iOS.pdb" target="lib\Xamarin.IOS" />
 	</files>

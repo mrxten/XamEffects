@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <PackageTargetFallback>$(PackageTargetFallback);portable-net451+win81;</PackageTargetFallback>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netstandard1.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
