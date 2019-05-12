@@ -1,7 +1,7 @@
 # Release notes
 
 ## 1.6.1
-Add compatibility with PCL Profile 44.
+Downgrade .NETStandard to 1.0 for compatibility with old PCL projects.
 
 ## 1.6.0
   * Add BorderView;
