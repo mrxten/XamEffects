@@ -4,7 +4,7 @@ using Xamarin.Forms;
 
 namespace XamEffects {
     public static class TouchEffect {
-        [Obsolete("Not needed with usual Linking")]
+        [Obsolete("Not need with usual Linking")]
         public static void Init() {
         }
 

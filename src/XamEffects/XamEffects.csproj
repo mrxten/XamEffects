@@ -1,6 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <PackageTargetFallback>$(PackageTargetFallback);portable-net451+win81;</PackageTargetFallback>
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
