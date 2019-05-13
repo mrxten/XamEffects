@@ -1,5 +1,8 @@
 # Release notes
 
+## 1.6.2
+Fix border view renderer crashes when element is null.
+
 ## 1.6.1
 Downgrade .NETStandard to 1.0 for compatibility with old PCL projects.
 
