@@ -21,6 +21,7 @@ namespace XamEffects.Droid.Renderers {
 
         protected override void OnElementChanged(ElementChangedEventArgs<BorderView> e) {
             base.OnElementChanged(e);
+            if (e.NewElement == null) return;
             BorderRendererVisual.UpdateBackground(Element, this);
         }
 

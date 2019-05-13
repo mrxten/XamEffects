@@ -24,6 +24,8 @@ namespace XamEffects.iOS.Renderers {
 
         protected override void OnElementChanged(ElementChangedEventArgs<BorderView> e) {
             base.OnElementChanged(e);
+            
+            if (e.NewElement == null) return;
             NativeView.ClipsToBounds = true;
             NativeView.Layer.AllowsEdgeAntialiasing = true;
             NativeView.Layer.EdgeAntialiasingMask = CAEdgeAntialiasingMask.All;
