@@ -16,7 +16,8 @@ Install-Package XamEffects
 |------------|------------|
 |iOS|8|
 |Android|4.1 (API 16)|
-|Xamarin.Forms package|2.5.0|
+|Xamarin.Forms|2.5.0|
+|.NETStandard|1.0|
 
 ### Features
 * [TouchEffect](#toucheffect) - Add touch effect to views.
