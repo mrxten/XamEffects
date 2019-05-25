@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using UIKit;
 using XamEffects.iOS.GestureRecognizers;
 
@@ -41,7 +42,9 @@ namespace XamEffects.iOS.GestureCollectors {
         static void ActionActivator(object sender, TouchGestureRecognizer.TouchArgs e) {
             var gest = (TouchGestureRecognizer)sender;
             if (!Collection.ContainsKey(gest.View)) return;
-            foreach (var valueAction in Collection[gest.View].Actions) {
+
+            var actions = Collection[gest.View].Actions.ToArray();
+            foreach (var valueAction in actions) {
                 valueAction?.Invoke(e);
             }
         }

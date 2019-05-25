@@ -47,7 +47,8 @@ namespace XamEffects.Droid.GestureCollectors {
                     break;
             }
 
-            foreach (var valueAction in Collection[view]) {
+            var actions = Collection[view].ToArray();
+            foreach (var valueAction in actions) {
                 valueAction?.Invoke(e);
             }
         }

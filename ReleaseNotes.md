@@ -1,5 +1,8 @@
 # Release notes
 
+## 1.6.3
+Small internal bugfixes.
+
 ## 1.6.2
 Fix border view renderer crashes when element is null.
 
