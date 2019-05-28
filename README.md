@@ -64,10 +64,10 @@ For Android API >=21 using Ripple effect, for Android API <21 and iOS using anim
 TouchEffect.SetColor(view, Color.Red);
 ```
 
-### Know issues
+### Important & known issues
 * Effect may not work in views with enabled [Fast Renderers](https://docs.microsoft.com/en-us/xamarin/xamarin-forms/internals/fast-renderers).
 * Effect may not work in views with another gestures and effects like Button, Slider, Picker, Entry, Editor etc.
-* Effect doesn't work correctly with standard gestures in Xamarin.Forms. If you need some gestures with touch effect, use not GestureRecognizer, but [Commands](#commands).
+* Effect may not work correctly with standard gestures in Xamarin.Forms. If you need some gestures with touch effect, use not GestureRecognizer, but [Commands](#commands).
 
 If effect doesn't work, try wrap view with ContentView and add effect to wrapper.
 
@@ -143,7 +143,7 @@ View with borders, corner radius and clipping to bounds. View based on ContentVi
 
 Why view, not effect like other features? Firstly I planned to do this. For iOS there are no problems, but for Android for clipping to rounded corners need override DispatchDraw from native view, that isn't possible from effect.
 
-### Know issues
+### Important & known issues
 * Padding work incorrectly in Android. Use margin in child view.
 
 ## EffectsConfig
