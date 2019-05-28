@@ -41,7 +41,6 @@ For Android API >=21 using Ripple effect, for Android API <21 and iOS using anim
 |Color|bindable attached|Color|Color.Default|Front/Ripple color when touched. For deactivate effect set Color.Default value. If color will have alpha channel is 255 effect will change it to ±80.|
     
 ### Example 
-
 ```xml
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -65,13 +64,14 @@ For Android API >=21 using Ripple effect, for Android API <21 and iOS using anim
 TouchEffect.SetColor(view, Color.Red);
 ```
 
-### Supported Views 
-Almost all usual views and layouts without another gestures and effects, e.g. for views like Button, Slider, Picker, Entry, Editor etc. effect won't work. Also not working in some views with enabled Fast Renderers. If effect doesn't work, try wrap view with ContentView and add effect to wrapper.
+### Know issues
+* Effect doesn't work in views with enabled [Fast Renderers](https://docs.microsoft.com/en-us/xamarin/xamarin-forms/internals/fast-renderers).
+* Effect may not work in views with another gestures and effects like Button, Slider, Picker, Entry, Editor etc.
+* Effect doesn't work correctly with standard gestures in Xamarin.Forms. If you need some gestures with touch effect, use not GestureRecognizer, but [Commands](#commands).
 
-**Important: if you need some gestures with touch effect, use not GestureRecognizer, but [Commands](#commands) because effects doesn't work correctly with standard gestures in Xamarin.Forms.**
+If effect doesn't work, try wrap view with ContentView and add effect to wrapper.
 
 ## Commands
-
 Add command to views.
 
 |Property|Type|Value type|Default|Description|
@@ -82,7 +82,6 @@ Add command to views.
 |LongTapParameter|bindable attached|object|null|Long tap command parameter|
     
 ### Example 
-
 ```xml
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -120,7 +119,6 @@ View with borders, corner radius and clipping to bounds. View based on ContentVi
 |BorderColor|bindable attached|Color|Color.Default|Border color|
 
 ### Example 
-
 ```xml
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -144,6 +142,9 @@ View with borders, corner radius and clipping to bounds. View based on ContentVi
 ```
 
 Why view, not effect like other features? Firstly I planned to do this. For iOS there are no problems, but for Android for clipping to rounded corners need override DispatchDraw from native view, that isn't possible from effect.
+
+### Know issues
+* Padding work incorrectly in Android. Use margin in child view.
 
 ## EffectsConfig
 
