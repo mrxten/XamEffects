@@ -65,7 +65,7 @@ TouchEffect.SetColor(view, Color.Red);
 ```
 
 ### Know issues
-* Effect doesn't work in views with enabled [Fast Renderers](https://docs.microsoft.com/en-us/xamarin/xamarin-forms/internals/fast-renderers).
+* Effect may not work in views with enabled [Fast Renderers](https://docs.microsoft.com/en-us/xamarin/xamarin-forms/internals/fast-renderers).
 * Effect may not work in views with another gestures and effects like Button, Slider, Picker, Entry, Editor etc.
 * Effect doesn't work correctly with standard gestures in Xamarin.Forms. If you need some gestures with touch effect, use not GestureRecognizer, but [Commands](#commands).
 
